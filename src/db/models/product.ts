@@ -10,6 +10,7 @@ export interface IProduct {
 }
 
 export interface IProductPopulated {
+  _id: string;
   title: string;
   description: string;
   price: number;

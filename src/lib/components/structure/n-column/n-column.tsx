@@ -7,6 +7,8 @@ export default function NColumn<T>({
   data,
   className = "",
   propKey,
+  columnsGap,
+  itemsGap,
 }: INColumnProps<T>) {
   const firstColumnData = data.filter((item, index) => {
     return index % 2 === 0;
@@ -15,10 +17,10 @@ export default function NColumn<T>({
     return index % 2 !== 0;
   });
   return (
-    <Row className={`NColumn ${className}`} gap="20">
+    <Row className={`NColumn ${className}`} gap={columnsGap}>
       <List
         direction="column"
-        gap="20"
+        gap={itemsGap}
         data={firstColumnData}
         propKey={propKey}
       >
@@ -26,7 +28,7 @@ export default function NColumn<T>({
       </List>
       <List
         direction="column"
-        gap="20"
+        gap={itemsGap}
         data={secondColumnData}
         propKey={propKey}
       >

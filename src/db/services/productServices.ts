@@ -18,12 +18,16 @@ export default class ProductServices {
     }
     return [];
   }
-  async getProductById({ id }: { id: string }) {
+  async getProductById({
+    id,
+  }: {
+    id: string;
+  }): Promise<IProductPopulated | undefined> {
     try {
       new ResourceServices();
       const product = await ProductModel.findById(id).populate("medias");
 
-      return product;
+      return product as unknown as IProductPopulated;
     } catch (error) {
       console.error(`Error en la operacion de obtener el producto: ${error}`);
     }

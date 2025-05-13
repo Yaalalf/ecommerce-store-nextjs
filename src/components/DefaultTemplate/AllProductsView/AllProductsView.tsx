@@ -4,6 +4,7 @@ import NColumn from "@/lib/components/structure/n-column";
 import { H } from "@/lib/components/text";
 import ProductCard from "../ProductCard";
 import ProductServices from "@/db/services/productServices";
+import Link from "next/link";
 
 export default async function AllProductsView() {
   const { getAllProducts } = new ProductServices();
@@ -13,8 +14,17 @@ export default async function AllProductsView() {
       <H type="h1" className="AllProductsHeader">
         Explora tu nuevo estilo
       </H>
-      <NColumn className="ProductList" data={products}>
-        {(product) => <ProductCard product={product} key={product.title} />}
+      <NColumn
+        className="ProductList"
+        data={products}
+        columnsGap="12"
+        itemsGap="40"
+      >
+        {(product) => (
+          <Link href={`/products/${product._id}`}>
+            <ProductCard product={product} key={product.title} />
+          </Link>
+        )}
       </NColumn>
     </Column>
   );
