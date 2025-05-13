@@ -1,0 +1,94 @@
+@layer base {
+  :root {
+    --h-base-font-size: 1rem;
+    --h-base-line-height: 1.5rem;
+
+    /* Multipliers */
+    --h-h1-multiplier: 1.5;
+    --h-h2-multiplier: 1.4;
+    --h-h3-multiplier: 1.3;
+    --h-h4-multiplier: 1.2;
+    --h-h5-multiplier: 0.9;
+    --h-h6-multiplier: 1;
+
+    /*h1*/
+    --h-h1-color: rgb(58, 58, 70);
+    --h-h1-font-size: calc(var(--h-base-font-size) * var(--h-h1-multiplier));
+    --h-h1-font-weight: 700;
+    --h-h1-line-height: calc(
+      var(--h-base-line-height) * var(--h-h1-multiplier)
+    );
+    /*h2*/
+    --h-h2-color: rgb(58, 58, 70);
+    --h-h2-font-size: calc(var(--h-base-font-size) * var(--h-h2-multiplier));
+    --h-h2-font-weight: 600;
+    --h-h2-line-height: calc(
+      var(--h-base-line-height) * var(--h-h2-multiplier)
+    );
+    /*h3*/
+    --h-h3-color: rgb(58, 58, 70);
+    --h-h3-font-size: calc(var(--h-base-font-size) * var(--h-h3-multiplier));
+    --h-h3-font-weight: 500;
+    --h-h3-line-height: calc(
+      var(--h-base-line-height) * var(--h-h3-multiplier)
+    );
+    /*h4*/
+    --h-h4-color: rgb(58, 58, 70);
+    --h-h4-font-size: calc(var(--h-base-font-size) * var(--h-h4-multiplier));
+    --h-h4-font-weight: 500;
+    --h-h4-line-height: calc(
+      var(--h-base-line-height) * var(--h-h4-multiplier)
+    );
+    /*h5*/
+    --h-h5-color: rgb(58, 58, 70);
+    --h-h5-font-size: calc(var(--h-base-font-size) * var(--h-h5-multiplier));
+    --h-h5-font-weight: 600;
+    --h-h5-line-height: calc(
+      var(--h-base-line-height) * var(--h-h5-multiplier)
+    );
+    /*h6*/
+    --h-h6-color: rgb(58, 58, 70);
+    --h-h6-font-size: calc(var(--h-base-font-size) * var(--h-h6-multiplier));
+    --h-h6-font-weight: 400;
+    --h-h6-line-height: calc(
+      var(--h-base-line-height) * var(--h-h6-multiplier)
+    );
+  }
+
+  .text-h1 {
+    color: var(--h-h1-color);
+    font-size: var(--h-h1-font-size);
+    font-weight: var(--h-h1-font-weight);
+    line-height: var(--h-h1-line-height);
+  }
+  .text-h2 {
+    color: var(--h-h2-color);
+    font-size: var(--h-h2-font-size);
+    font-weight: var(--h-h2-font-weight);
+    line-height: var(--h-h2-line-height);
+  }
+  .text-h3 {
+    color: var(--h-h3-color);
+    font-size: var(--h-h3-font-size);
+    font-weight: var(--h-h3-font-weight);
+    line-height: var(--h-h3-line-height);
+  }
+  .text-h4 {
+    color: var(--h-h4-color);
+    font-size: var(--h-h4-font-size);
+    font-weight: var(--h-h4-font-weight);
+    line-height: var(--h-h4-line-height);
+  }
+  .text-h5 {
+    color: var(--h-h5-color);
+    font-size: var(--h-h5-font-size);
+    font-weight: var(--h-h5-font-weight);
+    line-height: var(--h-h5-line-height);
+  }
+  .text-h6 {
+    color: var(--h-h6-color);
+    font-size: var(--h-h6-font-size);
+    font-weight: var(--h-h6-font-weight);
+    line-height: var(--h-h6-line-height);
+  }
+}

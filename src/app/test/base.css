@@ -1,0 +1,11 @@
+.TestPage {
+  inline-size: 100%;
+  block-size: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.TestPage .FlexContainer {
+  inline-size: 400px;
+}

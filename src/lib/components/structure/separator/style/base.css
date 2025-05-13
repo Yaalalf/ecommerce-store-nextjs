@@ -1,0 +1,13 @@
+@layer base {
+  .separator {
+    block-size: 1px;
+    background-color: rgb(145, 143, 129);
+    margin: 0 auto;
+
+    border: none;
+  }
+
+  .separator.inset {
+    inline-size: 90%;
+  }
+}

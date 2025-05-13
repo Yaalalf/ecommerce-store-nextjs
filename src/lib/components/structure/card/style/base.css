@@ -1,0 +1,53 @@
+@layer base {
+  .card {
+  }
+  .card.dense {
+    gap: 0px;
+  }
+  .card.bordered.flatted {
+    border: 1px solid rgb(184, 183, 172);
+  }
+
+  .card_separator {
+    background-color: rgb(184, 183, 172);
+  }
+
+  /***********************************************************/
+  /**********************card_header********************/
+  /***********************************************************/
+
+  .card .card_header {
+    inline-size: 100%;
+    justify-content: flex-start;
+  }
+  .card.dense .card_header {
+    padding-inline: 20px;
+  }
+
+  /***********************************************************/
+  /**********************card_body********************/
+  /***********************************************************/
+
+  .card .card_body {
+    inline-size: 100%;
+    block-size: 100%;
+    justify-content: flex-start;
+    position: relative;
+  }
+  .card.dense .card_body {
+    padding-inline: 0px;
+    padding-block: 0px;
+  }
+  /***********************************************************/
+  /**********************card_footer********************/
+  /***********************************************************/
+
+  .card .card_footer {
+    inline-size: 100%;
+    justify-content: flex-start;
+  }
+  .card.dense .card_footer {
+    padding-inline: 20px;
+    padding-block: 12px;
+  }
+}
