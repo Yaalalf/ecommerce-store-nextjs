@@ -50,6 +50,4 @@ export async function POST(request: NextRequest) {
   } else {
     return NextResponse.json({ status: 200, message: "All Images Saves" });
   }
-
-  // return NextResponse.json({ status: 200, message: "ok" });
 }

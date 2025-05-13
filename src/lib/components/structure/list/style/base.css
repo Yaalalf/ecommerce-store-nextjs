@@ -1,6 +1,5 @@
 @layer base {
   .list {
     list-style-type: none;
-    gap: 8px;
   }
 }

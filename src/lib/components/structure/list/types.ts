@@ -1,6 +1,7 @@
 import {
   IClassName,
   IDirection,
+  IGap,
   IListTag,
   IPTNode,
 } from "@/lib/types/components-props";
@@ -9,7 +10,8 @@ import { ReactNode } from "react";
 export interface IListProps<T>
   extends Partial<IClassName>,
     Partial<IListTag>,
-    Partial<IDirection> {
+    Partial<IDirection>,
+    Partial<IGap> {
   data: T[];
   propKey?: keyof T;
   unwrap?: boolean;

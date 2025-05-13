@@ -16,10 +16,20 @@ export default function NColumn<T>({
   });
   return (
     <Row className={`NColumn ${className}`} gap="20">
-      <List direction="column" data={firstColumnData} propKey={propKey}>
+      <List
+        direction="column"
+        gap="20"
+        data={firstColumnData}
+        propKey={propKey}
+      >
         {children}
       </List>
-      <List direction="column" data={secondColumnData} propKey={propKey}>
+      <List
+        direction="column"
+        gap="20"
+        data={secondColumnData}
+        propKey={propKey}
+      >
         {children}
       </List>
     </Row>

@@ -1,7 +1,8 @@
 import config from "@/config";
 import GoogleCloudStorage from "./googleCloudStorage";
 import util from "util";
-
+import sharp from "sharp";
+import path from "path";
 export default class GoogleCloudService {
   public googleCloudStorageResources: GoogleCloudStorage;
   public baseUrlPath: string;
@@ -15,11 +16,19 @@ export default class GoogleCloudService {
   async uploadResource(file: File) {
     let publicUrl = "";
     try {
-      const fileName = file.name;
+      const fileNameWithoutExtName = path.basename(
+        file.name,
+        path.extname(file.name)
+      );
       const bytes = await file.arrayBuffer();
+
+      const webpImageBuffer = await sharp(bytes)
+        .webp({ quality: 80 })
+        .toBuffer();
+      const fileName = fileNameWithoutExtName + ".webp";
       const blobName = await this.googleCloudStorageResources.uploadFile(
         `${this.baseUrlPath}${fileName}`,
-        Buffer.from(bytes)
+        Buffer.from(webpImageBuffer)
       );
       publicUrl = util.format(
         `https://storage.googleapis.com/${this.googleCloudStorageResources.bucket.name}/${blobName}`

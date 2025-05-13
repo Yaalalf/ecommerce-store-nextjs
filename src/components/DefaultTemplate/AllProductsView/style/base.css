@@ -1,0 +1,11 @@
+.AllProducts {
+  padding-block: 40px;
+  padding-inline: 12px;
+}
+
+.AllProducts .AllProductsHeader {
+  font-size: 36px;
+}
+
+.AllProducts .ProductList {
+}
