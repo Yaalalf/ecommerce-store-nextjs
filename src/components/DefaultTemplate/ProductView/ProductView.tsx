@@ -1,6 +1,7 @@
 import "./style/base.css";
 import { IProductPopulated } from "@/db/models/product";
-import { Card, Column } from "@/lib/components";
+import { Card, Column, Row } from "@/lib/components";
+import { H } from "@/lib/components/text";
 import Image from "next/image";
 import Link from "next/link";
 import { IoChevronBack } from "react-icons/io5";
@@ -9,7 +10,7 @@ export default function ProductView({
 }: {
   product: IProductPopulated;
 }) {
-  const { medias } = product;
+  const { medias, title, price } = product;
 
   return (
     <Card
@@ -28,6 +29,15 @@ export default function ProductView({
           ></Image>
         </Column>
       }
-    ></Card>
+    >
+      <Column className="ProductInfo">
+        <Row justify="space-between">
+          <H type="h2">{title}</H>
+          <H className="PriceTag" type="h2">
+            ${price}
+          </H>
+        </Row>
+      </Column>
+    </Card>
   );
 }

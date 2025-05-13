@@ -21,7 +21,7 @@ export default async function AllProductsView() {
         itemsGap="40"
       >
         {(product) => (
-          <Link href={`/products/${product._id}`}>
+          <Link className="ProductLink" href={`/products/${product._id}`}>
             <ProductCard product={product} key={product.title} />
           </Link>
         )}

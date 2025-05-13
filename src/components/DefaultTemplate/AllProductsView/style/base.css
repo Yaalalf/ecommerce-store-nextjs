@@ -7,5 +7,11 @@
   font-size: 36px;
 }
 
-.AllProducts .ProductList {
+.AllProducts .ProductList .ProductLink {
+  display: block;
+  border-radius: 20px;
+}
+.AllProducts .ProductList .ProductLink:active {
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.205);
 }
