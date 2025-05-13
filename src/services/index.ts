@@ -1,1 +1,1 @@
-export { default as cloud } from "./cloud";
+export { GoogleCloudService as cloud } from "./cloud";
