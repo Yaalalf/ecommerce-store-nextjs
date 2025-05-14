@@ -2,8 +2,8 @@
 import "./style/base.css";
 import { IProductPopulated } from "@/db/models/product";
 import { Box, Card, Column, List, Row } from "@/lib/components";
+import ImageLoader from "@/lib/components/misc/next-component/image-loader";
 import { H } from "@/lib/components/text";
-import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { IoChevronBack } from "react-icons/io5";
@@ -29,12 +29,14 @@ export default function ProductView({
           <Link className="BackIconLink" href={"/products"}>
             <IoChevronBack className="BackIcon" />
           </Link>
-          <Image
+          <ImageLoader
             className="ProductImage"
             src={medias[selectedMediaIndex].url}
             alt={medias[selectedMediaIndex].name}
-            fill
-          ></Image>
+            width={1080}
+            height={1080}
+            priority
+          ></ImageLoader>
         </Column>
       }
     >
@@ -48,15 +50,16 @@ export default function ProductView({
                   selectedMediaIndex === index ? "selected" : ""
                 }`}
               >
-                <Image
+                <ImageLoader
                   className="ImagesTabsItemImage"
                   key={media.name}
                   src={media.url}
                   alt={media.name}
-                  width={56}
-                  height={56}
+                  width={1080}
+                  height={1080}
+                  priority
                   onClick={() => setSelectedMediaIndex(index)}
-                ></Image>
+                ></ImageLoader>
               </Box>
             )}
           </List>
