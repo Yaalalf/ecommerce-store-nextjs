@@ -8,12 +8,12 @@ export default function ImageLoader({ ...imageProps }: ImageProps) {
   const [loading, setLoading] = useState(true);
 
   return (
-    <Center className="image_loader">
+    <Center className={`image_loader ${imageProps.className || ""}`}>
       <Image
         {...imageProps}
         src={imageProps.src}
         alt={imageProps.alt}
-        className={`image_loader_item ${imageProps.className}`}
+        className={`image_loader_item`}
         onLoad={() => {
           setLoading(false);
         }}

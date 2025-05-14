@@ -1,5 +1,5 @@
 import "./style/base.css";
-import { Box, Column, List, Row } from "@/lib/components";
+import { Column, List } from "@/lib/components";
 import NColumn from "@/lib/components/structure/n-column";
 import { H } from "@/lib/components/text";
 import ProductCard from "../ProductCard";
@@ -7,7 +7,6 @@ import ProductServices from "@/db/services/productServices";
 import Link from "next/link";
 import CollectionServices from "@/db/services/collectionsServices";
 import ImageLoader from "@/lib/components/misc/next-component/image-loader";
-import MaskedSVG from "@/lib/components/misc/masked-svg";
 
 export default async function AllProductsView() {
   const { getAllProducts } = new ProductServices();
@@ -16,15 +15,18 @@ export default async function AllProductsView() {
   const collections = await getAllCollections();
   return (
     <Column className="AllProducts full-width full-height" gap="20">
-      <List data={collections} className="CollectionContainer">
+      <List data={collections} className="CollectionContainer" gap="12">
         {(collection) => (
-          <Row className="CollectionItem">
-            <MaskedSVG
+          <Column className="CollectionItem" align="center" justify="center">
+            <ImageLoader
               className="CollectionItemImage"
               src={collection.media.url}
+              alt={collection.media.name}
+              width={500}
+              height={500}
             />
             <H type="h5">{collection.title}</H>
-          </Row>
+          </Column>
         )}
       </List>
       <H type="h1" className="AllProductsHeader">
