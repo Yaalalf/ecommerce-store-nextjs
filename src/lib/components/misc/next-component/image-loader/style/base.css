@@ -1,5 +1,6 @@
 .image_loader {
   position: relative;
+  overflow: hidden;
 }
 
 .image_loader .image_loader_item {

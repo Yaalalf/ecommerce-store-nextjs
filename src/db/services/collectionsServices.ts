@@ -17,8 +17,8 @@ export default class CollectionServices {
       new ResourceServices();
       new ProductServices();
       const collections = await CollectionModel.find({})
-        .populate("media")
-        .populate("products");
+        .populate("products")
+        .populate("media");
       return collections as unknown as ICollectionPopulated[];
     } catch (error) {
       console.error(`Error en la operacion de obtener los productos: ${error}`);

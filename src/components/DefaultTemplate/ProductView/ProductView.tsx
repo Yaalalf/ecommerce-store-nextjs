@@ -26,7 +26,7 @@ export default function ProductView({
       }}
       slotHeader={
         <Column className="ProductViewHeader">
-          <Link className="BackIconLink" href={"/products"}>
+          <Link className="BackIconLink" href={"/"}>
             <IoChevronBack className="BackIcon" />
           </Link>
           <ImageLoader

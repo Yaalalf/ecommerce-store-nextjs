@@ -1,23 +1,10 @@
 .AllProducts {
   padding-block: 40px;
   padding-inline: 12px;
+
+  position: relative;
 }
 
-.AllProducts .CollectionItem {
-  inline-size: 100px;
-  block-size: 100px;
-
-  border-radius: 12px;
-  border: 1px solid black;
-}
-
-.AllProducts .CollectionItem .CollectionItemImage {
-  inline-size: 100%;
-  block-size: 60px;
-}
-.AllProducts .CollectionItem .CollectionItemImage img {
-  object-fit: contain;
-}
 .AllProducts .AllProductsHeader {
   font-size: 36px;
 }
