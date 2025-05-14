@@ -35,10 +35,11 @@ export async function POST(request: NextRequest) {
   // Safe the image in google cloud and retrieve the url
   let wasDuplicate = false;
   for (const image of images) {
-    const isFileInCloud = await gcService.existResource(image);
+    const isFileInCloud = await gcService.existResource(image, true);
+
     if (!isFileInCloud) {
-      const publicUrl = await gcService.uploadResource(image);
-      resourceServices.addResource({ name: image.name, url: publicUrl });
+      const { publicUrl, fileName } = await gcService.uploadResource(image);
+      resourceServices.addResource({ name: fileName, url: publicUrl });
     } else {
       wasDuplicate = true;
     }

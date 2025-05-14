@@ -35,7 +35,7 @@ export default function List<T, N extends string>({
               ...ptItemSpecifics,
               className: `${pt?.item?.className || ""} ${
                 ptItemSpecifics?.className || ""
-              } list_items full-width`,
+              } list_items`,
             }
           : undefined)}
         key={key}

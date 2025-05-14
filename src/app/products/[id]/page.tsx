@@ -10,6 +10,7 @@ export default async function ProductPage({
   const { id } = await params;
   const { getProductById } = new ProductServices();
   const product = (await getProductById({ id })) as IProductPopulated;
+  const sanitizedProduct = JSON.parse(JSON.stringify(product));
 
-  return <ProductView product={product} />;
+  return <ProductView product={sanitizedProduct} />;
 }

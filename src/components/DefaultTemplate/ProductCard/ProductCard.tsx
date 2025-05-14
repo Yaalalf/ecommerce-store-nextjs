@@ -14,7 +14,6 @@ export default function ProductCard({ product }: IProductCardProps) {
           src={medias[0].url}
           alt="Un Producto de la tienda"
           fill
-          priority
         />
         <Column className="ProductInfo" gap="4">
           <H className="ProductPrice" type="h2">
