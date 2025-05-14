@@ -16,6 +16,10 @@ export default function ProductView({
     <Card
       dense
       className="ProductView"
+      pt={{
+        header: { className: "ProductViewHeaderContainer" },
+        body: { className: "ProductInfoContainer" },
+      }}
       slotHeader={
         <Column className="ProductViewHeader">
           <Link className="BackIconLink" href={"/products"}>

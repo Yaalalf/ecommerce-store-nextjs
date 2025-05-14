@@ -16,6 +16,7 @@ export default function Card({
 
   slotFooter,
   slotHeader,
+  pt,
 }: ICardProps) {
   const isSeparatorHeader =
     separator_header != undefined ? separator_header : separator;
@@ -25,28 +26,46 @@ export default function Card({
 
   return (
     <Box
+      {...pt?.root}
       {...{
         bordered,
         flatted,
         dense,
         shadowed,
-        className: `card ${className}`,
+        className: `card ${className} ${pt?.root?.className}`,
       }}
     >
       {/**********************Header Slot***************/}
       {slotHeader && (
         <>
-          <Row className="card_header">{slotHeader}</Row>
+          <Row
+            {...pt?.header}
+            className={`card_header ${pt?.header?.className || ""}`}
+          >
+            {slotHeader}
+          </Row>
           {isSeparatorHeader && <Separator></Separator>}
         </>
       )}
       {/**********************Default Slot***************/}
-      {children && <Column className="card_body">{children}</Column>}
+      {children && (
+        <Column
+          {...pt?.body}
+          className={`card_body ${pt?.body?.className || ""}`}
+        >
+          {children}
+        </Column>
+      )}
       {/**********************Footer Slot***************/}
       {slotFooter && (
         <>
           {isSeparatorFooter && <Separator></Separator>}
-          <Row className="card_footer">{slotFooter}</Row>
+          <Row
+            {...pt?.footer}
+            className={`card_footer ${pt?.footer?.className || ""}`}
+          >
+            {slotFooter}
+          </Row>
         </>
       )}
     </Box>

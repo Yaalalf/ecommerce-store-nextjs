@@ -2,9 +2,14 @@
   inline-size: 100%;
   block-size: 100vh;
 }
-
-.ProductViewHeader {
+.ProductViewHeaderContainer {
+  position: sticky;
+  top: 0px;
+  left: 0px;
   block-size: 50vh;
+}
+.ProductViewHeader {
+  block-size: 100%;
   position: relative;
 }
 
@@ -31,8 +36,12 @@
 
   object-fit: cover;
 }
-
+.ProductInfoContainer {
+  block-size: 100vh;
+  background-color: white;
+}
 .ProductInfo {
+  block-size: 100%;
   padding-inline: 20px;
   padding-block-start: 20px;
 }
