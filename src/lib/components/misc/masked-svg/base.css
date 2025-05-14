@@ -1,0 +1,29 @@
+@layer base {
+  .masked_svg {
+    inline-size: 28px;
+    block-size: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    color: rgb(33, 32, 32);
+
+    --color: currentColor;
+    --mask-image-url: "";
+  }
+  .masked_svg .masked_svg_container {
+    inline-size: 100%;
+    block-size: 100%;
+
+    background-color: var(--color);
+    background-image: var(--mask-image-url);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    mask-image: var(--mask-image-url);
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    background-image: none;
+  }
+}

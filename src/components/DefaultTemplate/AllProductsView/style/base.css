@@ -3,6 +3,19 @@
   padding-inline: 12px;
 }
 
+.AllProducts .CollectionItem {
+  inline-size: 160px;
+  block-size: 40px;
+
+  border-radius: 12px;
+  border: 1px solid black;
+}
+
+.AllProducts .CollectionItem .CollectionItemImage {
+  inline-size: 60px;
+  block-size: 100%;
+  color: red;
+}
 .AllProducts .AllProductsHeader {
   font-size: 36px;
 }
