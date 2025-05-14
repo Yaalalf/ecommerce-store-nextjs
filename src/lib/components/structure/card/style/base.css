@@ -30,7 +30,6 @@
 
   .card .card_body {
     inline-size: 100%;
-    block-size: 100%;
     justify-content: flex-start;
     position: relative;
   }

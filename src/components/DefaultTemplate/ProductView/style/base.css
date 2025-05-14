@@ -43,3 +43,29 @@
   padding-inline: 20px;
   border-radius: 20px;
 }
+
+.ProductInfo .ProductDescription p {
+  font-size: 18px;
+  line-height: 26px;
+  color: rgb(70, 72, 73);
+}
+.ProductInfo .ProductDescription ul {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.ProductInfo .ProductDescription ul li {
+  font-size: 16px;
+  color: rgb(32, 33, 35);
+  border-block-end: 1px solid rgb(143, 143, 150);
+}
+
+.ProductInfo .ProductDescription p > span {
+  background-color: rgb(222, 221, 232);
+  padding-inline: 12px;
+  padding-block: 2px;
+  border-radius: 12px;
+
+  font-weight: 500;
+  font-size: 14px;
+}

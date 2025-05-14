@@ -10,7 +10,7 @@ export default function ProductView({
 }: {
   product: IProductPopulated;
 }) {
-  const { medias, title, price } = product;
+  const { medias, title, price, description } = product;
 
   return (
     <Card
@@ -30,13 +30,18 @@ export default function ProductView({
         </Column>
       }
     >
-      <Column className="ProductInfo">
+      <Column className="ProductInfo" gap="12">
         <Row justify="space-between">
           <H type="h2">{title}</H>
           <H className="PriceTag" type="h2">
             ${price}
           </H>
         </Row>
+        <Column
+          className="ProductDescription"
+          dangerouslySetInnerHTML={{ __html: description }}
+          gap="12"
+        ></Column>
       </Column>
     </Card>
   );
