@@ -5,6 +5,7 @@ import { Box, Card, Column, List, Row } from "@/lib/components";
 import ImageLoader from "@/lib/components/misc/next-component/image-loader";
 import { H } from "@/lib/components/text";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { IoChevronBack } from "react-icons/io5";
 export default function ProductView({
@@ -12,8 +13,9 @@ export default function ProductView({
 }: {
   product: IProductPopulated;
 }) {
+  const searchParams = useSearchParams();
   const { medias, title, price, description } = product;
-
+  console.log(searchParams.get("categoryIndex"));
   const [selectedMediaIndex, setSelectedMediaIndex] = useState(0);
 
   return (
@@ -26,7 +28,10 @@ export default function ProductView({
       }}
       slotHeader={
         <Column className="ProductViewHeader">
-          <Link className="BackIconLink" href={"/"}>
+          <Link
+            className="BackIconLink"
+            href={`/?categoryIndex=${searchParams.get("categoryIndex")}`}
+          >
             <IoChevronBack className="BackIcon" />
           </Link>
           <ImageLoader

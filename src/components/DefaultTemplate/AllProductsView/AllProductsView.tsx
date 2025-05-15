@@ -13,11 +13,13 @@ import { useState } from "react";
 export default function AllProductsView({
   collections,
   products,
+  categoryIndex,
 }: {
   collections: ICollectionPopulated[];
   products: IProductPopulated[];
+  categoryIndex?: number;
 }) {
-  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [selectedIndex, setSelectedIndex] = useState(categoryIndex || 0);
 
   const allCollections: ICollectionPopulated[] = [
     {
@@ -61,7 +63,10 @@ export default function AllProductsView({
         itemsGap="40"
       >
         {(product) => (
-          <Link className="ProductLink" href={`/products/${product._id}`}>
+          <Link
+            className="ProductLink"
+            href={`/products/${product._id}?categoryIndex=${selectedIndex}`}
+          >
             <ProductCard product={product} key={product.title} />
           </Link>
         )}

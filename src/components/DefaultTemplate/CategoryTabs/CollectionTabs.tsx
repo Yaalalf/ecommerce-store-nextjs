@@ -14,6 +14,8 @@ export default function CollectionTabs({
   selectedIndex: number;
   onTab?: (collection: ICollectionPopulated, index: number) => void;
 }) {
+  console.log(selectedIndex);
+
   return (
     <Column className="CollectionTabs" gap="8">
       <H type="h2" className="CollectionTabsHeader">
