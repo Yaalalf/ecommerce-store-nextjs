@@ -1,0 +1,176 @@
+.carrousel {
+  inline-size: 90%;
+  block-size: 220px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+
+  margin-block-end: 20px;
+}
+/****************************Tabs*************************************/
+
+.carrousel .tabs_container {
+  display: flex;
+  gap: 12px;
+
+  position: absolute;
+
+  bottom: 30px;
+}
+
+.carrousel .tabs_container .tab {
+  inline-size: 16px;
+  block-size: 16px;
+
+  border-radius: 100%;
+
+  overflow: hidden;
+
+  background-color: white;
+  opacity: 0.5;
+
+  z-index: 10;
+}
+
+.carrousel .tabs_container .tab.selected {
+  opacity: 1;
+}
+/********************************ButtonImage******************************/
+.carrousel .tabs_container:has(.ButtonImage) {
+  flex-direction: column;
+  left: 8px;
+}
+.carrousel .tabs_container:has(.ButtonImage) .tab {
+  inline-size: 60px;
+  block-size: 60px;
+  border-radius: 4px;
+}
+
+.carrousel .tabs_container:has(.ButtonImage) .tab .ButtonImage {
+  inline-size: 100%;
+  block-size: 100%;
+
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.carrousel .tabs_container:has(.ButtonImage) .tab.selected {
+  opacity: 1;
+  border: 3px solid black;
+}
+
+/**********************************slider***********************************/
+.carrousel .slider_container {
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.carrousel .slider_container .slider {
+  inline-size: 100%;
+  block-size: 100%;
+
+  position: relative;
+
+  overflow: hidden;
+
+  border-radius: 8px;
+}
+
+.carrousel .slider_container .slider .transition_marker {
+  inline-size: 100%;
+  block-size: 100%;
+  position: absolute;
+}
+
+.carrousel .slider_container .slider .transition_marker.stop .ImageBackground {
+  animation-play-state: paused !important;
+  animation-name: none !important;
+}
+.carrousel .slider_container .slider .transition_marker.play .ImageBackground {
+  animation-play-state: running !important;
+}
+
+.carrousel
+  .slider_container
+  .slider
+  .transition_marker.play.entered
+  .ImageBackground {
+  animation-name: var(--animation-enter) !important;
+}
+.carrousel
+  .slider_container
+  .slider
+  .transition_marker.play.exited
+  .ImageBackground {
+  animation-name: var(--animation-exit) !important;
+}
+.carrousel .slider_container .slider .ImageBackground {
+  inline-size: 100%;
+  block-size: 100%;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.carrousel
+  .slider_container
+  .slider
+  .transition_marker.entered
+  .ImageBackground {
+  animation: var(--animation-enter) 1000ms ease-in-out;
+  animation-delay: 0ms;
+  animation-fill-mode: forwards;
+}
+
+.carrousel
+  .slider_container
+  .slider
+  .transition_marker.exited
+  .ImageBackground {
+  animation: var(--animation-exit) 1000ms ease-in-out;
+  animation-delay: 0ms;
+  animation-fill-mode: forwards;
+}
+
+@keyframes moveIn {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+@keyframes moveOut {
+  0% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    filter: blur(50px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+  100% {
+    opacity: 0;
+    filter: blur(50px);
+  }
+}

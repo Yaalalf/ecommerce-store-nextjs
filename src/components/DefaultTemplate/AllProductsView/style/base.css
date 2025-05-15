@@ -1,8 +1,17 @@
 .AllProducts {
-  padding-block: 40px;
-  padding-inline: 12px;
+  padding-block-end: 40px;
+  padding-inline: 0px;
 
   position: relative;
+}
+
+.AllProducts .PromotionalBanner {
+  inline-size: 100%;
+  block-size: 200px;
+}
+
+.AllProducts .AllProductBody {
+  padding-inline: 12px;
 }
 
 .AllProducts .AllProductsHeader {

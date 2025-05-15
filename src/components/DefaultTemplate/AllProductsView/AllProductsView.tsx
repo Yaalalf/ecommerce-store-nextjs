@@ -9,14 +9,18 @@ import { ICollectionPopulated } from "@/db/models/collections";
 import CollectionTabs from "../CategoryTabs/CollectionTabs";
 import { IProductPopulated } from "@/db/models/product";
 import { useState } from "react";
+import ImageLoader from "@/lib/components/misc/next-component/image-loader";
+import { IPromotionalPopulated } from "@/db/models/promotionals";
 
 export default function AllProductsView({
   collections,
   products,
+  promotionals,
   categoryIndex,
 }: {
   collections: ICollectionPopulated[];
   products: IProductPopulated[];
+  promotionals: IPromotionalPopulated[];
   categoryIndex?: number;
 }) {
   const [selectedIndex, setSelectedIndex] = useState(categoryIndex || 0);
@@ -46,31 +50,40 @@ export default function AllProductsView({
 
   return (
     <Column className="AllProducts full-width full-height" gap="20">
-      <CollectionTabs
-        selectedIndex={selectedIndex}
-        collections={allCollections}
-        onTab={(collection, index) => {
-          setSelectedIndex(index);
-        }}
-      ></CollectionTabs>
-      <H type="h1" className="AllProductsHeader">
-        Explora tu nuevo estilo
-      </H>
-      <NColumn
-        className="ProductList"
-        data={filteredProducts}
-        columnsGap="12"
-        itemsGap="40"
-      >
-        {(product) => (
-          <Link
-            className="ProductLink"
-            href={`/products/${product._id}?categoryIndex=${selectedIndex}`}
-          >
-            <ProductCard product={product} key={product.title} />
-          </Link>
-        )}
-      </NColumn>
+      <ImageLoader
+        className="PromotionalBanner"
+        src={promotionals[0].medias[0].url}
+        alt={promotionals[0].medias[0].name}
+        width={1080}
+        height={1080}
+      ></ImageLoader>
+      <Column className="AllProductBody" gap="20">
+        <CollectionTabs
+          selectedIndex={selectedIndex}
+          collections={allCollections}
+          onTab={(collection, index) => {
+            setSelectedIndex(index);
+          }}
+        ></CollectionTabs>
+        <H type="h1" className="AllProductsHeader">
+          Explora tu nuevo estilo
+        </H>
+        <NColumn
+          className="ProductList"
+          data={filteredProducts}
+          columnsGap="12"
+          itemsGap="40"
+        >
+          {(product) => (
+            <Link
+              className="ProductLink"
+              href={`/products/${product._id}?categoryIndex=${selectedIndex}`}
+            >
+              <ProductCard product={product} key={product.title} />
+            </Link>
+          )}
+        </NColumn>
+      </Column>
     </Column>
   );
 }
