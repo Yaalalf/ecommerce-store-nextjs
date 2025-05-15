@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import connectDB from "@/db/connection";
-import MainFooter from "@/components/DefaultTemplate/MainFooter/MainFooter";
 
 //Initialize MongoDB Connection
 await connectDB();
@@ -18,9 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`antialiased`}>
-        {children} <MainFooter></MainFooter>
-      </body>
+      <body className={`antialiased`}>{children}</body>
     </html>
   );
 }

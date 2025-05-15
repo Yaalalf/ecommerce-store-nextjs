@@ -1,6 +1,6 @@
 "use client";
 import "./style/base.css";
-import { Column, Row, Separator } from "@/lib/components";
+import { Column, Separator } from "@/lib/components";
 import NColumn from "@/lib/components/structure/n-column";
 import { H } from "@/lib/components/text";
 import ProductCard from "../ProductCard";
@@ -64,10 +64,10 @@ export default function AllProductsView({
       ></CollectionTabs>
       <Column className="AllProductBody" gap="20">
         <H type="h1" className="AllProductsHeader">
-          <span>Explora nuestros </span>
-          <Row className="SubSpan" gap="8">
-            productos <Separator />
-          </Row>
+          <span>Lo mas visto </span>
+          <span className="SubSpan">
+            <span className="SubSpanText"> en Olivia</span> <Separator />
+          </span>
         </H>
         <NColumn
           className="ProductList"

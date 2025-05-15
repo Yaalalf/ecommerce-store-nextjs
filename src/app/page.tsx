@@ -1,4 +1,5 @@
 import AllProductsView from "@/components/DefaultTemplate/AllProductsView";
+import MainFooter from "@/components/DefaultTemplate/MainFooter/MainFooter";
 import MainHeader from "@/components/DefaultTemplate/MainHeader/MainHeader";
 import CollectionServices from "@/db/services/collectionsServices";
 import ProductServices from "@/db/services/productServices";
@@ -21,7 +22,7 @@ export default async function HomePage({
   const promotionals = sanitatedClientData(await getAllPromotionals());
   return (
     <>
-      <MainHeader></MainHeader>
+      <MainHeader />
       <div className="full-width full-height">
         <AllProductsView
           products={products}
@@ -30,6 +31,7 @@ export default async function HomePage({
           categoryIndex={categoryIndex ? Number(categoryIndex) : 0}
         />
       </div>
+      <MainFooter />
     </>
   );
 }

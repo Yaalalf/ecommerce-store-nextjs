@@ -81,7 +81,9 @@ export default function ProductView({
           </List>
         </Row>
         <Row justify="space-between">
-          <H type="h2">{title}</H>
+          <H type="h2" className="TagName">
+            {title}
+          </H>
           <H className="PriceTag" type="h2">
             ${price}
           </H>
