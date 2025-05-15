@@ -1,6 +1,6 @@
 "use client";
 import "./style/base.css";
-import { Column } from "@/lib/components";
+import { Column, Row, Separator } from "@/lib/components";
 import NColumn from "@/lib/components/structure/n-column";
 import { H } from "@/lib/components/text";
 import ProductCard from "../ProductCard";
@@ -64,7 +64,10 @@ export default function AllProductsView({
           }}
         ></CollectionTabs>
         <H type="h1" className="AllProductsHeader">
-          Explora nuestros productos
+          <span>Explora nuestros </span>
+          <Row className="SubSpan" gap="8">
+            productos <Separator />
+          </Row>
         </H>
         <NColumn
           className="ProductList"

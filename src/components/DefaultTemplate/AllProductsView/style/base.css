@@ -15,10 +15,20 @@
 }
 
 .AllProducts .AllProductsHeader {
-  inline-size: 300px;
+  inline-size: 100%;
+  display: flex;
+  flex-direction: column;
   font-size: 28px;
   line-height: 32px;
   text-align: start;
+}
+.AllProducts .AllProductsHeader .SubSpan {
+  display: flex;
+  align-items: center;
+}
+
+.AllProducts .AllProductsHeader .HeaderSeparator {
+  display: inline-block;
 }
 
 .AllProducts .ProductList {

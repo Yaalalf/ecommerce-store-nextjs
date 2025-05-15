@@ -19,7 +19,9 @@ export default function MainHeader() {
       />
       <header className={`MainHeader ${isMiniState ? "mini" : ""}`}>
         <Center className="Center">
-          <H type="h1">Olivia Shop Catalog</H>
+          <H className="Header" type="h1">
+            Olivia Shop Catalog
+          </H>
         </Center>
       </header>
     </>
