@@ -1,5 +1,5 @@
 .HeaderIntersector {
-  block-size: 100px;
+  block-size: 144px;
   inline-size: 100%;
   position: absolute;
   top: 20px;
@@ -29,6 +29,32 @@
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.24);
 }
 
+.MainHeader .Header {
+  font-size: 18px;
+  line-height: 24px;
+}
 .MainHeader.mini .Header {
   font-size: 14px;
+}
+.MainHeader .SubHeader {
+  font-size: 14px;
+  line-height: 18px;
+
+  text-align: center;
+  color: #8f5fef;
+}
+
+.MainHeader .Cheap {
+  padding: 8px;
+  padding-inline: 12px;
+
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border-radius: 8px;
+
+  background-color: #8f5fef;
+  color: #efe9fb;
+  font-size: 12px;
+  line-height: 14px;
 }
