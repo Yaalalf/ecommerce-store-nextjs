@@ -17,13 +17,22 @@
   inline-size: 100%;
   block-size: 100%;
 }
-
+.MainFooter .List .ItemLink {
+  inline-size: 80px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.MainFooter .List .ItemLink.selected {
+  background-color: #8f5fef;
+  border-radius: 12px;
+}
 .MainFooter .List .Icon {
   padding: 8px;
   font-size: 40px;
+  color: #6b6674;
 }
-.MainFooter .List .selected .Icon {
-  background-color: rgb(67, 62, 62);
+.MainFooter .List .ItemLink.selected .Icon {
   color: white;
   border-radius: 4px;
 }

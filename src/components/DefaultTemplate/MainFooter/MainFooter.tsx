@@ -26,7 +26,7 @@ export default function MainFooter() {
       >
         {(item) => (
           <Link
-            className={`${pathName === item.href ? "selected" : ""}`}
+            className={`ItemLink ${pathName === item.href ? "selected" : ""}`}
             href={item.href}
           >
             <item.icon className="Icon" />

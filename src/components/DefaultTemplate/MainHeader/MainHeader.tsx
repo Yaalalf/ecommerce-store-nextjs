@@ -22,7 +22,7 @@ export default function MainHeader() {
       <header className={`MainHeader ${isMiniState ? "mini" : ""}`}>
         <Column className="Center" align="center" gap="4">
           <H className="Header" type="h1">
-            Catálogo de Olivia Shop{" "}
+            Catálogo de Olivia Shop
             {isMiniState && <FaBagShopping className="Icon" />}
           </H>
           {isMiniState || (

@@ -73,7 +73,7 @@ export default function AllProductsView({
           className="ProductList"
           data={filteredProducts}
           columnsGap="20"
-          itemsGap="40"
+          itemsGap="20"
         >
           {(product) => (
             <Link
