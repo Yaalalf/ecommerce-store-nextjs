@@ -1,0 +1,21 @@
+@layer yl-animation-container {
+  .yl-animation-container {
+    position: relative;
+    opacity: 0;
+    animation: slideInSmall ease-in-out forwards 500ms;
+  }
+
+  .yl-animation-container.pending {
+    opacity: 0;
+    animation-name: var(--animation-pending-name);
+  }
+
+  /***********************Animations************************/
+
+  .yl-animation-container.init {
+    animation-name: var(--animation-init-name);
+  }
+  .yl-animation-container.end {
+    animation-name: var(--animation-end-name);
+  }
+}

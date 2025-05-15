@@ -1,0 +1,40 @@
+@layer yl-animated-visibility-observer {
+  .yl-animated-visibility-observer {
+    inline-size: auto;
+    block-size: auto;
+    position: relative;
+  }
+  .yl-animated-visibility-observer .yl-animated-container {
+    inline-size: 100%;
+    block-size: 100%;
+    visibility: visible;
+
+    opacity: 0;
+
+    animation: slideInSmall ease-in-out forwards 1000ms;
+    animation-name: none;
+  }
+
+  .yl-animated-visibility-observer .yl-animated-container.hidden {
+    visibility: hidden;
+  }
+  /***********************Animations************************/
+  .yl-animated-visibility-observer .yl-animated-container.pending {
+    animation-name: none;
+  }
+
+  .yl-animated-visibility-observer .yl-animated-container.init {
+    animation-name: var(--animation-init-name);
+  }
+  .yl-animated-visibility-observer .yl-animated-container.exit {
+    animation-name: var(--animation-end-name);
+  }
+
+  .yl-animated-visibility-observer .animated-observer {
+    block-size: 0px;
+
+    position: absolute;
+    top: auto;
+    bottom: 40px;
+  }
+}

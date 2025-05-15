@@ -1,0 +1,28 @@
+"use client";
+
+import { Center } from "@/lib/components";
+import "./base.css";
+import { H } from "@/lib/components/text";
+import VisibilityObserver from "@/lib/components/misc/visibility-observer/visibility-observer";
+import { useState } from "react";
+
+export default function MainHeader() {
+  const [isMiniState, setIsMiniState] = useState(false);
+
+  return (
+    <>
+      <VisibilityObserver
+        className="HeaderIntersector"
+        onVisibility={(entry) => {
+          console.log(entry);
+          setIsMiniState(!entry.isIntersecting);
+        }}
+      />
+      <header className={`MainHeader ${isMiniState ? "mini" : ""}`}>
+        <Center className="Center">
+          <H type="h1">Olivia Shop Catalog</H>
+        </Center>
+      </header>
+    </>
+  );
+}
