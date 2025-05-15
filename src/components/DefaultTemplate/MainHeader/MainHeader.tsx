@@ -6,6 +6,7 @@ import { H } from "@/lib/components/text";
 import VisibilityObserver from "@/lib/components/misc/visibility-observer/visibility-observer";
 import { useState } from "react";
 import { FiPlusCircle } from "react-icons/fi";
+import { FaBagShopping } from "react-icons/fa6";
 
 export default function MainHeader() {
   const [isMiniState, setIsMiniState] = useState(false);
@@ -21,7 +22,8 @@ export default function MainHeader() {
       <header className={`MainHeader ${isMiniState ? "mini" : ""}`}>
         <Column className="Center" align="center" gap="4">
           <H className="Header" type="h1">
-            Catálogo de Olivia Shop
+            Catálogo de Olivia Shop{" "}
+            {isMiniState && <FaBagShopping className="Icon" />}
           </H>
           {isMiniState || (
             <H className="SubHeader" type="h2">
