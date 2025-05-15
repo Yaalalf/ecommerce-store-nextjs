@@ -6,7 +6,7 @@ import { H } from "@/lib/components/text";
 import ProductCard from "../ProductCard";
 import Link from "next/link";
 import { ICollectionPopulated } from "@/db/models/collections";
-import CollectionTabs from "../CategoryTabs/CollectionTabs";
+import CollectionTabs from "../CollectionTabs/CollectionTabs";
 import { IProductPopulated } from "@/db/models/product";
 import { useState } from "react";
 import { IPromotionalPopulated } from "@/db/models/promotionals";
@@ -49,20 +49,20 @@ export default function AllProductsView({
   });
 
   return (
-    <Column className="AllProducts full-width full-height" gap="20">
+    <Column className="AllProducts full-width full-height" gap="8">
       <Carrousel
         className="PromotionalBanner"
         imgUrls={promotionals[0].medias}
         autoplay
       ></Carrousel>
+      <CollectionTabs
+        selectedIndex={selectedIndex}
+        collections={allCollections}
+        onTab={(collection, index) => {
+          setSelectedIndex(index);
+        }}
+      ></CollectionTabs>
       <Column className="AllProductBody" gap="20">
-        <CollectionTabs
-          selectedIndex={selectedIndex}
-          collections={allCollections}
-          onTab={(collection, index) => {
-            setSelectedIndex(index);
-          }}
-        ></CollectionTabs>
         <H type="h1" className="AllProductsHeader">
           <span>Explora nuestros </span>
           <Row className="SubSpan" gap="8">

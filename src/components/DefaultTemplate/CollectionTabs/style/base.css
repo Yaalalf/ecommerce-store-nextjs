@@ -1,7 +1,29 @@
-.CollectionTabs {
+.CollectionTabsIntersector {
+  block-size: 128px;
+  inline-size: 100%;
+  position: absolute;
+  top: 148px;
+  left: 0px;
 }
 
-.CollectionTabsHeader {
+.CollectionTabs {
+  padding-inline: 12px;
+  padding-block: 12px;
+  position: sticky;
+  top: 60px;
+  left: 0px;
+
+  background-color: white;
+  z-index: 1000000000;
+}
+.CollectionTabs,
+.CollectionTabs * {
+  transition: all linear 200ms;
+}
+.CollectionTabs.mini {
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.247);
+}
+.CollectionTabs .CollectionTabsHeader {
   font-size: 16px;
   line-height: 16px;
   font-weight: 600;
@@ -17,6 +39,14 @@
   background-color: rgb(222, 222, 222);
 }
 
+.CollectionTabs.mini .CollectionTabsListItem {
+  inline-size: 40px;
+  block-size: 40px;
+
+  padding-block: 8px;
+  padding-inline: 8px;
+  border-radius: 8px;
+}
 .CollectionTabs .CollectionTabsListItem.selected {
   background-color: rgb(248, 248, 248);
   border: 1px solid rgb(96, 96, 96);
@@ -35,7 +65,11 @@
   block-size: 60px;
   padding-block: 8px;
 }
-
+.CollectionTabs.mini .CollectionTabsListItem .CollectionTabsListItemInitIcon {
+  inline-size: 100%;
+  block-size: 60px;
+  padding-block: 0px;
+}
 .CollectionTabs .CollectionTabsListItem .CollectionTabsListItemLabel {
   font-size: 12px;
   line-height: 14px;
