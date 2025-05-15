@@ -1,3 +1,4 @@
+import "./base.css";
 import { ICollectionPopulated } from "@/db/models/collections";
 import { Card, Center } from "@/lib/components";
 import ImageLoader from "@/lib/components/misc/next-component/image-loader";
@@ -12,7 +13,6 @@ export default function CategoryCard({
     <Card
       className="CategoryCard"
       bordered
-      dense
       slotHeader={
         <ImageLoader
           className="ProductImage"
@@ -25,7 +25,9 @@ export default function CategoryCard({
       }
     >
       <Center>
-        <H type="h2">{collection.title}</H>
+        <H className="CategoryName" type="h2">
+          {collection.title}
+        </H>
       </Center>
     </Card>
   );

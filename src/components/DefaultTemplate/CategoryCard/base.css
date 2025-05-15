@@ -1,0 +1,8 @@
+.CategoryCard {
+  background-color: #8f5fef;
+}
+.CategoryCard .CategoryName {
+  font-size: 16px;
+  color: #f2eef8;
+  text-align: center;
+}

@@ -4,6 +4,9 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  --base-color: #8f5fef;
+  --bg-primary: var(--base-color);
 }
 
 @theme inline {
