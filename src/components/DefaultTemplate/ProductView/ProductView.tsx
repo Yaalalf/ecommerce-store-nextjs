@@ -6,16 +6,28 @@ import ImageLoader from "@/lib/components/misc/next-component/image-loader";
 import { H } from "@/lib/components/text";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { FaWhatsapp } from "react-icons/fa";
 import { IoChevronBack } from "react-icons/io5";
 export default function ProductView({
   product,
 }: {
   product: IProductPopulated;
 }) {
+  const [fullUrl, setFullUrl] = useState("");
   const searchParams = useSearchParams();
   const { medias, title, price, description } = product;
   const [selectedMediaIndex, setSelectedMediaIndex] = useState(0);
+
+  const phoneNumber = "+5353301720";
+  const whatsAppMessage = useMemo(
+    () => `Buenas me gustaria este producto ${fullUrl}`,
+    [fullUrl]
+  );
+
+  useEffect(() => {
+    setFullUrl(window.location.href);
+  }, []);
 
   return (
     <Card
@@ -79,6 +91,12 @@ export default function ProductView({
           dangerouslySetInnerHTML={{ __html: description }}
           gap="12"
         ></Column>
+        <a
+          href={`https://wa.me/${phoneNumber}?text=${whatsAppMessage}`}
+          className="WhatsappAnchor"
+        >
+          <FaWhatsapp className="Icon" /> Compra Ahora
+        </a>
       </Column>
     </Card>
   );

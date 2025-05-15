@@ -101,3 +101,28 @@
   font-weight: 500;
   font-size: 14px;
 }
+
+.ProductView .ProductInfo .WhatsappAnchor {
+  inline-size: 260px;
+  block-size: 56px;
+
+  margin-block-start: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  background-color: #2cd46b;
+  border-radius: 12px;
+
+  align-self: center;
+
+  font-size: 18px;
+  font-weight: 500;
+
+  color: #062a25;
+}
+.ProductView .ProductInfo .WhatsappAnchor .Icon {
+  font-size: 32px;
+}
