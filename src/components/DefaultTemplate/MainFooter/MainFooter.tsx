@@ -12,8 +12,8 @@ export default function MainFooter() {
 
   const listData = [
     { href: "/", icon: MdStore },
-    { href: "/categories", icon: IoMdSearch },
-    { href: "/search", icon: TbCategory },
+    { href: "/search", icon: IoMdSearch },
+    { href: "/categories", icon: TbCategory },
   ];
 
   return (

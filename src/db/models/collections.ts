@@ -8,7 +8,7 @@ export interface ICollection {
   description: string;
 
   media: Types.ObjectId;
-  products: Types.ObjectId[];
+  products: Types.ObjectId[] | [];
 }
 
 export interface ICollectionPopulated {

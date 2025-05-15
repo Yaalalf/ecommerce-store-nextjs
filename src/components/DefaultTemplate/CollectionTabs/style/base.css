@@ -29,6 +29,21 @@
   font-weight: 600;
 }
 
+.CollectionTabs .CollectionTabsList {
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory; /* 'x' para scroll horizontal, 'y' para vertical */
+  -webkit-overflow-scrolling: touch; /* mejora el scroll en iOS */
+}
+
+.CollectionTabs .CollectionTabsList {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+
+.CollectionTabs .CollectionTabsList::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
 .CollectionTabs .CollectionTabsListItem {
   inline-size: 80px;
   block-size: 80px;
@@ -37,6 +52,8 @@
   padding-inline: 8px;
   border-radius: 12px;
   background-color: rgb(222, 222, 222);
+
+  scroll-snap-align: start; /* también puedes usar center o end */
 }
 
 .CollectionTabs.mini .CollectionTabsListItem {
@@ -54,7 +71,7 @@
 
 .CollectionTabs .CollectionTabsListItem .CollectionTabsListItemImage {
   inline-size: 100%;
-  block-size: 40px;
+  block-size: 48px;
 }
 .CollectionTabs .CollectionTabsListItem .CollectionTabsListItemImage img {
   object-fit: contain;
@@ -71,7 +88,11 @@
   padding-block: 0px;
 }
 .CollectionTabs .CollectionTabsListItem .CollectionTabsListItemLabel {
+  inline-size: 60px;
   font-size: 12px;
   line-height: 14px;
   text-align: center;
+  text-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

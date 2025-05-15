@@ -57,7 +57,7 @@ export default class CollectionServices {
     update: Partial<ICollection>
   ) {
     try {
-      const result = await CollectionModel.findOneAndUpdate(filter, update);
+      const result = await CollectionModel.updateOne(filter, update);
       return result;
     } catch (error) {
       console.error(`Error en la operacion de editar la coleccion: ${error}`);
