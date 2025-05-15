@@ -15,7 +15,6 @@ export async function POST(request: NextRequest) {
   await connectDB();
   const { addProduct } = new ProductServices();
   const data = await request.json();
-  console.log(data);
 
   const result = await addProduct(data);
 

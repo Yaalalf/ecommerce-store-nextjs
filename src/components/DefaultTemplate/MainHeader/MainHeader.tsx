@@ -14,7 +14,6 @@ export default function MainHeader() {
       <VisibilityObserver
         className="HeaderIntersector"
         onVisibility={(entry) => {
-          console.log(entry);
           setIsMiniState(!entry.isIntersecting);
         }}
       />

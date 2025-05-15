@@ -9,7 +9,7 @@ import { usePathname } from "next/navigation";
 
 export default function MainFooter() {
   const pathName = usePathname();
-  console.log(pathName);
+
   const listData = [
     { href: "/", icon: MdStore },
     { href: "/categories", icon: IoMdSearch },

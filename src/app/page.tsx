@@ -11,7 +11,7 @@ export default async function HomePage({
   searchParams: Promise<{ categoryIndex?: number }>;
 }) {
   const categoryIndex = (await searchParams).categoryIndex;
-  console.log(categoryIndex);
+
   const { getAllProducts } = new ProductServices();
   const { getAllPromotionals } = new PromotionalServices();
 

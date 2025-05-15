@@ -64,12 +64,12 @@ export default function AllProductsView({
           }}
         ></CollectionTabs>
         <H type="h1" className="AllProductsHeader">
-          Explora tu nuevo estilo
+          Explora nuestros productos
         </H>
         <NColumn
           className="ProductList"
           data={filteredProducts}
-          columnsGap="12"
+          columnsGap="20"
           itemsGap="40"
         >
           {(product) => (

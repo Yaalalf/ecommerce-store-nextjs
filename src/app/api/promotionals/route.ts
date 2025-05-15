@@ -15,7 +15,6 @@ export async function POST(request: NextRequest) {
   await connectDB();
   const { addPromotional } = new PromotionalServices();
   const data = await request.json();
-  console.log(data);
 
   const result = await addPromotional(data);
 

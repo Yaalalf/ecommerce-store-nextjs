@@ -15,7 +15,14 @@
 }
 
 .AllProducts .AllProductsHeader {
-  font-size: 36px;
+  inline-size: 300px;
+  font-size: 28px;
+  line-height: 32px;
+  text-align: start;
+}
+
+.AllProducts .ProductList {
+  padding-inline: 12px;
 }
 
 .AllProducts .ProductList .ProductLink {

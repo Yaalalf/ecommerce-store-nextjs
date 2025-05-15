@@ -29,7 +29,6 @@ export async function PATCH(
 
   // Get the data and validate with zod
   const updated = await request.json();
-  console.log(updated);
   try {
     const validateProduct = productSchemaZod.parse(updated);
     console.info("Datos validados:", validateProduct);

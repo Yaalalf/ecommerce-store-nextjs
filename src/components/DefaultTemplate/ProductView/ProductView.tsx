@@ -15,7 +15,6 @@ export default function ProductView({
 }) {
   const searchParams = useSearchParams();
   const { medias, title, price, description } = product;
-  console.log(searchParams.get("categoryIndex"));
   const [selectedMediaIndex, setSelectedMediaIndex] = useState(0);
 
   return (
