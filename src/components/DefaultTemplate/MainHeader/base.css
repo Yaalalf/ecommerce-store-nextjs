@@ -1,8 +1,8 @@
 .HeaderIntersector {
-  block-size: 80px;
+  block-size: 100px;
   inline-size: 100%;
   position: absolute;
-  top: 0px;
+  top: 20px;
   left: 0px;
 }
 

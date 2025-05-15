@@ -1,7 +1,9 @@
 import {
+  IAlignItems,
   IClassName,
   IDirection,
   IGap,
+  IJustifyContent,
   IListTag,
   IPTNode,
 } from "@/lib/types/components-props";
@@ -11,7 +13,9 @@ export interface IListProps<T>
   extends Partial<IClassName>,
     Partial<IListTag>,
     Partial<IDirection>,
-    Partial<IGap> {
+    Partial<IGap>,
+    Partial<IJustifyContent>,
+    Partial<IAlignItems> {
   data: T[];
   propKey?: keyof T;
   unwrap?: boolean;

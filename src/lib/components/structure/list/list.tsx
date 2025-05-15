@@ -9,6 +9,8 @@ export default function List<T, N extends string>({
   className = "",
   tag = "ul",
   direction,
+  align,
+  justify,
   gap,
   data,
   propKey,
@@ -50,7 +52,7 @@ export default function List<T, N extends string>({
   return (
     <Flex
       {...pt?.root}
-      {...{ direction, tag, gap }}
+      {...{ direction, tag, gap, align, justify }}
       className={`${className} list`}
     >
       {data.map(runItem)}

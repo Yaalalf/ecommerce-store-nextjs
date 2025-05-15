@@ -1,0 +1,31 @@
+.MainFooter {
+  inline-size: 100%;
+  block-size: 60px;
+
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+
+  z-index: 100000;
+
+  background-color: white;
+
+  box-shadow: 0px -1px 2px rgba(0, 0, 0, 0.249);
+  border-block-start: 1px solid rgba(0, 0, 0, 0.393);
+}
+.List {
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.MainFooter .List .Icon {
+  padding: 4px;
+  font-size: 40px;
+}
+.MainFooter .List .selected .Icon {
+  font-size: 40px;
+
+  background-color: rgb(67, 62, 62);
+  color: white;
+  border-radius: 4px;
+}

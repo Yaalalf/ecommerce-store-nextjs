@@ -1,4 +1,5 @@
 import AllProductsView from "@/components/DefaultTemplate/AllProductsView";
+import MainHeader from "@/components/DefaultTemplate/MainHeader/MainHeader";
 import CollectionServices from "@/db/services/collectionsServices";
 import ProductServices from "@/db/services/productServices";
 import PromotionalServices from "@/db/services/promotionalsServices";
@@ -19,13 +20,16 @@ export default async function HomePage({
   const collections = sanitatedClientData(await getAllCollections());
   const promotionals = sanitatedClientData(await getAllPromotionals());
   return (
-    <div className="full-width full-height">
-      <AllProductsView
-        products={products}
-        collections={collections}
-        promotionals={promotionals}
-        categoryIndex={categoryIndex ? Number(categoryIndex) : 0}
-      />
-    </div>
+    <>
+      <MainHeader></MainHeader>
+      <div className="full-width full-height">
+        <AllProductsView
+          products={products}
+          collections={collections}
+          promotionals={promotionals}
+          categoryIndex={categoryIndex ? Number(categoryIndex) : 0}
+        />
+      </div>
+    </>
   );
 }
