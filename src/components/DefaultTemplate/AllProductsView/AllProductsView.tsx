@@ -9,8 +9,8 @@ import { ICollectionPopulated } from "@/db/models/collections";
 import CollectionTabs from "../CategoryTabs/CollectionTabs";
 import { IProductPopulated } from "@/db/models/product";
 import { useState } from "react";
-import ImageLoader from "@/lib/components/misc/next-component/image-loader";
 import { IPromotionalPopulated } from "@/db/models/promotionals";
+import Carrousel from "@/lib/components/misc/carrousel";
 
 export default function AllProductsView({
   collections,
@@ -50,13 +50,11 @@ export default function AllProductsView({
 
   return (
     <Column className="AllProducts full-width full-height" gap="20">
-      <ImageLoader
+      <Carrousel
         className="PromotionalBanner"
-        src={promotionals[0].medias[0].url}
-        alt={promotionals[0].medias[0].name}
-        width={1080}
-        height={1080}
-      ></ImageLoader>
+        imgUrls={promotionals[0].medias}
+        autoplay
+      ></Carrousel>
       <Column className="AllProductBody" gap="20">
         <CollectionTabs
           selectedIndex={selectedIndex}

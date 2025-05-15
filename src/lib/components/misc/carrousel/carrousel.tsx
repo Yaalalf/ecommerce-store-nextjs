@@ -1,16 +1,20 @@
 "use client";
 
 import { CSSProperties, useEffect, useRef, useState } from "react";
-import "./style/mobile.css";
+import "./style/base.css";
+import ImageLoader from "../next-component/image-loader";
+import { IResource } from "@/db/models/resource";
 
 export default function Carrousel({
+  className = "",
   imgUrls = [],
   autoplay = false,
   buttonImage = false,
   animationEnter = "moveIn",
   animationExit = "moveOut",
 }: {
-  imgUrls: string[];
+  className: string;
+  imgUrls: IResource[];
   autoplay?: boolean;
   animationEnter?: string;
   animationExit?: string;
@@ -21,13 +25,12 @@ export default function Carrousel({
   const previousSlider = imgUrls[previousSelected.current];
   const currentSlider = imgUrls[selected];
   // const nextSlider = imgUrls[imgUrls.length > selected + 1 ? selected + 1 : 0];
-
-  const [isPlay, setIsPlay] = useState(false);
+  const autoPlayInterval = useRef<NodeJS.Timeout | undefined>(undefined);
+  const [isPlay, setIsPlay] = useState(true);
 
   useEffect(() => {
-    let autoPlayInterval: NodeJS.Timeout;
     if (autoplay) {
-      autoPlayInterval = setInterval(() => {
+      autoPlayInterval.current = setInterval(() => {
         if (selected < imgUrls.length - 1) {
           previousSelected.current = selected;
           setSelected(selected + 1);
@@ -39,23 +42,30 @@ export default function Carrousel({
     }
 
     return () => {
-      if (autoPlayInterval) clearInterval(autoPlayInterval);
+      if (autoPlayInterval.current) {
+        clearInterval(autoPlayInterval.current);
+        autoPlayInterval.current = undefined;
+      }
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [selected, setSelected]);
 
   return (
-    <div className="carrousel">
+    <div className={`carrousel ${className}`}>
       <div className="tabs_container">
         {imgUrls.map((el, index) => (
           <button
-            key={el}
+            key={el.name}
             className={`tab ${selected == index ? "selected" : ""}`}
             onClick={() => {
               setIsPlay(true);
               previousSelected.current = selected;
 
               setSelected(index);
+              if (autoPlayInterval.current) {
+                clearInterval(autoPlayInterval.current);
+                autoPlayInterval.current = undefined;
+              }
             }}
           >
             {buttonImage ? (
@@ -78,15 +88,21 @@ export default function Carrousel({
             className={`transition_marker exited ${isPlay ? "play" : "stop"} `}
             key={selected - 1}
           >
-            <div
+            <ImageLoader
+              key={previousSlider.name}
               className="ImageBackground"
+              src={previousSlider.url}
+              alt={previousSlider.name}
+              width={1080}
+              height={1080}
+              priority
               style={
                 {
-                  backgroundImage: `url(${previousSlider})`,
+                  // backgroundImage: `url(${previousSlider})`,
                   "--animation-exit": animationExit,
                 } as CSSProperties
               }
-            ></div>
+            ></ImageLoader>
           </div>
 
           <div
@@ -95,15 +111,21 @@ export default function Carrousel({
             }   `}
             key={selected}
           >
-            <div
+            <ImageLoader
+              key={currentSlider.name}
               className="ImageBackground"
+              src={currentSlider.url}
+              alt={currentSlider.name}
+              width={1080}
+              height={1080}
+              priority
               style={
                 {
-                  backgroundImage: `url(${currentSlider})`,
+                  // backgroundImage: `url(${currentSlider})`,
                   "--animation-enter": animationEnter,
                 } as CSSProperties
               }
-            ></div>
+            ></ImageLoader>
           </div>
         </div>
       </div>

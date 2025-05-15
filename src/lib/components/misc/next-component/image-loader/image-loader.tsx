@@ -4,11 +4,14 @@ import "./style/base.css";
 import Image, { ImageProps } from "next/image";
 import { useState } from "react";
 
-export default function ImageLoader({ ...imageProps }: ImageProps) {
+export default function ImageLoader({ style, ...imageProps }: ImageProps) {
   const [loading, setLoading] = useState(true);
 
   return (
-    <Center className={`image_loader ${imageProps.className || ""}`}>
+    <Center
+      className={`image_loader ${imageProps.className || ""}`}
+      style={style}
+    >
       <Image
         {...imageProps}
         src={imageProps.src}
