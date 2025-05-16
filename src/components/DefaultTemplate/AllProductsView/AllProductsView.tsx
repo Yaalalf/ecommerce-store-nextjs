@@ -49,7 +49,7 @@ export default function AllProductsView({
   });
 
   return (
-    <Column className="AllProducts full-width full-height" gap="8">
+    <Column className="AllProducts w-full h-full" gap="8">
       <Carrousel
         className="PromotionalBanner"
         imgUrls={promotionals[0].medias}

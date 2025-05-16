@@ -1,10 +1,16 @@
 @layer base {
   /*****************************Dimension Utilities************************************************/
   /*****************************Dimensions************************************************/
-  .full-width {
+  .w-full {
     inline-size: 100%;
   }
-  .full-height {
+  .h-full {
     block-size: 100%;
+  }
+  .auto-width {
+    inline-size: auto;
+  }
+  .auto-height {
+    block-size: auto;
   }
 }

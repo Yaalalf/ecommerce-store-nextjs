@@ -4,7 +4,7 @@ import { ICenterProps } from "./types";
 
 export default function Center<T extends IPTNode>({
   children,
-  className,
+  className = "",
   tag,
   gap,
   ...domProps
@@ -12,7 +12,7 @@ export default function Center<T extends IPTNode>({
   return (
     <Flex
       {...{ tag, justify: "center", align: "center", gap, ...domProps }}
-      className={`row ${className}`}
+      className={`${className} center`}
     >
       {children}
     </Flex>

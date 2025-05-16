@@ -19,6 +19,7 @@ export default function NColumn<T>({
   return (
     <Row className={`NColumn ${className}`} gap={columnsGap}>
       <List
+        className="w-full"
         direction="column"
         gap={itemsGap}
         data={firstColumnData}
@@ -27,6 +28,7 @@ export default function NColumn<T>({
         {children}
       </List>
       <List
+        className="w-full"
         direction="column"
         gap={itemsGap}
         data={secondColumnData}

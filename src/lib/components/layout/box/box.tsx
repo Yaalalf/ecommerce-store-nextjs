@@ -16,7 +16,7 @@ export default function Box({
   return (
     <Component
       {...domProps}
-      className={`${className} box full-width ${bordered ? "bordered" : ""} ${
+      className={`${className} box w-full ${bordered ? "bordered" : ""} ${
         dense ? "dense" : ""
       } ${flatted ? "flatted" : ""} ${shadowed ? "shadowed" : ""}`}
     >

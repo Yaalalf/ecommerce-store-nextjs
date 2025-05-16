@@ -11,6 +11,7 @@
 }
 
 .AllProducts .AllProductBody {
+  inline-size: 100%;
   padding-inline: 12px;
 }
 

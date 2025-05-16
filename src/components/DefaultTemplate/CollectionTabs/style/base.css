@@ -7,6 +7,7 @@
 }
 
 .CollectionTabs {
+  inline-size: 100%;
   padding-inline: 12px;
   padding-block: 12px;
   position: sticky;
@@ -30,6 +31,7 @@
 }
 
 .CollectionTabs .CollectionTabsList {
+  inline-size: 100%;
   overflow-x: scroll;
   scroll-snap-type: x mandatory; /* 'x' para scroll horizontal, 'y' para vertical */
   -webkit-overflow-scrolling: touch; /* mejora el scroll en iOS */

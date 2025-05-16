@@ -1,3 +1,3 @@
 export default function Products() {
-  return <div className="full-width full-height"></div>;
+  return <div className="w-full h-full"></div>;
 }

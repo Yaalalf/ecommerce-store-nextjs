@@ -23,7 +23,7 @@ export default async function HomePage({
   return (
     <>
       <MainHeader />
-      <div className="full-width full-height">
+      <div className="w-full h-full">
         <AllProductsView
           products={products}
           collections={collections}

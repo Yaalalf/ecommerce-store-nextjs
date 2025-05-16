@@ -57,16 +57,10 @@
 }
 
 .MainHeader .Cheap {
-  padding: 8px;
-  padding-inline: 12px;
-
   display: flex;
   align-items: center;
   gap: 4px;
-  border-radius: 8px;
 
-  background-color: #8f5fef;
-  color: #efe9fb;
   font-size: 12px;
   line-height: 14px;
 }

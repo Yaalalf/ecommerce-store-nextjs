@@ -1,6 +1,6 @@
 "use client";
 
-import { Column } from "@/lib/components";
+import { Chip, Column } from "@/lib/components";
 import "./base.css";
 import { H } from "@/lib/components/text";
 import VisibilityObserver from "@/lib/components/misc/visibility-observer/visibility-observer";
@@ -31,9 +31,12 @@ export default function MainHeader() {
             </H>
           )}
           {isMiniState || (
-            <H className="Cheap" type="h3">
+            <Chip
+              className="Cheap"
+              tag={{ component: H, props: { type: "h3" } }}
+            >
               <FiPlusCircle /> de 100 productos para tu confort y calidad
-            </H>
+            </Chip>
           )}
         </Column>
       </header>

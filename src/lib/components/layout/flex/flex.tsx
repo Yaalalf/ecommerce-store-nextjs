@@ -20,7 +20,7 @@ export default function Flex<T extends IPTNode>({
     <Component
       {...domProps}
       {...componentProps}
-      className={`${className} full-width display-flex flex-direction-${direction} justify-content-${justify} align-items-${align} gap-${gap}`}
+      className={`${className} display-flex flex-direction-${direction} justify-content-${justify} align-items-${align} gap-${gap}`}
     >
       {children}
     </Component>

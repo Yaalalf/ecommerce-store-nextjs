@@ -5,7 +5,7 @@ export default function Separator({ inset, ...domProps }: ISeparatorProps) {
   return (
     <hr
       {...domProps}
-      className={`separator full-width ${inset ? "inset" : ""} ${
+      className={`separator w-full ${inset ? "inset" : ""} ${
         domProps.className || ""
       }`}
     />

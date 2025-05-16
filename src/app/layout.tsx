@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
-// import connectDB from "@/db/connection";
+import connectDB from "@/db/connection";
 
 //Initialize MongoDB Connection
-// await connectDB();
+await connectDB();
 
 export const metadata: Metadata = {
   title: "Create Next App",

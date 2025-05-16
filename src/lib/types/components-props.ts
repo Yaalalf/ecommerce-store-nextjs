@@ -49,7 +49,9 @@ export interface IAlignItems {
 export interface IGap {
   gap: Gap;
 }
-
+export interface IPTProp<T> {
+  pt: T;
+}
 export interface IPTNode
   extends HTMLAttributes<HTMLElement>,
     Partial<IClassName> {}

@@ -8,7 +8,7 @@ import {
 
 export interface IHProps
   extends Partial<IChildren>,
-    ITypeProp<HType>,
+    Partial<ITypeProp<HType>>,
     Partial<ITextProp>,
     Partial<ITextStyle>,
     IPTNode {}
