@@ -80,12 +80,12 @@
     );
 
     /* caption */
-    --caption-multiplier: 0.65;
+    --caption-multiplier: 0.7;
     --caption-color: rgb(100, 100, 100);
     --caption-font-size: calc(
       var(--text-base-font-size) * var(--caption-multiplier)
     );
-    --caption-font-weight: 400;
+    --caption-font-weight: 500;
     --caption-line-height: calc(
       var(--text-base-line-height) * var(--caption-multiplier)
     );

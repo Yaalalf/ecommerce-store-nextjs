@@ -1,5 +1,5 @@
 import "./style/base.css";
-import { Card, Column } from "@/lib/components";
+import { Card, Chip, Column } from "@/lib/components";
 import { IProductCardProps } from "./types";
 import { H } from "@/lib/components/text";
 import ImageLoader from "@/lib/components/misc/next-component/image-loader";
@@ -18,9 +18,9 @@ export default function ProductCard({ product }: IProductCardProps) {
           priority
         />
         <Column className="ProductInfo" gap="4">
-          <H className="ProductPrice" type="h2">
+          <Chip tag={H} variant="ghost" className="ProductPrice">
             ${price}
-          </H>
+          </Chip>
           <H className="ProductTitle" type="h3">
             {title}
           </H>

@@ -5,7 +5,7 @@ import { IPTNode } from "@/lib/types/components-props";
 
 export default function Chip<T extends IPTNode>({
   className = "",
-  tag,
+  tag = "span",
   align = "center",
   justify = "center",
   children,
@@ -21,7 +21,7 @@ export default function Chip<T extends IPTNode>({
       {...{ tag, align, justify, gap }}
       slotAfter={slotIcon}
       slotBefore={slotAction}
-      className={`${className} chip ${variant}`}
+      className={`${className} chip text-caption ${variant}`}
     >
       {children}
     </Beside>

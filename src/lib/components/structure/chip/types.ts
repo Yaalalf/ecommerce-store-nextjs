@@ -13,4 +13,9 @@ export interface IChipSlots {
   slotAction: ReactNode;
 }
 
-export type ChipVariant = "filled" | "outlined" | "elevated";
+export type ChipVariant =
+  | "filled"
+  | "outlined"
+  | "elevated"
+  | "ghost"
+  | "outlined-ghost";

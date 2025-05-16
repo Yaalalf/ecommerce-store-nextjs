@@ -3,9 +3,13 @@
     --chip-bg-color: #8f5fef;
     --chip-tx-color: #efe9fb;
     --chip-br: 8px;
+    --chip-border-width: 1px;
+
+    --chip-ghost-bg-color: #e9ddff;
+    --chip-ghost-tx-color: #582cb0;
   }
   .chip {
-    padding-block: 8px;
+    padding-block: 4px;
     padding-inline: 12px;
     border-radius: var(--chip-br);
 
@@ -14,15 +18,24 @@
       color: var(--chip-tx-color);
     }
     &.outlined {
-      background-color: none;
-      border: 1px solid var(--chip-bg-color);
+      background-color: transparent;
+      border: var(--chip-border-width) solid var(--chip-bg-color);
       color: var(--chip-bg-color);
     }
-
     &.elevated {
       background-color: white;
       color: var(--chip-bg-color);
       box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.253);
+    }
+
+    &.ghost {
+      background-color: var(--chip-ghost-bg-color);
+      color: var(--chip-ghost-tx-color);
+    }
+    &.outlined-ghost {
+      background-color: var(--chip-ghost-bg-color);
+      border: var(--chip-border-width) solid var(--chip-ghost-tx-color);
+      color: var(--chip-ghost-tx-color);
     }
   }
 }
