@@ -133,6 +133,7 @@
   font-weight: 500;
 
   color: #3e3b41;
+  box-shadow: 0px 3px 6px #114f296a;
 }
 .ProductView .ProductInfo .WhatsappAnchor .Icon {
   font-size: 32px;

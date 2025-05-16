@@ -1,19 +1,19 @@
-import { IHProps } from "./types";
+import { ITProps } from "./types";
 
-export default function H({
+export default function T({
   children,
   text,
-  type = "h2",
-  textStyle,
+  type = "p",
   className = "",
+  textStyle,
   ...domProps
-}: IHProps) {
+}: ITProps) {
   const Component = type;
 
   return (
     <Component
       {...domProps}
-      className={`${className} h text-${textStyle || type}`}
+      className={`${className} t text-${textStyle || type}`}
     >
       {children ? children : text}
     </Component>

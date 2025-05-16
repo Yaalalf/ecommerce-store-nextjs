@@ -1,17 +1,17 @@
 import {
   IChildren,
-  IClassName,
+  IPTNode,
   ITextProp,
+  ITextStyle,
   ITypeProp,
 } from "@/lib/types/components-props";
-import { HTMLAttributes } from "react";
 
 export interface IHProps
-  extends Partial<IClassName>,
-    Partial<IChildren>,
+  extends Partial<IChildren>,
     ITypeProp<HType>,
     Partial<ITextProp>,
-    HTMLAttributes<HTMLElement> {}
+    Partial<ITextStyle>,
+    IPTNode {}
 
 export type HType = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 

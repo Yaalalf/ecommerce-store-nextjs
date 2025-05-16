@@ -1,20 +1,18 @@
 import {
   IAlignItems,
   IChildren,
-  IClassName,
   IDirection,
   IGap,
   IJustifyContent,
-  ITag,
+  IPTNode,
+  ITagNode,
 } from "@/lib/types/components-props";
-import { HTMLAttributes } from "react";
 
-export interface IFlexProps
+export interface IFlexProps<T extends IPTNode>
   extends Partial<IChildren>,
-    Partial<ITag>,
-    Partial<IClassName>,
+    Partial<ITagNode<T>>,
     Partial<IDirection>,
     Partial<IJustifyContent>,
     Partial<IAlignItems>,
     Partial<IGap>,
-    HTMLAttributes<HTMLElement> {}
+    IPTNode {}

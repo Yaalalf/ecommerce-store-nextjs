@@ -26,3 +26,23 @@ export type Gap =
   | "72"
   | "80"
   | "96";
+
+export type TextStyle =
+  | "h1"
+  | "h2"
+  | "h3"
+  | "h4"
+  | "h5"
+  | "h6"
+  | "p"
+  | "span"
+  | "body1"
+  | "body2"
+  | "caption"
+  | "overline"
+  | "label"
+  | "heading"
+  | "subheading"
+  | "title"
+  | "subtitle1"
+  | "subtitle2";
