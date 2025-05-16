@@ -1,3 +1,7 @@
+import { IPTNode } from "@/lib/types/components-props";
 import { IFlexProps } from "../flex/types";
 
-export type ICenterProps = Omit<IFlexProps, "direction" | "align" | "justify">;
+export type ICenterProps<T extends IPTNode> = Omit<
+  IFlexProps<T>,
+  "direction" | "align" | "justify"
+>;
