@@ -1,3 +1,4 @@
+"use client";
 import Spinner from "@/lib/components/misc/spinner";
 import "./base.css";
 import { Center } from "@/lib/components";

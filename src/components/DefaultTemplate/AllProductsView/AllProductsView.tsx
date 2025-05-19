@@ -34,18 +34,17 @@ export default function AllProductsView({
     ...collections,
   ];
 
-  const filteredProducts = products;
-  // .filter((item) => {
-  //   if (selectedIndex === 0) {
-  //     return true;
-  //   } else {
-  //     return (
-  //       allCollections[selectedIndex].products.findIndex(
-  //         (subItem) => subItem._id === item._id
-  //       ) !== -1
-  //     );
-  //   }
-  // });
+  const filteredProducts = products.filter((item) => {
+    if (selectedIndex === 0) {
+      return true;
+    } else {
+      return (
+        allCollections[selectedIndex].products.findIndex(
+          (subItem) => subItem._id === item._id
+        ) !== -1
+      );
+    }
+  });
 
   return (
     <Column className="AllProducts w-full h-full" gap="8">
