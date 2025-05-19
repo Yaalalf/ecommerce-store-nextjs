@@ -1,4 +1,11 @@
 .CategoriesView {
-  padding: 20px;
-  padding-block-end: 80px;
+  padding-block-end: 120px;
+  position: relative;
 }
+
+.CategoriesView .CategoryList {
+  padding-inline: 32px;
+}
+/* .CategoriesView:has(.MainHeader.mini) .CategoryList {
+  padding-block-start: 80px;
+} */

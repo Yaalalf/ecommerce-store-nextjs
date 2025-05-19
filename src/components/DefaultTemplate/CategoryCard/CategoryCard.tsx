@@ -24,7 +24,7 @@ export default function CategoryCard({
         />
       }
     >
-      <Center>
+      <Center className="w-full">
         <H className="CategoryName" type="h2">
           {collection.title}
         </H>

@@ -1,8 +1,9 @@
 "use client";
-import { Box, Center } from "@/lib/components/layout";
+import { Center } from "@/lib/components/layout";
 import "./style/base.css";
 import Image, { ImageProps } from "next/image";
 import { useState } from "react";
+import { StyledBox } from "@/lib/components/structure";
 
 export default function ImageLoader({ style, ...imageProps }: ImageProps) {
   const [loading, setLoading] = useState(true);
@@ -21,7 +22,7 @@ export default function ImageLoader({ style, ...imageProps }: ImageProps) {
           setLoading(false);
         }}
       ></Image>
-      {loading && <Box className="image_loader_loading"></Box>}
+      {loading && <StyledBox className="image_loader_loading"></StyledBox>}
     </Center>
   );
 }

@@ -6,6 +6,7 @@ import { Column, List } from "@/lib/components";
 import ImageLoader from "@/lib/components/misc/next-component/image-loader";
 import VisibilityObserver from "@/lib/components/misc/visibility-observer/visibility-observer";
 import { H } from "@/lib/components/text";
+import Link from "next/link";
 import { useState } from "react";
 import { FaStore } from "react-icons/fa";
 
@@ -36,35 +37,43 @@ export default function CollectionTabs({
         )}
         <List data={collections} className="CollectionTabsList" gap="12">
           {(collection, index) => (
-            <Column
-              className={`CollectionTabsListItem ${
-                selectedIndex === index ? "selected" : ""
-              }`}
-              align="center"
-              justify="space-between"
-              onClick={() => {
-                if (onTab) {
-                  onTab(collections[index], index);
-                }
-              }}
+            <Link
+              href={
+                collection._id === "all"
+                  ? "/categories"
+                  : `/categories/${collection._id}`
+              }
             >
-              {index != 0 ? (
-                <ImageLoader
-                  className="CollectionTabsListItemImage"
-                  src={collection.media.url}
-                  alt={collection.media.name}
-                  width={500}
-                  height={500}
-                />
-              ) : (
-                <FaStore className="CollectionTabsListItemInitIcon" />
-              )}
-              {isMiniState || (
-                <H type="h5" className="CollectionTabsListItemLabel">
-                  {collection.title}
-                </H>
-              )}
-            </Column>
+              <Column
+                className={`CollectionTabsListItem ${
+                  selectedIndex === index ? "selected" : ""
+                }`}
+                align="center"
+                justify="space-between"
+                onClick={() => {
+                  if (onTab) {
+                    onTab(collections[index], index);
+                  }
+                }}
+              >
+                {index != 0 ? (
+                  <ImageLoader
+                    className="CollectionTabsListItemImage"
+                    src={collection.media.url}
+                    alt={collection.media.name}
+                    width={500}
+                    height={500}
+                  />
+                ) : (
+                  <FaStore className="CollectionTabsListItemInitIcon" />
+                )}
+                {isMiniState || (
+                  <H type="h5" className="CollectionTabsListItemLabel">
+                    {collection.title}
+                  </H>
+                )}
+              </Column>
+            </Link>
           )}
         </List>
       </Column>

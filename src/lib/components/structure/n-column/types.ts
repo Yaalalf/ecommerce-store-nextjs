@@ -8,4 +8,5 @@ export interface INColumnProps<T> extends Partial<IClassName> {
   children: (item: T, index: number) => ReactNode;
   columnsGap?: Gap;
   itemsGap?: Gap;
+  columns: number;
 }

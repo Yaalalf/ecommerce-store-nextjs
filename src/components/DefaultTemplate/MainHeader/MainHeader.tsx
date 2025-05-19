@@ -4,11 +4,17 @@ import { Chip, Column } from "@/lib/components";
 import "./base.css";
 import { H } from "@/lib/components/text";
 import VisibilityObserver from "@/lib/components/misc/visibility-observer/visibility-observer";
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 import { FiPlusCircle } from "react-icons/fi";
 import { FaBagShopping } from "react-icons/fa6";
 
-export default function MainHeader() {
+export default function MainHeader({
+  slotsH2,
+  slotsH3,
+}: {
+  slotsH2?: ReactNode;
+  slotsH3?: ReactNode;
+}) {
   const [isMiniState, setIsMiniState] = useState(false);
 
   return (
@@ -27,7 +33,7 @@ export default function MainHeader() {
           </H>
           {isMiniState || (
             <H className="SubHeader" type="h2">
-              Todos nuestros productos en un solo lugar
+              {slotsH2 || <>Todos nuestros productos en un solo lugar</>}
             </H>
           )}
           {isMiniState || (
@@ -35,7 +41,11 @@ export default function MainHeader() {
               className="Cheap"
               tag={{ component: H, props: { type: "h3" } }}
             >
-              <FiPlusCircle /> de 100 productos para tu confort y calidad
+              {slotsH3 || (
+                <>
+                  <FiPlusCircle /> de 100 productos para tu confort y calidad
+                </>
+              )}
             </Chip>
           )}
         </Column>

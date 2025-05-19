@@ -4,7 +4,7 @@ import { IColumnProps } from "./types";
 
 export default function Column<T extends IPTNode>({
   children,
-  className,
+  className = "",
   tag,
   justify,
   align,

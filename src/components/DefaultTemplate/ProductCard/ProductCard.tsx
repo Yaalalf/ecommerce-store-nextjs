@@ -7,8 +7,8 @@ import ImageLoader from "@/lib/components/misc/next-component/image-loader";
 export default function ProductCard({ product }: IProductCardProps) {
   const { medias, title, price } = product;
   return (
-    <Card className="ProductCard" flatted dense>
-      <Column gap="12">
+    <Card className="ProductCard" variant="flatted" dense>
+      <Column className="w-full" gap="12">
         <ImageLoader
           className="ProductImage"
           src={medias[0].url}

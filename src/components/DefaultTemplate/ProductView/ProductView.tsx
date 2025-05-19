@@ -1,7 +1,7 @@
 "use client";
 import "./style/base.css";
 import { IProductPopulated } from "@/db/models/product";
-import { Box, Card, Column, List, Row } from "@/lib/components";
+import { StyledBox, Card, Column, List, Row } from "@/lib/components";
 import ImageLoader from "@/lib/components/misc/next-component/image-loader";
 import { H } from "@/lib/components/text";
 import Link from "next/link";
@@ -60,7 +60,7 @@ export default function ProductView({
         <Row className="ImagesTabs">
           <List data={medias} gap="20">
             {(media, index) => (
-              <Box
+              <StyledBox
                 dense
                 className={`ImagesTabsItem ${
                   selectedMediaIndex === index ? "selected" : ""
@@ -76,11 +76,11 @@ export default function ProductView({
                   priority
                   onClick={() => setSelectedMediaIndex(index)}
                 ></ImageLoader>
-              </Box>
+              </StyledBox>
             )}
           </List>
         </Row>
-        <Row justify="space-between">
+        <Row className="HeaderInfo w-full" justify="space-between">
           <H type="h2" className="TagName">
             {title}
           </H>

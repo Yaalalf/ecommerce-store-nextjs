@@ -51,54 +51,54 @@
 
   /*****************************Gap************************************************/
   .gap-0 {
-    gap: 0px;
+    gap: var(--px-0);
   }
   .gap-2 {
-    gap: 2px;
+    gap: var(--px-2);
   }
   .gap-4 {
-    gap: 4px;
+    gap: var(--px-4);
   }
   .gap-8 {
-    gap: 8px;
+    gap: var(--px-8);
   }
   .gap-12 {
-    gap: 12px;
+    gap: var(--px-12);
   }
   .gap-16 {
-    gap: 16px;
+    gap: var(--px-16);
   }
   .gap-20 {
-    gap: 20px;
+    gap: var(--px-20);
   }
   .gap-24 {
-    gap: 24px;
+    gap: var(--px-24);
   }
   .gap-28 {
-    gap: 28px;
+    gap: var(--px-28);
   }
   .gap-32 {
-    gap: 32px;
+    gap: var(--px-32);
   }
   .gap-36 {
-    gap: 36px;
+    gap: var(--px-36);
   }
   .gap-40 {
-    gap: 40px;
+    gap: var(--px-40);
   }
   .gap-56 {
-    gap: 56px;
+    gap: var(--px-56);
   }
   .gap-64 {
-    gap: 64px;
+    gap: var(--px-64);
   }
   .gap-72 {
-    gap: 72px;
+    gap: var(--px-72);
   }
   .gap-80 {
-    gap: 80px;
+    gap: var(--px-80);
   }
   .gap-96 {
-    gap: 96px;
+    gap: var(--px-96);
   }
 }

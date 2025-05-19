@@ -4,13 +4,13 @@ import {
   IPTNode,
   IPTProp,
 } from "@/lib/types/components-props";
-import { IBoxStyleProps } from "../../layout/box/types";
+import { IStyledBoxStyleProps } from "../styled-box/types";
 import { ReactNode } from "react";
 
 export interface ICardProps
   extends Partial<IChildren>,
     Partial<IClassName>,
-    Partial<IBoxStyleProps>,
+    Partial<IStyledBoxStyleProps>,
     Partial<ICardSlots>,
     Partial<IPTProp<IPTCard>> {
   separator?: boolean;

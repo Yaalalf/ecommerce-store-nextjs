@@ -1,5 +1,9 @@
 @layer base {
   .list {
     list-style-type: none;
+
+    .list_items {
+      inline-size: auto;
+    }
   }
 }

@@ -9,6 +9,8 @@
   block-size: 50vh;
 }
 .ProductViewHeader {
+  inline-size: 100%;
+
   block-size: 100%;
   position: relative;
 }
@@ -43,6 +45,7 @@
   background-color: white;
 }
 .ProductView .ProductInfo {
+  inline-size: 100%;
   block-size: 100%;
   padding-inline: 20px;
   padding-block-start: 20px;
@@ -72,18 +75,25 @@
 
   object-fit: cover;
 }
-.ProductView .ProductInfo .TagName {
+
+.ProductView .ProductInfo .HeaderInfo {
+  padding-block-start: 12px;
+}
+
+.ProductView .ProductInfo .HeaderInfo .TagName {
   color: #6b637b;
   font-size: 30px;
 }
-.ProductView .ProductInfo .PriceTag {
+.ProductView .ProductInfo .HeaderInfo .PriceTag {
   font-size: 18px;
   background-color: #7a4ad9;
   color: #e8e5ef;
   padding-inline: 20px;
   border-radius: 20px;
 }
-
+.ProductView .ProductInfo .ProductDescription {
+  inline-size: 100%;
+}
 .ProductView .ProductInfo .ProductDescription p {
   font-size: 18px;
   line-height: 26px;
@@ -101,7 +111,11 @@
   font-weight: 500;
   border-block-end: 1px solid rgb(143, 143, 150);
 }
-
+.ProductView .ProductInfo .ProductDescription p:has(span) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
 .ProductView .ProductInfo .ProductDescription p > span {
   background-color: rgb(222, 221, 232);
   padding-inline: 12px;

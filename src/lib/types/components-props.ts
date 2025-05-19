@@ -26,7 +26,7 @@ export interface ITag {
 }
 
 export interface IElementTag {
-  tag: ElementTag;
+  tag: Tag;
 }
 export interface IListTag {
   tag: ListTag;

@@ -1,16 +1,14 @@
 "use client";
 import "./style/base.css";
 import { Column, Separator } from "@/lib/components";
-import NColumn from "@/lib/components/structure/n-column";
 import { H } from "@/lib/components/text";
-import ProductCard from "../ProductCard";
-import Link from "next/link";
 import { ICollectionPopulated } from "@/db/models/collections";
 import CollectionTabs from "../CollectionTabs/CollectionTabs";
 import { IProductPopulated } from "@/db/models/product";
 import { useState } from "react";
 import { IPromotionalPopulated } from "@/db/models/promotionals";
 import Carrousel from "@/lib/components/misc/carrousel";
+import ProductList from "../ProductList/ProductList";
 
 export default function AllProductsView({
   collections,
@@ -36,17 +34,18 @@ export default function AllProductsView({
     ...collections,
   ];
 
-  const filteredProducts = products.filter((item) => {
-    if (selectedIndex === 0) {
-      return true;
-    } else {
-      return (
-        allCollections[selectedIndex].products.findIndex(
-          (subItem) => subItem._id === item._id
-        ) !== -1
-      );
-    }
-  });
+  const filteredProducts = products;
+  // .filter((item) => {
+  //   if (selectedIndex === 0) {
+  //     return true;
+  //   } else {
+  //     return (
+  //       allCollections[selectedIndex].products.findIndex(
+  //         (subItem) => subItem._id === item._id
+  //       ) !== -1
+  //     );
+  //   }
+  // });
 
   return (
     <Column className="AllProducts w-full h-full" gap="8">
@@ -69,21 +68,10 @@ export default function AllProductsView({
             <span className="SubSpanText"> en Olivia</span> <Separator />
           </span>
         </H>
-        <NColumn
-          className="ProductList"
-          data={filteredProducts}
-          columnsGap="20"
-          itemsGap="20"
-        >
-          {(product) => (
-            <Link
-              className="ProductLink"
-              href={`/products/${product._id}?categoryIndex=${selectedIndex}`}
-            >
-              <ProductCard product={product} key={product.title} />
-            </Link>
-          )}
-        </NColumn>
+        <ProductList
+          products={filteredProducts}
+          selectedIndex={selectedIndex}
+        ></ProductList>
       </Column>
     </Column>
   );

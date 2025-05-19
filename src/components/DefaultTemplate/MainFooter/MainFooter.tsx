@@ -3,16 +3,17 @@ import { List } from "@/lib/components";
 import "./base.css";
 import Link from "next/link";
 import { MdStore } from "react-icons/md";
-import { IoMdSearch } from "react-icons/io";
+// import { IoMdSearch } from "react-icons/io";
 import { TbCategory } from "react-icons/tb";
 import { usePathname } from "next/navigation";
+import FloatingWhatsappButton from "../FloatingWhatsappButton/FloatingWhatsappButton";
 
 export default function MainFooter() {
   const pathName = usePathname();
 
   const listData = [
     { href: "/", icon: MdStore },
-    { href: "/search", icon: IoMdSearch },
+    // { href: "/search", icon: IoMdSearch },
     { href: "/categories", icon: TbCategory },
   ];
 
@@ -33,6 +34,7 @@ export default function MainFooter() {
           </Link>
         )}
       </List>
+      <FloatingWhatsappButton />
     </footer>
   );
 }

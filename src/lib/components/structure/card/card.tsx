@@ -1,7 +1,8 @@
 import "./style/base.css";
-import { Box, Column, Row } from "../../layout";
+import { Column, Row } from "../../layout";
 import Separator from "../separator";
 import { ICardProps } from "./types";
+import StyledBox from "../styled-box";
 
 export default function Card({
   bordered,
@@ -12,8 +13,9 @@ export default function Card({
   separator,
   separator_footer,
   separator_header,
-  shadowed,
-
+  elevation,
+  severity,
+  variant,
   slotFooter,
   slotHeader,
   pt,
@@ -25,13 +27,15 @@ export default function Card({
     separator_footer != undefined ? separator_footer : separator;
 
   return (
-    <Box
+    <StyledBox
       {...pt?.root}
       {...{
         bordered,
         flatted,
         dense,
-        shadowed,
+        elevation,
+        severity,
+        variant,
         className: `card ${className} ${pt?.root?.className}`,
       }}
     >
@@ -68,6 +72,6 @@ export default function Card({
           </Row>
         </>
       )}
-    </Box>
+    </StyledBox>
   );
 }

@@ -4,7 +4,7 @@ import { IRowProps } from "./types";
 
 export default function Row<T extends IPTNode>({
   children,
-  className,
+  className = "",
   tag,
   justify,
   align,

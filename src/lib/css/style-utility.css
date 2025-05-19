@@ -1,0 +1,79 @@
+@layer base {
+  /*****************************Style Utilities************************************************/
+
+  :root {
+    /***********************Variants******************************/
+    /*********************Surface*******************/
+    --style-surface-bg-color: #ffffff;
+    --style-surface-tx-color: #434343;
+
+    /********************Surface-Severity*******************/
+    /********************Base*********************/
+    --style-surface-base-bg-color: #ffffff;
+    --style-surface-base-tx-color: #434343;
+
+    /********************Primary*********************/
+    --style-surface-primary-bg-color: #8f5fef;
+    --style-surface-primary-tx-color: #efe9fb;
+    /********************Primary-Container*********************/
+    --style-surface-primary-container-bg-color: #d8ccf0;
+    --style-surface-primary-container-tx-color: #46218e;
+    /********************Error*********************/
+    --style-surface-error-bg-color: #b03626;
+    --style-surface-error-tx-color: #fbece9;
+    /********************Error-Container*********************/
+    --style-surface-error-container-bg-color: #f0d1cc;
+    --style-surface-error-container-tx-color: #6d1a0f;
+
+    /*********************Variant*************************/
+    /********************Outlined*********************/
+    --style-outlined-bg-color: transparent;
+    --style-outlined-tx-color: #8f5fef;
+    --style-outlined-border-color: #8f5fef;
+    --style-outlined-border-width: 1px;
+    /********************Flatted*********************/
+    --style-flatted-bg-color: transparent;
+    --style-flatted-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+    /********************Elevated*********************/
+    --style-elevated-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.237);
+    --style-elevated-bg-color: #fff;
+  }
+
+  .surface {
+    &.base {
+      background-color: var(--style-surface-base-bg-color);
+      color: var(--style-surface-base-tx-color);
+    }
+    &.primary {
+      background-color: var(--style-surface-primary-bg-color);
+      color: var(--style-surface-primary-tx-color);
+    }
+    &.primary-container {
+      background-color: var(--style-surface-primary-container-bg-color);
+      color: var(--style-surface-primary-container-tx-color);
+    }
+    &.error {
+      background-color: var(--style-surface-error-bg-color);
+      color: var(--style-surface-error-tx-color);
+    }
+    &.error-container {
+      background-color: var(--style-surface-error-container-bg-color);
+      color: var(--style-surface-error-container-tx-color);
+    }
+  }
+
+  .outlined {
+    background-color: var(--style-outlined-bg-color);
+    color: var(--style-outlined-tx-color);
+    border: var(--style-outlined-border-width) solid
+      var(--style-outlined-border-color);
+  }
+  .flatted {
+    background-color: var(--style-flatted-bg-color);
+    box-shadow: var(--style-flatted-box-shadow);
+  }
+  .elevated {
+    background-color: var(--style-elevated-bg-color);
+    box-shadow: var(--style-elevated-box-shadow);
+  }
+}

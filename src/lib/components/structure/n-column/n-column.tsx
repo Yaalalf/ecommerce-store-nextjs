@@ -1,4 +1,3 @@
-import { Row } from "../../layout";
 import List from "../list";
 import { INColumnProps } from "./types";
 
@@ -9,33 +8,37 @@ export default function NColumn<T>({
   propKey,
   columnsGap,
   itemsGap,
+  columns = 2,
 }: INColumnProps<T>) {
-  const firstColumnData = data.filter((item, index) => {
-    return index % 2 === 0;
-  });
-  const secondColumnData = data.filter((item, index) => {
-    return index % 2 !== 0;
-  });
+  const columnsDataLists: T[][] = [...Array(columns)];
+
+  for (let index = 0; index < data.length; index++) {
+    const indexer = index % columns;
+    if (!Array.isArray(columnsDataLists[indexer])) {
+      columnsDataLists[indexer] = [];
+    }
+    columnsDataLists[indexer].push(data[index]);
+  }
   return (
-    <Row className={`NColumn ${className}`} gap={columnsGap}>
-      <List
-        className="w-full"
-        direction="column"
-        gap={itemsGap}
-        data={firstColumnData}
-        propKey={propKey}
-      >
-        {children}
-      </List>
-      <List
-        className="w-full"
-        direction="column"
-        gap={itemsGap}
-        data={secondColumnData}
-        propKey={propKey}
-      >
-        {children}
-      </List>
-    </Row>
+    <List
+      data={columnsDataLists}
+      className={`n-column ${className}`}
+      direction="row"
+      gap={columnsGap}
+      unwrap
+    >
+      {(lists) => (
+        <List
+          className="w-[100%]"
+          direction="column"
+          gap={itemsGap}
+          data={lists}
+          propKey={propKey}
+          // pt={{ item: { className: "w-full" } }}
+        >
+          {children}
+        </List>
+      )}
+    </List>
   );
 }
