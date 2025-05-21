@@ -8,14 +8,17 @@ import { useEffect, useState } from "react";
 export default function ProductList({
   products,
   selectedIndex,
+  isMobile,
 }: {
   products: IProductPopulated[];
   selectedIndex: number;
+  isMobile?: boolean;
 }) {
-  const [isMobile, setIsMobile] = useState(false);
+  console.log(isMobile);
+  const [isMobileFirst, setIsMobile] = useState(isMobile);
   useEffect(() => {
     const mediaQuery = window.matchMedia("(width >= 900px)");
-    setIsMobile(mediaQuery.matches);
+    setIsMobile(!mediaQuery.matches);
 
     const handler = (event: MediaQueryListEvent) => setIsMobile(event.matches);
     mediaQuery.addEventListener("change", handler);
@@ -28,7 +31,7 @@ export default function ProductList({
       data={products}
       columnsGap="20"
       itemsGap="20"
-      columns={isMobile ? 3 : 2}
+      columns={isMobileFirst ? 2 : 5}
     >
       {(product) => (
         <Link

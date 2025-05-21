@@ -15,11 +15,13 @@ export default function AllProductsView({
   products,
   promotionals,
   categoryIndex,
+  isMobile,
 }: {
   collections: ICollectionPopulated[];
   products: IProductPopulated[];
   promotionals: IPromotionalPopulated[];
   categoryIndex?: number;
+  isMobile?: boolean;
 }) {
   const [selectedIndex, setSelectedIndex] = useState(categoryIndex || 0);
 
@@ -70,6 +72,7 @@ export default function AllProductsView({
         <ProductList
           products={filteredProducts}
           selectedIndex={selectedIndex}
+          isMobile={isMobile}
         ></ProductList>
       </Column>
     </Column>

@@ -1,4 +1,10 @@
-import { IPTNode } from "@/lib/types/components-props";
-import { IFlexProps } from "../flex/types";
+import { IPTNode, IReverse } from "@/lib/types/components-props";
+import { IFlexProps, IFlexPTProps } from "../flex/types";
 
-export type IRowProps<T extends IPTNode> = Omit<IFlexProps<T>, "direction">;
+export interface IRowProps<T extends IPTNode>
+  extends Omit<IFlexProps<T>, "direction">,
+    Partial<IReverse> {}
+
+export interface IRowPTProps
+  extends Omit<IFlexPTProps, "direction">,
+    Partial<IReverse> {}

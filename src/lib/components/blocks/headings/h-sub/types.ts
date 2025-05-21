@@ -1,4 +1,4 @@
-import { IFlexPTProps } from "@/lib/components/layout/flex/types";
+import { IColumnPTProps } from "@/lib/components/layout/column/types";
 import { IHPTProps } from "@/lib/components/text/h/types";
 import {
   IClassName,
@@ -23,7 +23,7 @@ export interface IHSubSlots {
 }
 
 interface IPTHSub {
-  container?: IFlexPTProps;
+  container?: IColumnPTProps;
   heading?: IHPTProps;
   subheading?: IHPTProps;
 }

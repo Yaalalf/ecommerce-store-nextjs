@@ -5,7 +5,6 @@ import {
   IGapProp,
   IJustifyContent,
   IPTNode,
-  IReverse,
   ITagNode,
   IWrap,
 } from "@/lib/types/components-props";
@@ -21,5 +20,4 @@ export interface IFlexPTProps
     Partial<IJustifyContent>,
     Partial<IAlignItems>,
     Partial<IGapProp>,
-    Partial<IReverse>,
     IPTNode {}

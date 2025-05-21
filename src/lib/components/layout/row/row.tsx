@@ -10,12 +10,20 @@ export default function Row<T extends IPTNode>({
   align,
   gap,
   wrap,
-  reverse,
+  reverse = false,
   ...domProps
 }: IRowProps<T>) {
   return (
     <Flex
-      {...{ tag, justify, align, gap, wrap, reverse, ...domProps }}
+      {...{
+        tag,
+        justify,
+        align,
+        gap,
+        wrap,
+        direction: reverse ? "row-reverse" : "row",
+        ...domProps,
+      }}
       className={`row ${className}`}
     >
       {children}

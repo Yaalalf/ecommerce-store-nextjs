@@ -10,7 +10,7 @@ export default function Column<T extends IPTNode>({
   align,
   gap,
   wrap,
-  reverse,
+  reverse = false,
   ...domProps
 }: IColumnProps<T>) {
   return (
@@ -21,9 +21,8 @@ export default function Column<T extends IPTNode>({
         align,
         gap,
         wrap,
-        reverse,
         ...domProps,
-        direction: "column",
+        direction: reverse ? "column-reverse" : "column",
       }}
       className={`column ${className}`}
     >

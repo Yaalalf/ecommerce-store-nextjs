@@ -1,5 +1,5 @@
-export type FlexDirection = "row" | "column";
-export type FlexWrap = "wrap" | "unwrap";
+export type FlexDirection = "row" | "column" | "row-reverse" | "column-reverse";
+export type FlexWrap = "wrap" | "nowrap";
 export type JustifyContent =
   | "start"
   | "center"
