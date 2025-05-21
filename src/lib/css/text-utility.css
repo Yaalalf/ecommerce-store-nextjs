@@ -1,7 +1,7 @@
 @layer base {
   :root {
     --text-base-font-size: 1rem;
-    --text-base-line-height: 1.5rem;
+    --text-base-line-height: 1.1rem;
     --text-base-font-weight: 400;
 
     /*h1*/
@@ -166,125 +166,158 @@
     --subtitle2-line-height: calc(
       var(--text-base-line-height) * var(--subtitle2-multiplier)
     );
+
+    /* hero */
+    --hero-multiplier: 3;
+    --hero-color: rgb(39, 39, 43);
+    --hero-font-size: calc(var(--text-base-font-size) * var(--hero-multiplier));
+    --hero-font-weight: 600;
+    --hero-line-height: calc(
+      var(--text-base-line-height) * var(--hero-multiplier)
+    );
   }
 
-  .text-h1 {
+  /*****************************Text-Variants*************************************/
+  /*****************************Global*************************************/
+
+  .tv-h1 {
     color: var(--h1-color);
     font-size: var(--h1-font-size);
     font-weight: var(--h1-font-weight);
     line-height: var(--h1-line-height);
   }
-  .text-h2 {
+  .tv-h2 {
     color: var(--h2-color);
     font-size: var(--h2-font-size);
     font-weight: var(--h2-font-weight);
     line-height: var(--h2-line-height);
   }
-  .text-h3 {
+  .tv-h3 {
     color: var(--h3-color);
     font-size: var(--h3-font-size);
     font-weight: var(--h3-font-weight);
     line-height: var(--h3-line-height);
   }
-  .text-h4 {
+  .tv-h4 {
     color: var(--h4-color);
     font-size: var(--h4-font-size);
     font-weight: var(--h4-font-weight);
     line-height: var(--h4-line-height);
   }
-  .text-h5 {
+  .tv-h5 {
     color: var(--h5-color);
     font-size: var(--h5-font-size);
     font-weight: var(--h5-font-weight);
     line-height: var(--h5-line-height);
   }
-  .text-h6 {
+  .tv-h6 {
     color: var(--h6-color);
     font-size: var(--h6-font-size);
     font-weight: var(--h6-font-weight);
     line-height: var(--h6-line-height);
   }
 
-  .text-p {
+  .tv-p {
     color: var(--p-color);
     font-size: var(--p-font-size);
     font-weight: var(--p-font-weight);
     line-height: var(--p-line-height);
   }
 
-  .text-span {
+  .tv-span {
     color: var(--span-color);
     font-size: var(--span-font-size);
     font-weight: var(--span-font-weight);
     line-height: var(--span-line-height);
   }
 
-  .text-title {
+  .tv-title {
     color: var(--title-color);
     font-size: var(--title-font-size);
     font-weight: var(--title-font-weight);
     line-height: var(--title-line-height);
   }
-  .text-subtitle1 {
+  .tv-subtitle1 {
     color: var(--subtitle1-color);
     font-size: var(--subtitle1-font-size);
     font-weight: var(--subtitle1-font-weight);
     line-height: var(--subtitle1-line-height);
   }
 
-  .text-subtitle2 {
+  .tv-subtitle2 {
     color: var(--subtitle2-color);
     font-size: var(--subtitle2-font-size);
     font-weight: var(--subtitle2-font-weight);
     line-height: var(--subtitle2-line-height);
   }
 
-  .text-body1 {
+  .tv-body1 {
     color: var(--body1-color);
     font-size: var(--body1-font-size);
     font-weight: var(--body1-font-weight);
     line-height: var(--body1-line-height);
   }
 
-  .text-body2 {
+  .tv-body2 {
     color: var(--body2-color);
     font-size: var(--body2-font-size);
     font-weight: var(--body2-font-weight);
     line-height: var(--body2-line-height);
   }
 
-  .text-caption {
+  .tv-caption {
     color: var(--caption-color);
     font-size: var(--caption-font-size);
     font-weight: var(--caption-font-weight);
     line-height: var(--caption-line-height);
   }
 
-  .text-overline {
+  .tv-overline {
     color: var(--overline-color);
     font-size: var(--overline-font-size);
     font-weight: var(--overline-font-weight);
     line-height: var(--overline-line-height);
   }
 
-  .text-label {
+  .tv-label {
     color: var(--label-color);
     font-size: var(--label-font-size);
     font-weight: var(--label-font-weight);
     line-height: var(--label-line-height);
   }
 
-  .text-heading {
+  .tv-heading {
     color: var(--heading-color);
     font-size: var(--heading-font-size);
     font-weight: var(--heading-font-weight);
     line-height: var(--heading-line-height);
   }
 
-  .text-subheading {
+  .tv-subheading {
     color: var(--subheading-color);
     font-size: var(--subheading-font-size);
     font-weight: var(--subheading-font-weight);
     line-height: var(--subheading-line-height);
+  }
+
+  /*****************************App Specific*************************************/
+
+  /*****************************Web Specifics*************************************/
+  .tv-hero {
+    color: var(--hero-color);
+    font-size: var(--hero-font-size);
+    font-weight: var(--hero-font-weight);
+    line-height: var(--hero-line-height);
+  }
+
+  /***********************************Text-Align*****************************************/
+  .text-align-start {
+    text-align: start;
+  }
+  .text-align-center {
+    text-align: center;
+  }
+  .text-align-end {
+    text-align: end;
   }
 }

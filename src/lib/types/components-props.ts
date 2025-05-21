@@ -2,9 +2,11 @@ import { HTMLAttributes, ReactNode } from "react";
 import {
   AlignItems,
   FlexDirection,
+  FlexWrap,
   Gap,
   JustifyContent,
-  TextStyle,
+  TextAlign,
+  TextVariant,
 } from "./css";
 
 export interface IChildren {
@@ -39,6 +41,12 @@ export type TextTag = "p" | "span" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 export interface IDirection {
   direction: FlexDirection;
 }
+export interface IWrap {
+  wrap: FlexWrap;
+}
+export interface IReverse {
+  reverse: boolean;
+}
 export interface IJustifyContent {
   justify: JustifyContent;
 }
@@ -46,7 +54,7 @@ export interface IAlignItems {
   align: AlignItems;
 }
 
-export interface IGap {
+export interface IGapProp {
   gap: Gap;
 }
 export interface IPTProp<T> {
@@ -63,6 +71,9 @@ export interface ITypeProp<T> {
   type: T;
 }
 
-export interface ITextStyle {
-  textStyle: TextStyle;
+export interface ITextVariantProp {
+  textVariant: TextVariant;
+}
+export interface ITextAlignProp {
+  textAlign: TextAlign;
 }

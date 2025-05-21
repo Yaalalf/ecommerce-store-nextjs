@@ -1,19 +1,20 @@
 import {
   IChildren,
-  IClassName,
+  IPTNode,
+  ITextAlignProp,
   ITextProp,
-  ITextStyle,
+  ITextVariantProp,
   ITypeProp,
 } from "@/lib/types/components-props";
-import { HTMLAttributes } from "react";
 
-export interface ITProps
-  extends Partial<IClassName>,
-    Partial<IChildren>,
-    ITypeProp<TType>,
+export interface ITProps extends Partial<IChildren>, ITPTProps {}
+
+export interface ITPTProps
+  extends ITypeProp<TType>,
     Partial<ITextProp>,
-    Partial<ITextStyle>,
-    HTMLAttributes<HTMLElement> {}
+    Partial<ITextAlignProp>,
+    Partial<ITextVariantProp>,
+    IPTNode {}
 
 export type TType = "p" | "span";
 

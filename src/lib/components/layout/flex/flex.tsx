@@ -10,6 +10,8 @@ export default function Flex<T extends IPTNode>({
   align = "start",
   direction = "row",
   gap = "0",
+  wrap = "unwrap",
+  reverse = false,
   ...domProps
 }: IFlexProps<T>) {
   const { component: Component, props: componentProps } = handleTagProp({
@@ -20,7 +22,9 @@ export default function Flex<T extends IPTNode>({
     <Component
       {...domProps}
       {...componentProps}
-      className={`${className} display-flex flex-direction-${direction} justify-content-${justify} align-items-${align} gap-${gap}`}
+      className={`${className} display-flex flex-direction-${direction} ${
+        reverse ? "flex-direction-reverse" : ""
+      } justify-content-${justify} align-items-${align} gap-${gap} flex-wrap-${wrap}`}
     >
       {children}
     </Component>

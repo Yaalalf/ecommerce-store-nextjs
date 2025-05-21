@@ -4,8 +4,9 @@ export default function H({
   children,
   text,
   type = "h2",
-  textStyle,
+  textVariant,
   className = "",
+  textAlign = "start",
   ...domProps
 }: IHProps) {
   const Component = type;
@@ -13,7 +14,9 @@ export default function H({
   return (
     <Component
       {...domProps}
-      className={`${className} h text-${textStyle || type}`}
+      className={`${className} h tv-${
+        textVariant || type
+      } text-align-${textAlign}`}
     >
       {children ? children : text}
     </Component>

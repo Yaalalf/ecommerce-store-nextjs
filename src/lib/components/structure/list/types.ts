@@ -2,10 +2,11 @@ import {
   IAlignItems,
   IClassName,
   IDirection,
-  IGap,
+  IGapProp,
   IJustifyContent,
   IListTag,
   IPTNode,
+  IWrap,
 } from "@/lib/types/components-props";
 import { ReactNode } from "react";
 
@@ -13,7 +14,8 @@ export interface IListProps<T>
   extends Partial<IClassName>,
     Partial<IListTag>,
     Partial<IDirection>,
-    Partial<IGap>,
+    Partial<IGapProp>,
+    Partial<IWrap>,
     Partial<IJustifyContent>,
     Partial<IAlignItems> {
   data: T[];

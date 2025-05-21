@@ -5,7 +5,8 @@ export default function T({
   text,
   type = "p",
   className = "",
-  textStyle,
+  textVariant,
+  textAlign = "start",
   ...domProps
 }: ITProps) {
   const Component = type;
@@ -13,7 +14,9 @@ export default function T({
   return (
     <Component
       {...domProps}
-      className={`${className} t text-${textStyle || type}`}
+      className={`${className} t tv-${
+        textVariant || type
+      } text-align-${textAlign}`}
     >
       {children ? children : text}
     </Component>

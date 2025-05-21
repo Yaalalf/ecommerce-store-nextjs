@@ -9,11 +9,22 @@ export default function Column<T extends IPTNode>({
   justify,
   align,
   gap,
+  wrap,
+  reverse,
   ...domProps
 }: IColumnProps<T>) {
   return (
     <Flex
-      {...{ tag, justify, align, gap, ...domProps, direction: "column" }}
+      {...{
+        tag,
+        justify,
+        align,
+        gap,
+        wrap,
+        reverse,
+        ...domProps,
+        direction: "column",
+      }}
       className={`column ${className}`}
     >
       {children}

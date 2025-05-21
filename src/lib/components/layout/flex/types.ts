@@ -2,17 +2,24 @@ import {
   IAlignItems,
   IChildren,
   IDirection,
-  IGap,
+  IGapProp,
   IJustifyContent,
   IPTNode,
+  IReverse,
   ITagNode,
+  IWrap,
 } from "@/lib/types/components-props";
 
 export interface IFlexProps<T extends IPTNode>
   extends Partial<IChildren>,
     Partial<ITagNode<T>>,
-    Partial<IDirection>,
+    IFlexPTProps {}
+
+export interface IFlexPTProps
+  extends Partial<IDirection>,
+    Partial<IWrap>,
     Partial<IJustifyContent>,
     Partial<IAlignItems>,
-    Partial<IGap>,
+    Partial<IGapProp>,
+    Partial<IReverse>,
     IPTNode {}

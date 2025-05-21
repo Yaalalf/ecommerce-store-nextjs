@@ -12,6 +12,7 @@ export default function List<T, N extends string>({
   align,
   justify,
   gap,
+  wrap,
   data,
   propKey,
   children,
@@ -52,7 +53,7 @@ export default function List<T, N extends string>({
   return (
     <Flex
       {...pt?.root}
-      {...{ direction, tag, gap, align, justify }}
+      {...{ direction, tag, gap, align, justify, wrap }}
       className={`${className} list`}
     >
       {data.map(runItem)}

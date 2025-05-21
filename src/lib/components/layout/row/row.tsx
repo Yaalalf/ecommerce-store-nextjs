@@ -9,11 +9,13 @@ export default function Row<T extends IPTNode>({
   justify,
   align,
   gap,
+  wrap,
+  reverse,
   ...domProps
 }: IRowProps<T>) {
   return (
     <Flex
-      {...{ tag, justify, align, gap, ...domProps }}
+      {...{ tag, justify, align, gap, wrap, reverse, ...domProps }}
       className={`row ${className}`}
     >
       {children}

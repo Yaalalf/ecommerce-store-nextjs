@@ -1,4 +1,5 @@
 export type FlexDirection = "row" | "column";
+export type FlexWrap = "wrap" | "unwrap";
 export type JustifyContent =
   | "start"
   | "center"
@@ -7,7 +8,7 @@ export type JustifyContent =
   | "space-between"
   | "space-evenly"
   | "stretch";
-export type AlignItems = "start" | "center" | "end" | "stretch";
+export type AlignItems = "start" | "center" | "end" | "stretch" | "baseline";
 export type Gap =
   | "0"
   | "2"
@@ -27,7 +28,7 @@ export type Gap =
   | "80"
   | "96";
 
-export type TextStyle =
+export type TextVariant =
   | "h1"
   | "h2"
   | "h3"
@@ -45,4 +46,9 @@ export type TextStyle =
   | "subheading"
   | "title"
   | "subtitle1"
-  | "subtitle2";
+  | "subtitle2"
+  | TextVariantWeb;
+
+export type TextVariantWeb = "hero";
+
+export type TextAlign = "start" | "center" | "end";
