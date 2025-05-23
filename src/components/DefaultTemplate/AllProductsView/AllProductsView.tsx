@@ -49,7 +49,7 @@ export default function AllProductsView({
   });
 
   return (
-    <Column className="AllProducts w-full h-full" gap="8">
+    <Column className="AllProducts w-full h-full" gap="gap-[8px]">
       <Carrousel
         className="PromotionalBanner"
         imgUrls={promotionals[0].medias}
@@ -62,11 +62,12 @@ export default function AllProductsView({
           setSelectedIndex(index);
         }}
       ></CollectionTabs>
-      <Column className="AllProductBody" gap="20">
+      <Column className="AllProductBody" gap="gap-[20px]">
         <H type="h1" className="AllProductsHeader">
           <span>Lo mas visto </span>
           <span className="SubSpan">
-            <span className="SubSpanText"> en Olivia</span> <Separator />
+            <span className="SubSpanText"> en Olivia</span>{" "}
+            <Separator className="HeaderSeparator" />
           </span>
         </H>
         <ProductList

@@ -28,7 +28,7 @@ export async function PATCH(
 
   // Get the data and validate with zod
   const updated = await request.json();
-  console.log(updated);
+
   const collection = await getCollectionById({ id });
   if (collection) {
     try {

@@ -8,7 +8,7 @@ export default function ProductCard({ product }: IProductCardProps) {
   const { medias, title, price } = product;
   return (
     <Card className="ProductCard" variant="flatted" dense>
-      <Column className="w-full" gap="12">
+      <Column className="w-full" gap="gap-[12px]">
         <ImageLoader
           className="ProductImage"
           src={medias[0].url}
@@ -17,7 +17,7 @@ export default function ProductCard({ product }: IProductCardProps) {
           height={1080}
           priority
         />
-        <Column className="ProductInfo" gap="4">
+        <Column className="ProductInfo" gap="gap-[4px]">
           <Chip tag={H} variant="ghost" className="ProductPrice">
             ${price}
           </Chip>

@@ -15,18 +15,20 @@ export default function MainHeader({
   slotsH2?: ReactNode;
   slotsH3?: ReactNode;
 }) {
-  const [isMiniState, setIsMiniState] = useState(false);
+  const [isMiniState /*,setIsMiniState*/] = useState(false);
 
   return (
     <>
       <VisibilityObserver
         className="HeaderIntersector"
-        onVisibility={(entry) => {
-          setIsMiniState(!entry.isIntersecting);
-        }}
+        onVisibility={
+          (/*entry*/) => {
+            // setIsMiniState(!entry.isIntersecting);
+          }
+        }
       />
       <header className={`MainHeader ${isMiniState ? "mini" : ""}`}>
-        <Column className="Center" align="center" gap="4">
+        <Column className="Center" align="center" gap="gap-[4px]">
           <H className="Header" type="h1">
             Catálogo de Olivia Shop
             {isMiniState && <FaBagShopping className="Icon" />}

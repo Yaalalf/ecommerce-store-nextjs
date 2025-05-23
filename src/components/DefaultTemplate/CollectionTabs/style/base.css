@@ -2,7 +2,7 @@
   block-size: 128px;
   inline-size: 100%;
   position: absolute;
-  top: 160px;
+  top: 210px;
   left: 0px;
 }
 
@@ -10,7 +10,7 @@
   inline-size: 100%;
   padding-block: 12px;
   position: sticky;
-  top: 48px;
+  top: 0px;
   left: 0px;
 
   background-color: white;

@@ -1,6 +1,7 @@
 import { Column } from "@/lib/components/layout";
 import IHSubProps from "./types";
 import { H } from "@/lib/components/text";
+import { textAlignTailwind } from "@/lib/utils/tailwind_utility";
 
 export default function HSub({
   className,
@@ -9,20 +10,21 @@ export default function HSub({
   textAlign,
   reverse,
   pt,
-  gap = "12",
+  gap = "gap-[4px]",
 }: IHSubProps) {
   return (
     <Column
       {...pt?.container}
-      className={`h-sub ${pt?.container?.className || className}`}
+      className={`h-sub ${pt?.container?.className || className} ${
+        textAlign ? textAlignTailwind[textAlign] : ""
+      }`}
       gap={pt?.container?.gap || gap}
       reverse={pt?.container?.reverse || reverse}
     >
       <H
         {...pt?.heading}
-        className={`h-sub-heading w-full ${pt?.heading?.className || ""}`}
+        className={`h-sub-heading w-full ${pt?.heading?.className || ""} `}
         type={pt?.heading?.type || "h2"}
-        textAlign={pt?.heading?.textAlign || textAlign}
       >
         {heading}
       </H>
@@ -30,7 +32,6 @@ export default function HSub({
         {...pt?.subheading}
         className={`h-sub-subheading w-full ${pt?.subheading?.className || ""}`}
         type={pt?.subheading?.type || "h3"}
-        textAlign={pt?.subheading?.textAlign || textAlign}
       >
         {subheading}
       </H>

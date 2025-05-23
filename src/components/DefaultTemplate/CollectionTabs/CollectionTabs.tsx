@@ -29,13 +29,20 @@ export default function CollectionTabs({
           setIsMiniState(!entry.isIntersecting);
         }}
       />
-      <Column className={`CollectionTabs ${isMiniState ? "mini" : ""}`} gap="8">
+      <Column
+        className={`CollectionTabs ${isMiniState ? "mini" : ""}`}
+        gap="gap-[8px]"
+      >
         {isMiniState || (
           <H type="h2" className="CollectionTabsHeader">
             Categorias
           </H>
         )}
-        <List data={collections} className="CollectionTabsList" gap="12">
+        <List
+          data={collections}
+          className="CollectionTabsList"
+          gap="gap-[12px]"
+        >
           {(collection, index) => (
             <Link
               href={

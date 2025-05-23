@@ -9,25 +9,10 @@ export type JustifyContent =
   | "space-evenly"
   | "stretch";
 export type AlignItems = "start" | "center" | "end" | "stretch" | "baseline";
-export type Gap =
-  | "0"
-  | "2"
-  | "4"
-  | "8"
-  | "12"
-  | "16"
-  | "20"
-  | "24"
-  | "28"
-  | "32"
-  | "36"
-  | "40"
-  | "56"
-  | "64"
-  | "72"
-  | "80"
-  | "96";
 
+type CSSUnits = "px" | "%" | "vw" | "vh" | "em" | "rem";
+export type TailwindGap = `gap-${number | `[${number}${CSSUnits}]`}`;
+export type TextSize = "small" | "medium" | "high";
 export type TextVariant =
   | "h1"
   | "h2"
@@ -49,6 +34,28 @@ export type TextVariant =
   | "subtitle2"
   | TextVariantWeb;
 
+export type TextSeverity = StyledBoxSeverity | "on-primary";
+
 export type TextVariantWeb = "hero";
 
-export type TextAlign = "start" | "center" | "end";
+export type TextAlign = "start" | "center" | "end" | "justify";
+
+export type StyledBoxVariant =
+  | "surface"
+  | "outlined"
+  | "flatted"
+  | "elevated"
+  | "ghost"
+  | "outlined-ghost";
+export type StyledBoxSeverity =
+  | "base"
+  | "primary"
+  | "primary-container"
+  | "error"
+  | "error-container";
+export type StyledBoxElevation =
+  | "level-0"
+  | "level-1"
+  | "level-2"
+  | "level-3"
+  | "level-4";

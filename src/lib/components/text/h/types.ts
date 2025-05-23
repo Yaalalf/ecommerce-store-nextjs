@@ -1,20 +1,9 @@
-import {
-  IChildren,
-  IPTNode,
-  ITextAlignProp,
-  ITextProp,
-  ITextVariantProp,
-  ITypeProp,
-} from "@/lib/types/components-props";
+import { IChildren, ITypeProp } from "@/lib/types/components-props";
+import { ITextPTProps } from "../t/types";
 
 export interface IHProps extends Partial<IChildren>, IHPTProps {}
 
-export interface IHPTProps
-  extends Partial<ITypeProp<HType>>,
-    Partial<ITextProp>,
-    Partial<ITextAlignProp>,
-    Partial<ITextVariantProp>,
-    IPTNode {}
+export interface IHPTProps extends Partial<ITypeProp<HType>>, ITextPTProps {}
 
 export type HType = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 

@@ -1,3 +1,9 @@
+.FloatingWhatsappButtonPositioner {
+  position: fixed;
+  bottom: 60px;
+  right: 4px;
+}
+
 .FloatingWhatsappButton {
   block-size: 48px;
 
@@ -8,11 +14,8 @@
   justify-content: center;
   gap: 8px;
 
-  position: fixed;
-  bottom: 60px;
-  right: 4px;
+  position: relative;
 
-  background-color: #4beb88;
   border-radius: 12px;
 
   align-self: center;
@@ -21,10 +24,47 @@
   font-weight: 500;
 
   color: #3e3b41;
+  background-color: #4beb88;
+
   box-shadow: 0px 3px 6px #0000003d, 0px -3px 6px #0000003d;
+  overflow: hidden;
+  z-index: 1;
 }
 
 .FloatingWhatsappButton .Icon {
   font-size: 26px;
   color: #185c32;
 }
+/* 
+.FloatingWhatsappButton::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg, red, yellow, lime, blue, red);
+  animation: rotate 4s linear infinite;
+  z-index: -1;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.FloatingWhatsappButton::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px; 
+  bottom: 2px;
+  background-color: #4beb88;
+
+  z-index: 0;
+} */

@@ -7,7 +7,13 @@
 
 .AllProducts .PromotionalBanner {
   inline-size: 100%;
-  block-size: 200px;
+  block-size: calc(100px + 30vw);
+
+  min-block-size: 200px;
+}
+
+.AllProducts .PromotionalBanner .image_loader .image_loader_item {
+  object-position: top;
 }
 
 .AllProducts .AllProductBody {
@@ -36,6 +42,7 @@
   text-wrap: nowrap;
 }
 .AllProducts .AllProductsHeader .HeaderSeparator {
+  inline-size: 100%;
   display: inline-block;
 }
 

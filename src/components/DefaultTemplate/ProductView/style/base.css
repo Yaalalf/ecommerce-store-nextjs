@@ -1,12 +1,12 @@
 .ProductView {
   inline-size: 100%;
-  block-size: 100vh;
+  position: relative;
 }
 .ProductViewHeaderContainer {
-  position: sticky;
+  position: relative;
   top: 0px;
   left: 0px;
-  block-size: 50vh;
+  block-size: auto;
 }
 .ProductViewHeader {
   inline-size: 100%;
@@ -16,8 +16,9 @@
 }
 
 .ProductView .BackIconLink {
+  inline-size: min-content;
   padding: 8px;
-  position: absolute;
+  position: fixed;
   top: 20px;
   left: 20px;
   font-size: 24px;
@@ -41,8 +42,9 @@
 }
 
 .ProductInfoContainer {
-  block-size: 80vh;
+  block-size: auto;
   background-color: white;
+  padding-block-end: 40px;
 }
 .ProductView .ProductInfo {
   inline-size: 100%;
@@ -85,6 +87,7 @@
   font-size: 30px;
 }
 .ProductView .ProductInfo .HeaderInfo .PriceTag {
+  block-size: min-content;
   font-size: 18px;
   background-color: #7a4ad9;
   color: #e8e5ef;

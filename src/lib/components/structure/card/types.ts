@@ -13,6 +13,7 @@ export interface ICardProps
     Partial<IStyledBoxStyleProps>,
     Partial<ICardSlots>,
     Partial<IPTProp<IPTCard>> {
+  inset?: boolean;
   separator?: boolean;
   separator_header?: boolean;
   separator_footer?: boolean;

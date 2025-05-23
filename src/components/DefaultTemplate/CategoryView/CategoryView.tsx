@@ -21,8 +21,8 @@ export default function CategoryView({
       <NColumn
         className="ProductList"
         data={category.products}
-        columnsGap="20"
-        itemsGap="20"
+        columnsGap="gap-[20px]"
+        itemsGap="gap-[20px]"
         columns={2}
       >
         {(product) => (

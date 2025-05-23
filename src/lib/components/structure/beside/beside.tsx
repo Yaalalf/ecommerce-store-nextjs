@@ -17,7 +17,7 @@ export default function Beside<T extends IPTNode>({
   return (
     <Flex
       {...domProps}
-      {...{ align, justify, direction, tag, gap: "8" }}
+      {...{ align, justify, direction, tag, gap: "gap-[8px]" }}
       className={`${className} beside`}
     >
       {slotBefore}

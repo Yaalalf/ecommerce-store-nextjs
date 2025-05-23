@@ -9,7 +9,7 @@ export default function Chip<T extends IPTNode>({
   align = "center",
   justify = "center",
   children,
-  gap = "0",
+  gap = "gap-0",
   slotIcon,
   slotAction,
   variant = "filled",

@@ -5,11 +5,13 @@ export default function FloatingWhatsappButton() {
   const whatsAppMessage = "Buenas me gustaria saber mas sobre sus productos";
 
   return (
-    <a
-      href={`https://wa.me/${phoneNumber}?text=${whatsAppMessage}`}
-      className="FloatingWhatsappButton"
-    >
-      <FaWhatsapp className="Icon" /> Chat
-    </a>
+    <div className="FloatingWhatsappButtonPositioner">
+      <a
+        href={`https://wa.me/${phoneNumber}?text=${whatsAppMessage}`}
+        className="FloatingWhatsappButton"
+      >
+        <FaWhatsapp className="Icon" /> Chat
+      </a>
+    </div>
   );
 }

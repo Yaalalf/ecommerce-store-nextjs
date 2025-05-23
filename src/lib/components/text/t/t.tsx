@@ -1,3 +1,4 @@
+import { textAlignTailwind } from "@/lib/utils/tailwind_utility";
 import { ITProps } from "./types";
 
 export default function T({
@@ -6,7 +7,9 @@ export default function T({
   type = "p",
   className = "",
   textVariant,
-  textAlign = "start",
+  textAlign,
+  size,
+  severity,
   ...domProps
 }: ITProps) {
   const Component = type;
@@ -14,9 +17,9 @@ export default function T({
   return (
     <Component
       {...domProps}
-      className={`${className} t tv-${
-        textVariant || type
-      } text-align-${textAlign}`}
+      className={`${className} t tv-${textVariant || type} ${severity || ""} ${
+        textAlign ? textAlignTailwind[textAlign] : ""
+      } ${size || ""}`}
     >
       {children ? children : text}
     </Component>

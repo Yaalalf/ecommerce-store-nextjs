@@ -7,8 +7,7 @@ export default function StyledBox({
   tag = "div",
   bordered,
   dense,
-  flatted,
-  elevation = "level-0",
+  elevation,
   variant = "surface",
   severity = "base",
   ...domProps
@@ -18,10 +17,10 @@ export default function StyledBox({
   return (
     <Component
       {...domProps}
-      className={`${className} styled-box ${bordered ? "bordered" : ""} ${
-        dense ? "dense" : ""
-      } ${flatted ? "flatted" : ""} 
-      ${elevation} ${variant} ${severity}`}
+      className={`${className} styled-box${bordered ? " bordered" : ""}${
+        dense ? " dense" : ""
+      } ${variant} ${severity}
+      ${elevation ? `elevated ${elevation}` : ""}`}
     >
       {children}
     </Component>

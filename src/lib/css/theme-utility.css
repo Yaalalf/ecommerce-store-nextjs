@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@theme static {
+  --color-primary: #8f5fef;
+  --color-on-primary: #f6f1ff;
+
+  --color-primary-container: #d8ccf0;
+  --color-on-primary-container: #46218e;
+
+  --color-error: #b03626;
+  --color-on-error: #fbece9;
+  --color-error-container: #f0d1cc;
+  --color-on-error-container: #6d1a0f;
+}

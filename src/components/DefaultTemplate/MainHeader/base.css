@@ -8,9 +8,9 @@
 
 .MainHeader {
   inline-size: 100%;
-  position: sticky;
+  /* position: sticky;
   top: 0px;
-  left: 0px;
+  left: 0px; */
 
   padding-block: 32px;
 

@@ -58,10 +58,10 @@
 
   .styled-box {
     padding: 20px;
-    background-color: var(--styled-box-bg-color);
+    /* background-color: var(--styled-box-bg-color); */
     border-radius: var(--styled-box-border-radius);
     /*******************Variants Styles************************************/
-    &.surface {
+    /* &.surface {
       &.base {
         background-color: var(--styled-box-surface-base-bg-color);
         color: var(--styled-box-surface-base-tx-color);
@@ -89,13 +89,13 @@
     &.elevated {
       background-color: var(--styled-box-elevated-bg-color);
       box-shadow: var(--styled-box-elevated-box-shadow);
-    }
+    } */
 
     /*******************Specifics Styles************************************/
     &.dense {
       padding: 0px;
     }
-
+    /*
     &.bordered {
       border: var(--styled-box-border-width) solid
         var(--styled-box-border-color);
@@ -105,6 +105,6 @@
     }
     &.shadowed {
       box-shadow: var(--styled-box-box-shadow);
-    }
+    } */
   }
 }

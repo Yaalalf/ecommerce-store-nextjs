@@ -1,5 +1,5 @@
-import "./style/base.css";
-import { Column, Row } from "../../layout";
+// import "./style/base.css";
+import { Column } from "../../layout";
 import Separator from "../separator";
 import { ICardProps } from "./types";
 import StyledBox from "../styled-box";
@@ -9,13 +9,13 @@ export default function Card({
   children,
   className = "",
   dense,
-  flatted,
+  inset,
   separator,
   separator_footer,
   separator_header,
   elevation,
   severity,
-  variant,
+  variant = "surface",
   slotFooter,
   slotHeader,
   pt,
@@ -26,52 +26,61 @@ export default function Card({
   const isSeparatorFooter =
     separator_footer != undefined ? separator_footer : separator;
 
+  const denseClassName = `${dense ? "p-0" : "p-5"}`;
+
+  const rootClassName = `card ${className} ${
+    pt?.root?.className || ""
+  } overflow-hidden`;
+  const headerClassName = `card-header ${
+    pt?.header?.className || ""
+  } ${denseClassName} pb-0`;
+  const bodyClassName = `card-body ${
+    pt?.body?.className || ""
+  } ${denseClassName}`;
+  const footerClassName = `card-footer ${
+    pt?.footer?.className || ""
+  } ${denseClassName} pt-0`;
   return (
-    <StyledBox
-      {...pt?.root}
-      {...{
-        bordered,
-        flatted,
-        dense,
-        elevation,
-        severity,
-        variant,
-        className: `card ${className} ${pt?.root?.className}`,
+    <Column
+      tag={{
+        component: StyledBox,
+        props: {
+          ...pt?.root,
+          ...{
+            bordered,
+            dense: true,
+            elevation,
+            severity,
+            variant,
+            className: `${rootClassName}`,
+          },
+        },
       }}
     >
       {/**********************Header Slot***************/}
       {slotHeader && (
         <>
-          <Row
-            {...pt?.header}
-            className={`card_header ${pt?.header?.className || ""}`}
-          >
+          <Column {...pt?.header} className={`${headerClassName}`}>
             {slotHeader}
-          </Row>
-          {isSeparatorHeader && <Separator></Separator>}
+          </Column>
+          {isSeparatorHeader && <Separator inset={inset} />}
         </>
       )}
       {/**********************Default Slot***************/}
       {children && (
-        <Column
-          {...pt?.body}
-          className={`card_body ${pt?.body?.className || ""}`}
-        >
+        <Column {...pt?.body} className={`${bodyClassName}`}>
           {children}
         </Column>
       )}
       {/**********************Footer Slot***************/}
       {slotFooter && (
         <>
-          {isSeparatorFooter && <Separator></Separator>}
-          <Row
-            {...pt?.footer}
-            className={`card_footer ${pt?.footer?.className || ""}`}
-          >
+          {isSeparatorFooter && <Separator inset={inset} />}
+          <Column {...pt?.footer} className={`${footerClassName}`}>
             {slotFooter}
-          </Row>
+          </Column>
         </>
       )}
-    </StyledBox>
+    </Column>
   );
 }

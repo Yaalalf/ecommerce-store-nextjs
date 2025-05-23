@@ -3,9 +3,11 @@ import {
   AlignItems,
   FlexDirection,
   FlexWrap,
-  Gap,
   JustifyContent,
+  TailwindGap,
   TextAlign,
+  TextSeverity,
+  TextSize,
   TextVariant,
 } from "./css";
 
@@ -55,8 +57,9 @@ export interface IAlignItems {
 }
 
 export interface IGapProp {
-  gap: Gap;
+  gap: TailwindGap;
 }
+
 export interface IPTProp<T> {
   pt: T;
 }
@@ -73,6 +76,13 @@ export interface ITypeProp<T> {
 
 export interface ITextVariantProp {
   textVariant: TextVariant;
+}
+export interface ITextSeverityProp {
+  severity: TextSeverity;
+}
+
+export interface ITextSizeProp {
+  size: TextSize;
 }
 export interface ITextAlignProp {
   textAlign: TextAlign;

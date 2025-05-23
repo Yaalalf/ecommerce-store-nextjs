@@ -3,6 +3,11 @@ import {
   IClassName,
   IElementTag,
 } from "@/lib/types/components-props";
+import {
+  StyledBoxElevation,
+  StyledBoxSeverity,
+  StyledBoxVariant,
+} from "@/lib/types/css";
 import { HTMLAttributes } from "react";
 
 export interface IStyledBox
@@ -14,30 +19,8 @@ export interface IStyledBox
 
 export interface IStyledBoxStyleProps {
   bordered: boolean;
-  flatted: boolean;
-
   dense: boolean;
   variant: StyledBoxVariant;
   severity: StyledBoxSeverity;
   elevation: StyledBoxElevation;
 }
-
-export type StyledBoxVariant =
-  | "surface"
-  | "outlined"
-  | "flatted"
-  | "elevated"
-  | "ghost"
-  | "outlined-ghost";
-export type StyledBoxSeverity =
-  | "base"
-  | "primary"
-  | "primary-container"
-  | "error"
-  | "error-container";
-export type StyledBoxElevation =
-  | "level-0"
-  | "level-1"
-  | "level-2"
-  | "level-3"
-  | "level-4";

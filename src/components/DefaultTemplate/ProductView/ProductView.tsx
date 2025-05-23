@@ -56,9 +56,9 @@ export default function ProductView({
         </Column>
       }
     >
-      <Column className="ProductInfo" gap="12">
+      <Column className="ProductInfo" gap="gap-[12px]">
         <Row className="ImagesTabs">
-          <List data={medias} gap="20">
+          <List data={medias} gap="gap-[20px]">
             {(media, index) => (
               <StyledBox
                 dense
@@ -91,7 +91,7 @@ export default function ProductView({
         <Column
           className="ProductDescription"
           dangerouslySetInnerHTML={{ __html: description }}
-          gap="12"
+          gap="gap-[12px]"
         ></Column>
         <a
           href={`https://wa.me/${phoneNumber}?text=${whatsAppMessage}`}

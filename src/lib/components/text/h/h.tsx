@@ -1,3 +1,4 @@
+import { textAlignTailwind } from "@/lib/utils/tailwind_utility";
 import { IHProps } from "./types";
 
 export default function H({
@@ -6,7 +7,9 @@ export default function H({
   type = "h2",
   textVariant,
   className = "",
-  textAlign = "start",
+  textAlign,
+  size,
+  severity,
   ...domProps
 }: IHProps) {
   const Component = type;
@@ -14,9 +17,9 @@ export default function H({
   return (
     <Component
       {...domProps}
-      className={`${className} h tv-${
-        textVariant || type
-      } text-align-${textAlign}`}
+      className={`${className} h tv-${textVariant || type} ${severity || ""} ${
+        textAlign ? textAlignTailwind[textAlign] : ""
+      } ${size || ""}`}
     >
       {children ? children : text}
     </Component>

@@ -1,8 +1,10 @@
+@import "tailwindcss";
+
 @layer base {
   /*****************************Style Utilities************************************************/
 
   :root {
-    /***********************Variants******************************/
+    /***********************Variant******************************/
     /*********************Surface*******************/
     --style-surface-bg-color: #ffffff;
     --style-surface-tx-color: #434343;
@@ -13,67 +15,161 @@
     --style-surface-base-tx-color: #434343;
 
     /********************Primary*********************/
-    --style-surface-primary-bg-color: #8f5fef;
-    --style-surface-primary-tx-color: #efe9fb;
+    --style-surface-primary-bg-color: var(--color-primary);
+    --style-surface-primary-tx-color: var(--color-on-primary);
     /********************Primary-Container*********************/
-    --style-surface-primary-container-bg-color: #d8ccf0;
-    --style-surface-primary-container-tx-color: #46218e;
+    --style-surface-primary-container-bg-color: var(--color-primary-container);
+    --style-surface-primary-container-tx-color: var(
+      --color-on-primary-container
+    );
     /********************Error*********************/
-    --style-surface-error-bg-color: #b03626;
-    --style-surface-error-tx-color: #fbece9;
+    --style-surface-error-bg-color: var(--color-error);
+    --style-surface-error-tx-color: var(--color-on-error);
     /********************Error-Container*********************/
-    --style-surface-error-container-bg-color: #f0d1cc;
-    --style-surface-error-container-tx-color: #6d1a0f;
+    --style-surface-error-container-bg-color: var(--color-error-container);
+    --style-surface-error-container-tx-color: var(--color-on-error-container);
 
     /*********************Variant*************************/
     /********************Outlined*********************/
     --style-outlined-bg-color: transparent;
-    --style-outlined-tx-color: #8f5fef;
-    --style-outlined-border-color: #8f5fef;
+    --style-outlined-tx-color: #434343;
+    --style-outlined-border-color: #434343;
     --style-outlined-border-width: 1px;
+
+    /********************Outlined-Severity*******************/
+    /********************Base*********************/
+    --style-outlined-base-tx-color: #434343;
+    --style-outlined-base-border-color: #434343;
+
+    /********************Primary*********************/
+    --style-outlined-primary-tx-color: var(--color-primary);
+    --style-outlined-primary-border-color: var(--color-primary);
+
+    /********************Primary-Container*********************/
+    --style-outlined-primary-container-tx-color: var(
+      --color-on-primary-container
+    );
+    --style-outlined-primary-container-border-color: var(
+      --color-primary-container
+    );
+
+    /********************Error*********************/
+    --style-outlined-error-tx-color: var(--color-error);
+    --style-outlined-error-border-color: var(--color-error);
+
+    /********************Error-Container*********************/
+    --style-outlined-error-container-tx-color: var(--color-on-error-container);
+    --style-outlined-error-container-border-color: var(--color-error-container);
+
+    /*********************Variant*************************/
     /********************Flatted*********************/
     --style-flatted-bg-color: transparent;
+    --style-flatted-tx-color: #434343;
     --style-flatted-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
-    /********************Elevated*********************/
-    --style-elevated-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.237);
-    --style-elevated-bg-color: #fff;
+
+    /********************Flatted-Severity*******************/
+    /********************Base*********************/
+    --style-flatted-base-tx-color: #434343;
+
+    /********************Primary*********************/
+    --style-flatted-primary-tx-color: var(--color-primary);
+
+    /********************Primary-Container*********************/
+    --style-flatted-primary-container-tx-color: var(
+      --color-on-primary-container
+    );
+
+    /********************Error*********************/
+    --style-flatted-error-tx-color: var(--color-error);
+
+    /********************Error-Container*********************/
+    --style-flatted-error-container-tx-color: var(--color-on-error-container);
+
+    /**********************Elevations******************************************/
+    --style-elevation-base: 0px 3px 3px rgba(0, 0, 0, 0.043);
+    --style-elevation-level-0: 0px 3px 3px rgba(0, 0, 0, 0.126);
+    --style-elevation-level-1: 0px 3px 3px rgba(0, 0, 0, 0.256);
+    --style-elevation-level-2: 0px 3px 3px rgba(0, 0, 0, 0.285);
+    --style-elevation-level-3: 0px 3px 3px rgba(0, 0, 0, 0.388);
+    --style-elevation-level-4: 0px 3px 3px rgba(0, 0, 0, 0.509);
   }
 
   .surface {
+    @apply bg-(--style-surface-bg-color) text-(--style-surface-tx-color);
+
     &.base {
-      background-color: var(--style-surface-base-bg-color);
-      color: var(--style-surface-base-tx-color);
+      @apply bg-(--style-surface-base-bg-color) text-(--style-surface-base-tx-color);
     }
     &.primary {
-      background-color: var(--style-surface-primary-bg-color);
-      color: var(--style-surface-primary-tx-color);
+      @apply bg-(--style-surface-primary-bg-color) text-(--style-surface-primary-tx-color);
     }
     &.primary-container {
-      background-color: var(--style-surface-primary-container-bg-color);
-      color: var(--style-surface-primary-container-tx-color);
+      @apply bg-(--style-surface-primary-container-bg-color) text-(--style-surface-primary-container-tx-color);
     }
     &.error {
-      background-color: var(--style-surface-error-bg-color);
-      color: var(--style-surface-error-tx-color);
+      @apply bg-(--style-surface-error-bg-color) text-(--style-surface-error-tx-color);
     }
     &.error-container {
-      background-color: var(--style-surface-error-container-bg-color);
-      color: var(--style-surface-error-container-tx-color);
+      @apply bg-(--style-surface-error-container-bg-color) text-(--style-surface-error-container-tx-color);
     }
   }
 
   .outlined {
-    background-color: var(--style-outlined-bg-color);
-    color: var(--style-outlined-tx-color);
-    border: var(--style-outlined-border-width) solid
-      var(--style-outlined-border-color);
+    @apply bg-(--style-outlined-bg-color) text-(--style-outlined-tx-color) border-solid border-(--style-outlined-border-color) border-(length:--style-outlined-border-width);
+
+    &.base {
+      @apply text-(--style-outlined-base-tx-color) border-(--style-outlined-base-border-color);
+    }
+    &.primary {
+      @apply text-(--style-outlined-primary-tx-color) border-(--style-outlined-primary-border-color);
+    }
+    &.primary-container {
+      @apply text-(--style-outlined-primary-container-tx-color) border-(--style-outlined-primary-container-border-color);
+    }
+    &.error {
+      @apply text-(--style-outlined-error-tx-color) border-(--style-outlined-error-border-color);
+    }
+    &.error-container {
+      @apply text-(--style-outlined-error-container-tx-color) border-(--style-outlined-error-container-border-color);
+    }
   }
   .flatted {
-    background-color: var(--style-flatted-bg-color);
-    box-shadow: var(--style-flatted-box-shadow);
+    @apply bg-(--style-flatted-bg-color) text-(--style-flatted-tx-color) shadow-(--style-flatted-box-shadow);
+
+    &.base {
+      @apply text-(--style-flatted-base-tx-color);
+    }
+    &.primary {
+      @apply text-(--style-flatted-primary-tx-color);
+    }
+    &.primary-container {
+      @apply text-(--style-flatted-primary-container-tx-color);
+    }
+    &.error {
+      @apply text-(--style-flatted-error-tx-color);
+    }
+    &.error-container {
+      @apply text-(--style-flatted-error-container-tx-color);
+    }
   }
+
   .elevated {
-    background-color: var(--style-elevated-bg-color);
-    box-shadow: var(--style-elevated-box-shadow);
+    @apply shadow-(--style-elevation-base);
+
+    &.level-0 {
+      @apply shadow-(--style-elevation-level-0);
+    }
+    &.level-1 {
+      @apply shadow-(--style-elevation-level-1);
+    }
+    &.level-2 {
+      @apply shadow-(--style-elevation-level-2);
+    }
+    &.level-3 {
+      @apply shadow-(--style-elevation-level-3);
+    }
+    &.level-4 {
+      @apply shadow-(--style-elevation-level-4);
+    }
   }
 }

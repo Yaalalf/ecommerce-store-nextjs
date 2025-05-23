@@ -14,7 +14,6 @@ export default function ProductList({
   selectedIndex: number;
   isMobile?: boolean;
 }) {
-  console.log(isMobile);
   const [isMobileFirst, setIsMobile] = useState(isMobile);
   useEffect(() => {
     const mediaQuery = window.matchMedia("(width >= 900px)");
@@ -29,8 +28,8 @@ export default function ProductList({
     <NColumn
       className="ProductList"
       data={products}
-      columnsGap="20"
-      itemsGap="20"
+      columnsGap="gap-[20px]"
+      itemsGap="gap-[20px]"
       columns={isMobileFirst ? 2 : 5}
     >
       {(product) => (
