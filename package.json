@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@auth0/nextjs-auth0": "^4.6.0",
     "@google-cloud/storage": "^7.16.0",
     "@next/env": "^15.3.2",
     "mongoose": "^8.14.2",
