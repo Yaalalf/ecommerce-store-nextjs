@@ -35,9 +35,47 @@ export default function Button({
   const variantSurfaceSeverityClassName = {
     base: variantSurfaceBaseClassName,
     primary: variantSurfacePrimaryClassName,
+    "primary-container": { buttonContainer: "" },
+    error: { buttonContainer: "" },
+    "error-container": { buttonContainer: "" },
   };
   const variantsClassName = {
     surface: variantSurfaceSeverityClassName,
+    outlined: {
+      base: { buttonContainer: "" },
+      primary: { buttonContainer: "" },
+      "primary-container": { buttonContainer: "" },
+      error: { buttonContainer: "" },
+      "error-container": { buttonContainer: "" },
+    },
+    flatted: {
+      base: { buttonContainer: "" },
+      primary: { buttonContainer: "" },
+      "primary-container": { buttonContainer: "" },
+      error: { buttonContainer: "" },
+      "error-container": { buttonContainer: "" },
+    },
+    elevated: {
+      base: { buttonContainer: "" },
+      primary: { buttonContainer: "" },
+      "primary-container": { buttonContainer: "" },
+      error: { buttonContainer: "" },
+      "error-container": { buttonContainer: "" },
+    },
+    ghost: {
+      base: { buttonContainer: "" },
+      primary: { buttonContainer: "" },
+      "primary-container": { buttonContainer: "" },
+      error: { buttonContainer: "" },
+      "error-container": { buttonContainer: "" },
+    },
+    "outlined-ghost": {
+      base: { buttonContainer: "" },
+      primary: { buttonContainer: "" },
+      "primary-container": { buttonContainer: "" },
+      error: { buttonContainer: "" },
+      "error-container": { buttonContainer: "" },
+    },
   };
 
   const buttonContainerClassName = clsx(
