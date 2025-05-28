@@ -1,24 +1,28 @@
 import { IPTNode } from "@/lib/types/components-props";
 import { Flex } from "../../layout";
 import { IBeside } from "./types";
+import { clsx } from "clsx";
 
 export default function Beside<T extends IPTNode>({
   slotAfter,
   slotBefore,
   tag,
-  align,
   justify,
+  align,
   direction,
+  gap,
+  wrap,
   children,
-
   className = "",
   ...domProps
 }: IBeside<T>) {
+  const besideClassName = clsx("beside", className);
+
   return (
     <Flex
       {...domProps}
-      {...{ align, justify, direction, tag, gap: "gap-[8px]" }}
-      className={`${className} beside`}
+      {...{ align, justify, direction, tag, gap, wrap }}
+      className={besideClassName}
     >
       {slotBefore}
       {children}

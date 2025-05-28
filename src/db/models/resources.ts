@@ -4,11 +4,15 @@ import { model, Schema } from "mongoose";
 export interface IResource {
   name: string;
   url: string;
+  size: number;
+  createdAt?: Date | string;
 }
 
 const resourceSchema = new Schema<IResource>({
   name: { type: String, required: true },
   url: { type: String, required: true },
+  size: { type: Number, required: true },
+  createdAt: { type: Date, default: Date.now },
 });
 
 let ResourceModel: Model<IResource>;

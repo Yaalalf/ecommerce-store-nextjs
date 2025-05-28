@@ -21,6 +21,7 @@ export default class GoogleCloudService {
         file.name,
         path.extname(file.name)
       );
+
       const bytes = await file.arrayBuffer();
       const sharpImage = sharp(bytes);
       const imageMetadata = await sharpImage.metadata();
@@ -30,20 +31,22 @@ export default class GoogleCloudService {
       const webpImageBuffer = await sharpImage
         .resize(1080, 1080, { fit: "inside" })
         .webp({ quality: 75 })
-        .toBuffer();
+        .toBuffer({ resolveWithObject: true });
       fileName = fileNameWithoutExtName + ".webp";
       // const blobName = "";
       const blobName = await this.googleCloudStorageResources.uploadFile(
         `${this.baseUrlPath}${fileName}`,
-        Buffer.from(webpImageBuffer)
+        Buffer.from(webpImageBuffer.data)
       );
       publicUrl = util.format(
         `https://storage.googleapis.com/${this.googleCloudStorageResources.bucket.name}/${blobName}`
       );
+
+      return { publicUrl, fileName, size: webpImageBuffer.info.size };
     } catch (error) {
       console.error("Error uploading resource:", error);
     }
-    return { publicUrl, fileName };
+    return { publicUrl: "", fileName: "", size: 0 };
   }
   async deleteResource(filePath: string) {
     try {

@@ -1,4 +1,4 @@
-import { HTMLAttributes, ReactNode } from "react";
+import { HTMLAttributes, ReactNode, RefObject } from "react";
 import {
   AlignItems,
   FlexDirection,
@@ -24,6 +24,9 @@ export interface ITagNode<T extends IPTNode> {
     | { component: (props: T) => ReactNode; props: T }
     | Tag;
 }
+export interface IDomRef<T> {
+  ref: RefObject<T | null>;
+}
 
 export interface ITag {
   tag: ElementTag | ListTag | TextTag;
@@ -36,7 +39,7 @@ export interface IListTag {
   tag: ListTag;
 }
 export type Tag = ElementTag | ListTag | TextTag;
-export type ElementTag = "div" | "article" | "section" | "main";
+export type ElementTag = "div" | "article" | "section" | "main" | "button";
 export type ListTag = "ul" | "ol";
 export type TextTag = "p" | "span" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 

@@ -1,12 +1,12 @@
 import { Model } from "mongoose";
-import ResourceModel, { IResource } from "../models/resource";
+import ResourceModel, { IResource } from "../models/resources";
 
 export default class ResourceServices {
   public model: Model<IResource>;
   constructor() {
     this.model = ResourceModel;
   }
-  async getAllResources() {
+  async getAllResources(): Promise<IResource[] | undefined> {
     try {
       const resources = await ResourceModel.find({});
       return resources;
@@ -34,7 +34,17 @@ export default class ResourceServices {
       console.error(`Error en la operacion de guardar el recurso: ${error}`);
     }
   }
-
+  async updateResourceById(
+    filter: { _id: string },
+    update: Partial<Omit<IResource, "url">>
+  ) {
+    try {
+      const result = await ResourceModel.findOneAndUpdate(filter, update);
+      return result;
+    } catch (error) {
+      console.error(`Error en la operacion de editar el recurso: ${error}`);
+    }
+  }
   async deleteResourceById({ id }: { id: string }) {
     try {
       const result = await ResourceModel.findByIdAndDelete(id);

@@ -1,6 +1,7 @@
 "use client";
 import { Card, Column, H, List, StyledBox } from "@/lib/components";
 import HSub from "@/lib/components/blocks/headings/h-sub/h-sub";
+import Button from "@/lib/components/button";
 
 import {
   StyledBoxElevation,
@@ -8,6 +9,7 @@ import {
   StyledBoxVariant,
   TextVariant,
 } from "@/lib/types/css";
+import { FaPlusCircle } from "react-icons/fa";
 
 export default function TestPage() {
   const dataStyledBox: {
@@ -66,6 +68,11 @@ export default function TestPage() {
         align="center"
         gap="gap-[20px]"
       >
+        <Button
+          label="Search Files"
+          elevation="level-0"
+          icon={<FaPlusCircle />}
+        ></Button>
         <Column gap="gap-[20px]" className="w-[90%]">
           <H>Styled Box</H>
           <List

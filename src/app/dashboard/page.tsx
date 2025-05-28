@@ -1,7 +1,13 @@
+import { Column } from "@/lib/components";
+
 export default async function DashboardPage() {
   return (
-    <div className="DashboardPage">
-      <a href="/auth/login?returnTo=/dashboard/home">Login</a>
-    </div>
+    <>
+      <Column className="DashboardPage w-[100%] h-[100vh] items-center justify-center gap-8">
+        <a href="/auth/logout?returnTo=http://localhost:3000/dashboard">
+          Logout
+        </a>
+      </Column>
+    </>
   );
 }

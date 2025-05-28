@@ -1,3 +1,4 @@
+import { clsx } from "clsx";
 import "./style/base.css";
 import { IStyledBox } from "./types";
 
@@ -13,15 +14,17 @@ export default function StyledBox({
   ...domProps
 }: IStyledBox) {
   const Component = tag;
-
+  const componentClassName = clsx(
+    "styled-box",
+    variant,
+    severity,
+    className,
+    bordered && "bordered",
+    dense && "dense",
+    elevation && `elevated  ${elevation}`
+  );
   return (
-    <Component
-      {...domProps}
-      className={`${className} styled-box${bordered ? " bordered" : ""}${
-        dense ? " dense" : ""
-      } ${variant} ${severity}
-      ${elevation ? `elevated ${elevation}` : ""}`}
-    >
+    <Component {...domProps} className={componentClassName}>
       {children}
     </Component>
   );

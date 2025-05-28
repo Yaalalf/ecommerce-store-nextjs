@@ -1,7 +1,34 @@
 @import "tailwindcss";
 
 @theme static {
+  /*******************************PrimaryWatch***********************************************/
+  --color-base: #ededed;
+  --color-base-50: oklch(from var(--color-base) calc(l - 0.3) c h);
+  --color-base-100: oklch(from var(--color-base) calc(l - 0.2) c h);
+  --color-base-200: oklch(from var(--color-base) calc(l - 0.1) c h);
+  --color-base-300: oklch(from var(--color-base) calc(l - 0.06) c h);
+  --color-base-400: oklch(from var(--color-base) calc(l - 0.03) c h);
+  --color-base-500: oklch(from var(--color-base) l c h);
+  --color-base-600: oklch(from var(--color-base) calc(l + 0.03) c h);
+  --color-base-700: oklch(from var(--color-base) calc(l + 0.06) c h);
+  --color-base-800: oklch(from var(--color-base) calc(l + 0.1) c h);
+  --color-base-900: oklch(from var(--color-base) calc(l + 0.2) c h);
+  --color-base-950: oklch(from var(--color-base) calc(l + 0.3) c h);
+
   --color-primary: #8f5fef;
+
+  --color-primary-50: oklch(from var(--color-primary) calc(l - 0.3) c h);
+  --color-primary-100: oklch(from var(--color-primary) calc(l - 0.2) c h);
+  --color-primary-200: oklch(from var(--color-primary) calc(l - 0.1) c h);
+  --color-primary-300: oklch(from var(--color-primary) calc(l - 0.06) c h);
+  --color-primary-400: oklch(from var(--color-primary) calc(l - 0.03) c h);
+  --color-primary-500: oklch(from var(--color-primary) l c h);
+  --color-primary-600: oklch(from var(--color-primary) calc(l + 0.03) c h);
+  --color-primary-700: oklch(from var(--color-primary) calc(l + 0.06) c h);
+  --color-primary-800: oklch(from var(--color-primary) calc(l + 0.1) c h);
+  --color-primary-900: oklch(from var(--color-primary) calc(l + 0.2) c h);
+  --color-primary-950: oklch(from var(--color-primary) calc(l + 0.3) c h);
+
   --color-on-primary: #f6f1ff;
 
   --color-primary-container: #d8ccf0;

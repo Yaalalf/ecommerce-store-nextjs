@@ -1,6 +1,6 @@
 import type { Model, Types } from "mongoose";
 import { model, Schema } from "mongoose";
-import { IResource } from "./resource";
+import { IResource } from "./resources";
 
 export enum EProductStatus {
   ACTIVE = 1,

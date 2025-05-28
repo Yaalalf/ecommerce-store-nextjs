@@ -1,6 +1,7 @@
 import { IPTNode } from "@/lib/types/components-props";
 import Flex from "../flex";
 import { IColumnProps } from "./types";
+import clsx from "clsx";
 
 export default function Column<T extends IPTNode>({
   children,
@@ -13,6 +14,7 @@ export default function Column<T extends IPTNode>({
   reverse = false,
   ...domProps
 }: IColumnProps<T>) {
+  const columnClassName = clsx("column", className);
   return (
     <Flex
       {...{
@@ -24,7 +26,7 @@ export default function Column<T extends IPTNode>({
         ...domProps,
         direction: reverse ? "column-reverse" : "column",
       }}
-      className={`column ${className}`}
+      className={columnClassName}
     >
       {children}
     </Flex>

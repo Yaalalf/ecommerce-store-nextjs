@@ -7,8 +7,9 @@ import {
   flexWrapTailwind,
   justifyContentTailwind,
 } from "@/lib/utils/tailwind_utility";
+import { clsx } from "clsx";
 
-export default function Flex<T extends IPTNode>({
+export default function Flex<T extends IPTNode, RefType extends HTMLElement>({
   children,
   className = "",
   tag = "div",
@@ -17,26 +18,30 @@ export default function Flex<T extends IPTNode>({
   direction,
   gap,
   wrap,
+  ref,
   ...domProps
-}: IFlexProps<T>) {
+}: IFlexProps<T, RefType>) {
   const { component: Component, props: componentProps } = handleTagProp({
     tag,
   });
 
-  const classNameCompound =
-    (direction ? `${flexDirectionTailwind[direction]} ` : "") +
-    (wrap ? `${flexWrapTailwind[wrap]} ` : "") +
-    (justify ? `${justifyContentTailwind[justify]} ` : "") +
-    (align ? `${alignItemsTailwind[align]} ` : "") +
-    (gap || "");
+  const flexClassName = clsx(
+    className,
+    componentProps?.className,
+    direction && flexDirectionTailwind[direction],
+    wrap && flexWrapTailwind[wrap],
+    justify && justifyContentTailwind[justify],
+    align && alignItemsTailwind[align],
+    gap,
+    "flex"
+  );
 
   return (
     <Component
+      ref={ref}
       {...domProps}
       {...componentProps}
-      className={`${className} ${
-        componentProps?.className || ""
-      } flex ${classNameCompound}`}
+      className={flexClassName}
     >
       {children}
     </Component>

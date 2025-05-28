@@ -3,7 +3,7 @@
 import { CSSProperties, useEffect, useRef, useState } from "react";
 import "./style/base.css";
 import ImageLoader from "../next-component/image-loader";
-import { IResource } from "@/db/models/resource";
+import { IResource } from "@/db/models/resources";
 
 export default function Carrousel({
   className = "",
