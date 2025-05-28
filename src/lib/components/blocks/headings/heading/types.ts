@@ -20,7 +20,7 @@ export interface IHeadingSlots {
 
 interface IHeadingPT {
   root?: IPTNode;
-  headingContainer?: IColumnPTProps;
+  headingContainer?: IColumnPTProps<HTMLElement>;
   heading?: IHPTProps;
   subheading?: IHPTProps;
 }

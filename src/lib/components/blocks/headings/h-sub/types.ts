@@ -23,7 +23,7 @@ export interface IHSubSlots {
 }
 
 interface IPTHSub {
-  container?: IColumnPTProps;
+  container?: IColumnPTProps<HTMLElement>;
   heading?: IHPTProps;
   subheading?: IHPTProps;
 }
