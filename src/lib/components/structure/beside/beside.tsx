@@ -3,7 +3,7 @@ import { Flex } from "../../layout";
 import { IBeside } from "./types";
 import { clsx } from "clsx";
 
-export default function Beside<T extends IPTNode>({
+export default function Beside<T extends IPTNode, RefType extends HTMLElement>({
   slotAfter,
   slotBefore,
   tag,
@@ -15,7 +15,7 @@ export default function Beside<T extends IPTNode>({
   children,
   className = "",
   ...domProps
-}: IBeside<T>) {
+}: IBeside<T, RefType>) {
   const besideClassName = clsx("beside", className);
 
   return (

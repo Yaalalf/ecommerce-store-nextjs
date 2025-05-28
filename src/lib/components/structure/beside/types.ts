@@ -2,8 +2,8 @@ import { ReactNode } from "react";
 import { IFlexProps } from "../../layout/flex/types";
 import { IPTNode } from "@/lib/types/components-props";
 
-export interface IBeside<T extends IPTNode>
-  extends IFlexProps<T>,
+export interface IBeside<T extends IPTNode, RefType extends HTMLElement>
+  extends IFlexProps<T, RefType>,
     Partial<IBesideSlots> {}
 
 export interface IBesideSlots {
