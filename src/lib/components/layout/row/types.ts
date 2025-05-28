@@ -1,10 +1,10 @@
 import { IPTNode, IReverse } from "@/lib/types/components-props";
 import { IFlexProps, IFlexPTProps } from "../flex/types";
 
-export interface IRowProps<T extends IPTNode>
-  extends Omit<IFlexProps<T>, "direction">,
+export interface IRowProps<T extends IPTNode, RefType extends HTMLElement>
+  extends Omit<IFlexProps<T, RefType>, "direction">,
     Partial<IReverse> {}
 
-export interface IRowPTProps
-  extends Omit<IFlexPTProps, "direction">,
+export interface IRowPTProps<RefType extends HTMLElement>
+  extends Omit<IFlexPTProps<RefType>, "direction">,
     Partial<IReverse> {}

@@ -3,7 +3,7 @@ import Flex from "../flex";
 import { IRowProps } from "./types";
 import { clsx } from "clsx";
 
-export default function Row<T extends IPTNode>({
+export default function Row<T extends IPTNode, RefType extends HTMLElement>({
   children,
   className = "",
   tag,
@@ -13,7 +13,7 @@ export default function Row<T extends IPTNode>({
   wrap,
   reverse = false,
   ...domProps
-}: IRowProps<T>) {
+}: IRowProps<T, RefType>) {
   const rowClassName = clsx("row", className);
 
   return (

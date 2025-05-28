@@ -3,7 +3,7 @@ import Flex from "../flex";
 import { IColumnProps } from "./types";
 import clsx from "clsx";
 
-export default function Column<T extends IPTNode>({
+export default function Column<T extends IPTNode, RefType extends HTMLElement>({
   children,
   className = "",
   tag,
@@ -13,7 +13,7 @@ export default function Column<T extends IPTNode>({
   wrap,
   reverse = false,
   ...domProps
-}: IColumnProps<T>) {
+}: IColumnProps<T, RefType>) {
   const columnClassName = clsx("column", className);
   return (
     <Flex
