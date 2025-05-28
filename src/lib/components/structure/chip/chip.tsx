@@ -3,7 +3,7 @@ import Beside from "../beside";
 import { IChipProps } from "./types";
 import { IPTNode } from "@/lib/types/components-props";
 
-export default function Chip<T extends IPTNode>({
+export default function Chip<T extends IPTNode, RefType extends HTMLElement>({
   className = "",
   tag = "span",
   align = "center",
@@ -14,7 +14,7 @@ export default function Chip<T extends IPTNode>({
   slotAction,
   variant = "filled",
   ...domProps
-}: IChipProps<T>) {
+}: IChipProps<T, RefType>) {
   return (
     <Beside
       {...domProps}

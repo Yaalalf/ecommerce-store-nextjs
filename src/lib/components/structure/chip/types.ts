@@ -2,8 +2,8 @@ import { IPTNode } from "@/lib/types/components-props";
 import { ReactNode } from "react";
 import { IFlexProps } from "../../layout/flex/types";
 
-export interface IChipProps<T extends IPTNode>
-  extends Omit<IFlexProps<T>, "direction">,
+export interface IChipProps<T extends IPTNode, RefType extends HTMLElement>
+  extends Omit<IFlexProps<T, RefType>, "direction">,
     Partial<IChipSlots> {
   variant?: ChipVariant;
 }
