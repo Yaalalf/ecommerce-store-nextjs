@@ -1,5 +1,0 @@
-.image_loader .image_loader_loading {
-  border-radius: 4px;
-
-  animation: skeleton-animation 1.5s ease-in-out infinite;
-}

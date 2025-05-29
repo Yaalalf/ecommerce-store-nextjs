@@ -31,7 +31,6 @@ export function formatBytes(bytes: number, decimals: number = 2): string {
   // Calculamos el índice de la unidad apropiada usando logaritmos.
   // Esto nos dice cuántas veces podemos dividir los bytes por 1024 antes de que sean menores que 1024.
   const i = Math.floor(Math.log(bytes) / Math.log(k));
-  console.log("Logaritmo: ", i);
   // Formateamos el número y concatenamos la unidad.
   // bytes / (k elevado a la potencia i) nos da el valor en la unidad correcta.
   // toFixed(dm) lo redondea a los decimales deseados.

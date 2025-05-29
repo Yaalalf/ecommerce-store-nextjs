@@ -1,50 +1,37 @@
-import { auth0 } from "@/auth/auth0";
-import connectDB from "@/db/connection";
+"use server";
+
+import { IResource } from "@/db/models/resources";
 import ResourceServices from "@/db/services/resourceServices";
 import { GoogleCloudService } from "@/services/cloud";
+import { sanitatedClientData } from "@/utils/util";
 import { formDataSchema } from "@/utils/validations/form-data-images";
-import { NextResponse, type NextRequest } from "next/server";
 import sharp from "sharp";
 
-// Desactivar el body parser interno de Next.js
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
-
-export async function POST(request: NextRequest) {
-  const session = await auth0.getSession();
-  if (Boolean(process.env.ACTIVE_AUTH)) {
-    if (session) {
-      return await saveResource(request);
-    } else {
-      return NextResponse.json({ status: 401, message: "Unauthorized" });
-    }
-  } else {
-    return await saveResource(request);
-  }
+export async function getAllResources() {
+  const { getAllResources } = new ResourceServices();
+  return sanitatedClientData(await getAllResources());
 }
 
-async function saveResource(request: NextRequest) {
+export async function createResource(files: FileList) {
   // Init google cloud service and mongoose connection
-  await connectDB();
+
   const gcService = new GoogleCloudService();
-  const resourceServices = new ResourceServices();
+  const { addResource, getAllResources } = new ResourceServices();
 
   // Get the form data from the request and get the images of the data
-  const formData = await request.formData();
-  const images = formData.getAll("images") as File[];
+
+  const images = files;
 
   try {
     const validatedImages = formDataSchema.parse({ images });
     console.info("Datos validados:", validatedImages);
   } catch (error) {
     console.error("Error de validación:", error);
-    return NextResponse.json({
+    return {
       status: 200,
+      data: [],
       message: "Error in the images",
-    });
+    };
   }
   const bytes = await images[0].arrayBuffer();
   const sharpImage = sharp(bytes);
@@ -66,7 +53,7 @@ async function saveResource(request: NextRequest) {
         const { publicUrl, fileName, size } = await gcService.uploadResource(
           image
         );
-        resourceServices.addResource({
+        addResource({
           name: fileName,
           url: publicUrl,
           size,
@@ -77,15 +64,46 @@ async function saveResource(request: NextRequest) {
     }
 
     if (wasDuplicate) {
-      console.info("File already exists");
-      return NextResponse.json({
+      return {
         status: 200,
+        data: [],
         message: "files already exist",
-      });
+      };
     } else {
-      return NextResponse.json({ status: 200, message: "All Images Saves" });
+      return {
+        status: 200,
+        data: sanitatedClientData(await getAllResources()) as IResource[],
+        message: "All Images Saves",
+      };
     }
   } catch (error) {
-    return NextResponse.json({ status: 500, message: error });
+    return { status: 500, data: [], message: error };
+  }
+}
+
+export async function deleteResource(id: string) {
+  const gcService = new GoogleCloudService();
+
+  const { deleteResourceById, getResourceById, getAllResources } =
+    new ResourceServices();
+
+  const resource = await getResourceById({ id });
+
+  if (resource) {
+    try {
+      await gcService.deleteResource(resource.name);
+      await deleteResourceById({ id });
+
+      return sanitatedClientData({
+        status: 200,
+        data: sanitatedClientData(await getAllResources()) as IResource[],
+        message: "All Images Saves",
+      });
+    } catch (error) {
+      console.error("Error in delete: " + error);
+      return { status: 500, data: [], message: "Error in delete operation" };
+    }
+  } else {
+    return { status: 200, data: [], message: "The resource not exist" };
   }
 }

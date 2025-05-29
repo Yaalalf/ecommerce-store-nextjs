@@ -10,21 +10,33 @@ export default function FileInput({
   apiUrl,
   icon,
   label,
+  onChange,
 }: IFileInputProps) {
   const [isLoading, setIsLoading] = useState(false);
 
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
-  function handleFileChange(event: ChangeEvent<HTMLInputElement>) {
+  async function handleFileChange(event: ChangeEvent<HTMLInputElement>) {
     setIsLoading(true);
     if (event.target.files && event.target.files.length > 0) {
-      handleUpload(event.target.files);
+      if (onChange) {
+        await onChange(event.target.files);
+      } else {
+        await new Promise((resolve, reject) => {
+          handleUpload(event.target.files as FileList, resolve, reject);
+        });
+      }
     } else {
       console.error("No files selected");
     }
+    setIsLoading(false);
   }
 
-  function handleUpload(files: FileList) {
+  async function handleUpload(
+    files: FileList,
+    resolve: (value: unknown) => void,
+    reject: (reason?: Error) => void
+  ) {
     const formData = new FormData();
 
     for (const file of files) {
@@ -34,11 +46,17 @@ export default function FileInput({
 
     req.addEventListener("load", () => {
       try {
+        resolve({
+          status: req.status,
+          statusText: req.statusText,
+          responseText: req.responseText,
+          response: req.response,
+        });
         console.log(JSON.parse(req.response));
       } catch (error) {
+        reject(error as Error);
         console.error(error);
       } finally {
-        setIsLoading(false);
       }
     });
     req.open("POST", apiUrl);

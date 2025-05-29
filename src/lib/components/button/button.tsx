@@ -28,53 +28,59 @@ export default function Button({
 
   const variantSurfaceBaseClassName = {
     buttonContainer: clsx("hover:bg-base-500"),
+    buttonLoading: "",
   };
   const variantSurfacePrimaryClassName = {
     buttonContainer: clsx("hover:bg-primary-400"),
+    buttonLoading: clsx("bg-primary"),
+  };
+  const variantSurfaceErrorContainerClassName = {
+    buttonContainer: clsx(""),
+    buttonLoading: clsx("bg-error-container"),
   };
   const variantSurfaceSeverityClassName = {
     base: variantSurfaceBaseClassName,
     primary: variantSurfacePrimaryClassName,
-    "primary-container": { buttonContainer: "" },
-    error: { buttonContainer: "" },
-    "error-container": { buttonContainer: "" },
+    "primary-container": { buttonContainer: "", buttonLoading: "" },
+    error: { buttonContainer: "", buttonLoading: "" },
+    "error-container": variantSurfaceErrorContainerClassName,
   };
   const variantsClassName = {
     surface: variantSurfaceSeverityClassName,
     outlined: {
-      base: { buttonContainer: "" },
-      primary: { buttonContainer: "" },
-      "primary-container": { buttonContainer: "" },
-      error: { buttonContainer: "" },
-      "error-container": { buttonContainer: "" },
+      base: { buttonContainer: "", buttonLoading: "" },
+      primary: { buttonContainer: "", buttonLoading: "" },
+      "primary-container": { buttonContainer: "", buttonLoading: "" },
+      error: { buttonContainer: "", buttonLoading: "" },
+      "error-container": { buttonContainer: "", buttonLoading: "" },
     },
     flatted: {
-      base: { buttonContainer: "" },
-      primary: { buttonContainer: "" },
-      "primary-container": { buttonContainer: "" },
-      error: { buttonContainer: "" },
-      "error-container": { buttonContainer: "" },
+      base: { buttonContainer: "", buttonLoading: "" },
+      primary: { buttonContainer: "", buttonLoading: "" },
+      "primary-container": { buttonContainer: "", buttonLoading: "" },
+      error: { buttonContainer: "", buttonLoading: "" },
+      "error-container": { buttonContainer: "", buttonLoading: "" },
     },
     elevated: {
-      base: { buttonContainer: "" },
-      primary: { buttonContainer: "" },
-      "primary-container": { buttonContainer: "" },
-      error: { buttonContainer: "" },
-      "error-container": { buttonContainer: "" },
+      base: { buttonContainer: "", buttonLoading: "" },
+      primary: { buttonContainer: "", buttonLoading: "" },
+      "primary-container": { buttonContainer: "", buttonLoading: "" },
+      error: { buttonContainer: "", buttonLoading: "" },
+      "error-container": { buttonContainer: "", buttonLoading: "" },
     },
     ghost: {
-      base: { buttonContainer: "" },
-      primary: { buttonContainer: "" },
-      "primary-container": { buttonContainer: "" },
-      error: { buttonContainer: "" },
-      "error-container": { buttonContainer: "" },
+      base: { buttonContainer: "", buttonLoading: "" },
+      primary: { buttonContainer: "", buttonLoading: "" },
+      "primary-container": { buttonContainer: "", buttonLoading: "" },
+      error: { buttonContainer: "", buttonLoading: "" },
+      "error-container": { buttonContainer: "", buttonLoading: "" },
     },
     "outlined-ghost": {
-      base: { buttonContainer: "" },
-      primary: { buttonContainer: "" },
-      "primary-container": { buttonContainer: "" },
-      error: { buttonContainer: "" },
-      "error-container": { buttonContainer: "" },
+      base: { buttonContainer: "", buttonLoading: "" },
+      primary: { buttonContainer: "", buttonLoading: "" },
+      "primary-container": { buttonContainer: "", buttonLoading: "" },
+      error: { buttonContainer: "", buttonLoading: "" },
+      "error-container": { buttonContainer: "", buttonLoading: "" },
     },
   };
 
@@ -87,6 +93,12 @@ export default function Button({
     "button-action",
     "hover:cursor-pointer relative  gap-1",
     dense ? "py-2 px-2" : "px-4 py-2"
+  );
+
+  const loadingClassName = clsx(
+    "button-loading",
+    "absolute top-0 left-0 w-full h-full ",
+    variantsClassName[variant][severity].buttonLoading
   );
 
   return (
@@ -115,7 +127,7 @@ export default function Button({
       </Flex>
 
       {loading && (
-        <Center className="button-spinner absolute top-0 left-0 w-full h-full bg-primary">
+        <Center className={loadingClassName}>
           <MltShdSpin />
         </Center>
       )}

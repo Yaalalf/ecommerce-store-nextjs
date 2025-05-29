@@ -6,4 +6,5 @@ export interface IFileInputProps extends Partial<IClassName> {
   icon?: ReactNode;
   multiple?: boolean;
   apiUrl: string;
+  onChange?: (files: FileList) => Promise<void>;
 }

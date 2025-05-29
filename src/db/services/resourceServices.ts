@@ -23,7 +23,7 @@ export default class ResourceServices {
       console.error(`Error en la operacion de obtener los recursos: ${error}`);
     }
   }
-  async addResource(resource: IResource) {
+  async addResource(resource: Omit<IResource, "_id">) {
     try {
       const resourceDocument = new ResourceModel(resource);
       const resultDocument = await resourceDocument.save({

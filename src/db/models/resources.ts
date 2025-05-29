@@ -2,6 +2,7 @@ import type { Model } from "mongoose";
 import { model, Schema } from "mongoose";
 
 export interface IResource {
+  _id: string;
   name: string;
   url: string;
   size: number;
