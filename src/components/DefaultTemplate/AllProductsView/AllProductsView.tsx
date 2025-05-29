@@ -29,7 +29,7 @@ export default function AllProductsView({
     {
       _id: "all",
       title: "All",
-      media: { name: "", url: "", size: 0 },
+      media: { _id: "", name: "", url: "", size: 0 },
       description: "",
       products: [],
     },
