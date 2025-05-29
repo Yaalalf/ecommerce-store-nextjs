@@ -60,8 +60,8 @@ export default function ResourcesView({
               ></ImageLoader>
               <Column className="gap-1">
                 <T type="span" className="text-primary-100 font-[500]">
-                  {getFileNameAndExtension(item.name).name.length > 30
-                    ? getFileNameAndExtension(item.name).name.substring(0, 30) +
+                  {getFileNameAndExtension(item.name).name.length > 20
+                    ? getFileNameAndExtension(item.name).name.substring(0, 20) +
                       "..."
                     : getFileNameAndExtension(item.name).name}
                 </T>
