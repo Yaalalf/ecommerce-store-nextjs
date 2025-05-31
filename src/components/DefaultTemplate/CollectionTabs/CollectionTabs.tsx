@@ -1,88 +1,61 @@
-"useClient";
+"use client";
 
 import "./style/base.css";
 import { ICollectionPopulated } from "@/db/models/collections";
-import { Column, List } from "@/lib/components";
+import { Column } from "@/lib/components";
 import ImageLoader from "@/lib/components/misc/next-component/image-loader";
-import VisibilityObserver from "@/lib/components/misc/visibility-observer/visibility-observer";
+import NColumn from "@/lib/components/structure/n-column";
 import { H } from "@/lib/components/text";
 import Link from "next/link";
-import { useState } from "react";
-import { FaStore } from "react-icons/fa";
 
 export default function CollectionTabs({
   collections,
-  selectedIndex,
   onTab,
 }: {
   collections: ICollectionPopulated[];
-  selectedIndex: number;
   onTab?: (collection: ICollectionPopulated, index: number) => void;
 }) {
-  const [isMiniState, setIsMiniState] = useState(false);
-
   return (
     <>
-      <VisibilityObserver
-        className="CollectionTabsIntersector"
-        onVisibility={(entry) => {
-          setIsMiniState(!entry.isIntersecting);
-        }}
-      />
-      <Column
-        className={`CollectionTabs ${isMiniState ? "mini" : ""}`}
-        gap="gap-[8px]"
-      >
-        {isMiniState || (
-          <H type="h2" className="CollectionTabsHeader">
-            Categorias
-          </H>
-        )}
-        <List
+      <Column className={`CollectionTabs`} gap="gap-[8px]">
+        <H type="h2" className="CollectionTabsHeader">
+          Categorias
+        </H>
+        <NColumn
           data={collections}
           className="CollectionTabsList"
-          gap="gap-[12px]"
+          columns={2}
+          columnsGap="gap-4"
+          itemsGap="gap-4"
         >
           {(collection, index) => (
-            <Link
-              href={
-                collection._id === "all"
-                  ? "/categories"
-                  : `/categories/${collection._id}`
-              }
-            >
+            <Link href={`/categories/${collection._id}`}>
               <Column
-                className={`CollectionTabsListItem ${
-                  selectedIndex === index ? "selected" : ""
-                }`}
+                className={`CollectionTabsListItem`}
                 align="center"
                 justify="space-between"
+                gap="gap-2"
                 onClick={() => {
                   if (onTab) {
                     onTab(collections[index], index);
                   }
                 }}
               >
-                {index != 0 ? (
-                  <ImageLoader
-                    className="CollectionTabsListItemImage"
-                    src={collection.media.url}
-                    alt={collection.media.name}
-                    width={500}
-                    height={500}
-                  />
-                ) : (
-                  <FaStore className="CollectionTabsListItemInitIcon" />
-                )}
-                {isMiniState || (
-                  <H type="h5" className="CollectionTabsListItemLabel">
-                    {collection.title}
-                  </H>
-                )}
+                <ImageLoader
+                  className="CollectionTabsListItemImage"
+                  src={collection.media.url}
+                  alt={collection.media.name}
+                  width={80}
+                  height={80}
+                />
+
+                <H type="h5" className="CollectionTabsListItemLabel">
+                  {collection.title}
+                </H>
               </Column>
             </Link>
           )}
-        </List>
+        </NColumn>
       </Column>
     </>
   );

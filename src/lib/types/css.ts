@@ -40,13 +40,8 @@ export type TextVariantWeb = "hero";
 
 export type TextAlign = "start" | "center" | "end" | "justify";
 
-export type StyledBoxVariant =
-  | "surface"
-  | "outlined"
-  | "flatted"
-  | "elevated"
-  | "ghost"
-  | "outlined-ghost";
+export type StyledBoxVariant = "surface" | "outlined" | "flatted";
+
 export type StyledBoxSeverity =
   | "base"
   | "primary"
@@ -59,3 +54,5 @@ export type StyledBoxElevation =
   | "level-2"
   | "level-3"
   | "level-4";
+
+export type StyledBoxRounded = "none" | "sm" | "md" | "lg" | "xl" | "full";

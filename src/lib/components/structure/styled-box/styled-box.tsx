@@ -1,30 +1,35 @@
-import { clsx } from "clsx";
-import "./style/base.css";
 import { IStyledBox } from "./types";
+import useStyledBox from "./useStyledBox";
+import { twMerge } from "tailwind-merge";
 
 export default function StyledBox({
   children,
   className = "",
   tag = "div",
+
+  variant,
+  severity,
+  rounded,
   bordered,
   dense,
   elevation,
-  variant = "surface",
-  severity = "base",
   ...domProps
 }: IStyledBox) {
   const Component = tag;
-  const componentClassName = clsx(
-    "styled-box",
+  void bordered;
+  const boxStyles = useStyledBox()({
     variant,
     severity,
-    className,
-    bordered && "bordered",
-    dense && "dense",
-    elevation && `elevated  ${elevation}`
-  );
+    dense,
+    elevation,
+    rounded,
+  });
+
   return (
-    <Component {...domProps} className={componentClassName}>
+    <Component
+      {...domProps}
+      className={twMerge(boxStyles, "styled-box", className)}
+    >
       {children}
     </Component>
   );

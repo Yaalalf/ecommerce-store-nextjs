@@ -1,31 +1,17 @@
-.CollectionTabsIntersector {
-  block-size: 128px;
-  inline-size: 100%;
-  position: absolute;
-  top: 210px;
-  left: 0px;
-}
-
 .CollectionTabs {
   inline-size: 100%;
   padding-block: 12px;
-  position: sticky;
-  top: 0px;
-  left: 0px;
 
   background-color: white;
-  z-index: 1000000000;
 }
 .CollectionTabs,
 .CollectionTabs * {
   transition: all linear 200ms;
 }
-.CollectionTabs.mini {
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.247);
-}
+
 .CollectionTabs .CollectionTabsHeader {
-  font-size: 16px;
-  line-height: 16px;
+  font-size: 20px;
+  line-height: 32px;
   font-weight: 600;
   padding-inline: 12px;
 }
@@ -48,10 +34,7 @@
 }
 
 .CollectionTabs .CollectionTabsListItem {
-  inline-size: 80px;
-  block-size: 80px;
-
-  padding-block: 8px;
+  padding-block: 20px;
   padding-inline: 8px;
   border-radius: 12px;
   background-color: rgb(222, 222, 222);
@@ -59,41 +42,17 @@
   scroll-snap-align: start; /* también puedes usar center o end */
 }
 
-.CollectionTabs.mini .CollectionTabsListItem {
-  inline-size: 40px;
-  block-size: 40px;
-
-  padding-block: 8px;
-  padding-inline: 8px;
-  border-radius: 8px;
-}
-.CollectionTabs .CollectionTabsListItem.selected {
-  background-color: rgb(255, 255, 255);
-  border: 1px solid rgb(96, 96, 96);
-}
-
 .CollectionTabs .CollectionTabsListItem .CollectionTabsListItemImage {
   inline-size: 100%;
-  block-size: 48px;
+  block-size: 80px;
 }
 .CollectionTabs .CollectionTabsListItem .CollectionTabsListItemImage img {
   object-fit: contain;
 }
 
-.CollectionTabs .CollectionTabsListItem .CollectionTabsListItemInitIcon {
-  inline-size: 100%;
-  block-size: 60px;
-  padding-block: 8px;
-  color: #8f5fef;
-}
-.CollectionTabs.mini .CollectionTabsListItem .CollectionTabsListItemInitIcon {
-  inline-size: 100%;
-  block-size: 60px;
-  padding-block: 0px;
-}
 .CollectionTabs .CollectionTabsListItem .CollectionTabsListItemLabel {
-  inline-size: 60px;
-  font-size: 12px;
+  inline-size: 120px;
+  font-size: 14px;
   line-height: 14px;
   text-align: center;
   text-wrap: nowrap;

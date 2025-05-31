@@ -30,12 +30,12 @@ export default function MainHeader({
       <header className={`MainHeader ${isMiniState ? "mini" : ""}`}>
         <Column className="Center" align="center" gap="gap-[4px]">
           <H className="Header" type="h1">
-            Catálogo de Olivia Shop
+            Catalogo Olivia Shop
             {isMiniState && <FaBagShopping className="Icon" />}
           </H>
           {isMiniState || (
             <H className="SubHeader" type="h2">
-              {slotsH2 || <>Todos nuestros productos en un solo lugar</>}
+              {slotsH2 || <>La mejor moda de Cuba</>}
             </H>
           )}
           {isMiniState || (
@@ -45,7 +45,7 @@ export default function MainHeader({
             >
               {slotsH3 || (
                 <>
-                  <FiPlusCircle /> de 100 productos para tu confort y calidad
+                  <FiPlusCircle /> de 300 productos en tendencia de alta calidad
                 </>
               )}
             </Chip>

@@ -5,7 +5,7 @@ import { IStyledBoxStyleProps } from "../structure/styled-box/types";
 export interface IButtonProps
   extends Partial<IChildren>,
     Partial<IClassName>,
-    Partial<IStyledBoxStyleProps> {
+    Partial<IStyledButtonProps> {
   label?: string;
   icon?: ReactNode;
   loading?: boolean;
@@ -13,4 +13,8 @@ export interface IButtonProps
   rightIcon?: ReactNode;
 
   onClick?: (evt: MouseEvent) => void;
+}
+
+export interface IStyledButtonProps extends IStyledBoxStyleProps {
+  size: "xs" | "sm" | "md";
 }

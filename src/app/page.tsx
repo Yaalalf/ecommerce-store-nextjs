@@ -7,16 +7,11 @@ import PromotionalServices from "@/db/services/promotionalsServices";
 import { sanitatedClientData } from "@/utils/util";
 import { headers } from "next/headers";
 
-export default async function HomePage({
-  searchParams,
-}: {
-  searchParams: Promise<{ categoryIndex?: number }>;
-}) {
+export default async function HomePage() {
   const headersList = await headers();
   const userAgent = headersList.get("user-agent") as string;
 
   const isMobile = userAgent.match("Mobile");
-  const categoryIndex = (await searchParams).categoryIndex;
 
   const { getAllProducts } = new ProductServices();
   const { getAllPromotionals } = new PromotionalServices();
@@ -33,7 +28,6 @@ export default async function HomePage({
           products={products}
           collections={collections}
           promotionals={promotionals}
-          categoryIndex={categoryIndex ? Number(categoryIndex) : 0}
           isMobile={Boolean(isMobile)}
         />
       </div>

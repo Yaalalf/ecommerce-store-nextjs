@@ -7,11 +7,9 @@ import { useEffect, useState } from "react";
 
 export default function ProductList({
   products,
-  selectedIndex,
   isMobile,
 }: {
   products: IProductPopulated[];
-  selectedIndex: number;
   isMobile?: boolean;
 }) {
   const [isMobileFirst, setIsMobile] = useState(isMobile);
@@ -33,10 +31,7 @@ export default function ProductList({
       columns={isMobileFirst ? 2 : 5}
     >
       {(product) => (
-        <Link
-          className="ProductLink"
-          href={`/products/${product._id}?categoryIndex=${selectedIndex}`}
-        >
+        <Link className="ProductLink" href={`/products/${product._id}`}>
           <ProductCard product={product} key={product.title} />
         </Link>
       )}

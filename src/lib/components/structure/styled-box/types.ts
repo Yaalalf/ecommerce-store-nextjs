@@ -5,6 +5,7 @@ import {
 } from "@/lib/types/components-props";
 import {
   StyledBoxElevation,
+  StyledBoxRounded,
   StyledBoxSeverity,
   StyledBoxVariant,
 } from "@/lib/types/css";
@@ -23,4 +24,5 @@ export interface IStyledBoxStyleProps {
   variant: StyledBoxVariant;
   severity: StyledBoxSeverity;
   elevation: StyledBoxElevation;
+  rounded: StyledBoxRounded;
 }

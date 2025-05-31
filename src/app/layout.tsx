@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import connectDB from "@/db/connection";
+import { NotificationProvider } from "@/lib/components/notification/notification-context";
 
 //Initialize MongoDB Connection
 await connectDB();
@@ -20,7 +21,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`antialiased`}>{children}</body>
+      <body className={`antialiased`}>
+        <NotificationProvider>{children}</NotificationProvider>
+      </body>
     </html>
   );
 }
