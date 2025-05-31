@@ -1,6 +1,8 @@
 "use server";
+// TODO: falta agregar un mecanismo para transacciones y poder hacer rollback
 
 import { auth0 } from "@/auth/auth0";
+import connectDB from "@/db/connection";
 import { IResource } from "@/db/models/resources";
 import ResourceServices from "@/db/services/resourceServices";
 import { GoogleCloudService } from "@/services/cloud";
@@ -27,6 +29,17 @@ export async function createResource(files: FileList): Promise<{
     };
   }
 
+  try {
+    await connectDB();
+  } catch (error) {
+    console.error("Error tratando de conectar a la base de datos: " + error);
+    return {
+      status: 403,
+      data: null,
+      message:
+        "Error en la operacion de crear el recurso por favor intentalo de nuevo",
+    };
+  }
   // Get the form data from the request and get the images of the data
   const images = files;
 
@@ -99,6 +112,18 @@ export async function deleteResource(id: string): Promise<{
       status: 403,
       data: null,
       message: "No estas autorizado para acceder a este recurso",
+    };
+  }
+
+  try {
+    await connectDB();
+  } catch (error) {
+    console.error("Error tratando de conectar a la base de datos: " + error);
+    return {
+      status: 403,
+      data: null,
+      message:
+        "Error en la operacion de eliminar el recurso por favor intentalo de nuevo",
     };
   }
 
