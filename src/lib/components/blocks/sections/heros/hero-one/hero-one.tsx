@@ -19,7 +19,7 @@ export default function HeroOne({ className }: { className?: string }) {
             },
           }}
         />
-        <T textVariant="body1" size="high">
+        <T textVariant="body1" size="lg">
           Transformamos tus ideas más ambiciosas en soluciones de software
           robustas y escalables. Todo lo que necesitas en un solo lugar.
         </T>
