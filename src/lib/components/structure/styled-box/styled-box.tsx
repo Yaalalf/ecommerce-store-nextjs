@@ -1,5 +1,5 @@
 import { IStyledBox } from "./types";
-import useStyledBox from "./useStyledBox";
+import useStyledBox from "./use-styled-box";
 import { twMerge } from "tailwind-merge";
 
 export default function StyledBox({

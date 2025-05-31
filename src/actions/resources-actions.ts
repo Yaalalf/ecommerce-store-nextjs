@@ -1,25 +1,33 @@
 "use server";
 
+import { auth0 } from "@/auth/auth0";
 import { IResource } from "@/db/models/resources";
 import ResourceServices from "@/db/services/resourceServices";
 import { GoogleCloudService } from "@/services/cloud";
 import { sanitatedClientData } from "@/utils/util";
 import { formDataSchema } from "@/utils/validations/form-data-images";
-import sharp from "sharp";
 
 export async function getAllResources() {
   const { getAllResources } = new ResourceServices();
   return sanitatedClientData(await getAllResources());
 }
 
-export async function createResource(files: FileList) {
-  // Init google cloud service and mongoose connection
+export async function createResource(files: FileList): Promise<{
+  status: number;
+  data: (string | IResource)[] | null;
+  message: string;
+}> {
+  const session = await auth0.getSession();
 
-  const gcService = new GoogleCloudService();
-  const { addResource, getAllResources } = new ResourceServices();
+  if (!session) {
+    return {
+      status: 403,
+      data: null,
+      message: "No estas autorizado para acceder a este recurso",
+    };
+  }
 
   // Get the form data from the request and get the images of the data
-
   const images = files;
 
   try {
@@ -28,82 +36,97 @@ export async function createResource(files: FileList) {
   } catch (error) {
     console.error("Error de validación:", error);
     return {
-      status: 200,
-      data: [],
-      message: "Error in the images",
+      status: 403,
+      data: null,
+      message: "Revisa los archivos, al parecer algunos no son imagenes",
     };
   }
-  const bytes = await images[0].arrayBuffer();
-  const sharpImage = sharp(bytes);
 
-  const webpImageBuffer = await sharpImage
-    .resize(1080, 1080, { fit: "inside" })
-    .webp({ quality: 75 })
-    .toBuffer({ resolveWithObject: true });
+  // Init google cloud service and mongoose connection
 
-  console.log(webpImageBuffer.info.size);
+  const gcService = new GoogleCloudService();
+  const { addResource } = new ResourceServices();
 
   // Safe the image in google cloud and retrieve the url
   try {
-    let wasDuplicate = false;
+    const processedFiles: (string | IResource)[] = [];
+
     for (const image of images) {
       const isFileInCloud = await gcService.existResource(image, true);
 
-      if (!isFileInCloud) {
+      if (isFileInCloud) {
+        processedFiles.push(image.name);
+      } else {
         const { publicUrl, fileName, size } = await gcService.uploadResource(
           image
         );
-        addResource({
+
+        const resource = await addResource({
           name: fileName,
           url: publicUrl,
           size,
         });
-      } else {
-        wasDuplicate = true;
+        if (resource) {
+          processedFiles.push(resource);
+        }
       }
     }
-
-    if (wasDuplicate) {
-      return {
-        status: 200,
-        data: [],
-        message: "files already exist",
-      };
-    } else {
-      return {
-        status: 200,
-        data: sanitatedClientData(await getAllResources()) as IResource[],
-        message: "All Images Saves",
-      };
-    }
+    return {
+      status: 200,
+      data: sanitatedClientData(processedFiles),
+      message: "All Images Saves",
+    };
   } catch (error) {
-    return { status: 500, data: [], message: error };
+    console.error(error);
+    return {
+      status: 403,
+      data: null,
+      message:
+        "Error en la operacion de crear el recurso por favor intentalo de nuevo",
+    };
   }
 }
 
-export async function deleteResource(id: string) {
+export async function deleteResource(id: string): Promise<{
+  status: number;
+  data: IResource | null;
+  message: string;
+}> {
+  const session = await auth0.getSession();
+
+  if (!session) {
+    return {
+      status: 403,
+      data: null,
+      message: "No estas autorizado para acceder a este recurso",
+    };
+  }
+
   const gcService = new GoogleCloudService();
 
-  const { deleteResourceById, getResourceById, getAllResources } =
-    new ResourceServices();
+  const { deleteResourceById, getResourceById } = new ResourceServices();
 
   const resource = await getResourceById({ id });
 
   if (resource) {
     try {
       await gcService.deleteResource(resource.name);
-      await deleteResourceById({ id });
+      const result = await deleteResourceById({ id });
 
       return sanitatedClientData({
         status: 200,
-        data: sanitatedClientData(await getAllResources()) as IResource[],
-        message: "All Images Saves",
+        data: sanitatedClientData(result),
+        message: "Recurso eliminado correctamente",
       });
     } catch (error) {
-      console.error("Error in delete: " + error);
-      return { status: 500, data: [], message: "Error in delete operation" };
+      console.error("Error eliminando el recurso: " + error);
+      return {
+        status: 403,
+        data: null,
+        message: "Error eliminando el recurso",
+      };
     }
   } else {
-    return { status: 200, data: [], message: "The resource not exist" };
+    return { status: 403, data: null, message: "El recurso no existe" };
   }
 }

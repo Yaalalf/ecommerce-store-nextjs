@@ -9,6 +9,8 @@ import Heading from "../blocks/headings/heading";
 import Button from "../button";
 import { IoMdInformationCircleOutline } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
+import { Center } from "../layout";
+import useStyledNotificationsItem from "./use-styled-notifications-item";
 
 export default function Notifications({
   notifications,
@@ -49,13 +51,13 @@ export function NotificationItem({
   subtitle,
   // icon,
   // children,
-  // notifyType,
+  notifyType,
   duration,
   onClose,
   id,
 }: INotificationItemProps) {
   const [isVisible, setIsVisible] = useState(true);
-
+  void isVisible;
   useEffect(() => {
     if (duration) {
       const timer = setTimeout(() => {
@@ -69,8 +71,16 @@ export function NotificationItem({
 
   const handleClose = () => {
     setIsVisible(false);
-    setTimeout(() => onClose && onClose(id), 500);
+    // setTimeout(() => onClose && onClose(id), 500);
+    if (onClose) {
+      onClose(id);
+    }
   };
+
+  const { notificationContainer, notificationIconContainer } =
+    useStyledNotificationsItem()({
+      shadow: notifyType,
+    });
 
   return (
     <Card
@@ -78,21 +88,41 @@ export function NotificationItem({
       variant="surface"
       severity="base"
       elevation="level-4"
-      className={` shadow-primary ${
-        isVisible ? "notification-item--visible" : "notification-item--hidden"
-      }`}
+      className={notificationContainer()}
     >
       <Heading
         className="gap-2"
         heading={title}
         subheading={subtitle}
+        pt={{
+          heading: { className: "text-sm" },
+          subheading: { className: "text-xs" },
+        }}
         slotBefore={
-          <StyledBox dense className="bg-blue-700 text-white">
+          <Center
+            tag={{
+              component: StyledBox,
+              props: {
+                className: notificationIconContainer(),
+                rounded: "lg",
+                dense: true,
+                severity: notifyType,
+              },
+            }}
+          >
             <IoMdInformationCircleOutline />
-          </StyledBox>
+          </Center>
         }
         slotAfter={
-          <Button dense size="md" icon={<IoClose />} onClick={handleClose} />
+          <Button
+            className="shrink-0 self-start"
+            dense
+            size="md"
+            variant="flatted"
+            severity={notifyType}
+            icon={<IoClose />}
+            onClick={handleClose}
+          />
         }
       />
     </Card>

@@ -1,5 +1,5 @@
 "use client";
-import { Card, Column, H, List, Row, StyledBox } from "@/lib/components";
+import { Card, Column, H, List, StyledBox } from "@/lib/components";
 import HSub from "@/lib/components/blocks/headings/h-sub/h-sub";
 import Button from "@/lib/components/button";
 import { useNotification } from "@/lib/components/notification/use-notification";
@@ -15,32 +15,38 @@ import { FaPlusCircle } from "react-icons/fa";
 export default function TestPage() {
   const { addNotification } = useNotification();
 
+  const variants: StyledBoxVariant[] = ["surface", "outlined", "flatted"];
+  const severities: StyledBoxSeverity[] = [
+    "base",
+    "primary",
+    "primary-container",
+    "error",
+    "error-container",
+    "info",
+    "info-container",
+    "warning",
+    "warning-container",
+    "success",
+    "success-container",
+  ];
+
+  const dataButton: {
+    variant: StyledBoxVariant;
+    severity: StyledBoxSeverity;
+  }[] = [];
+
   const dataStyledBox: {
     variant: StyledBoxVariant;
     severity: StyledBoxSeverity;
     elevation?: StyledBoxElevation;
-  }[] = [
-    { variant: "surface", severity: "base" },
-    { variant: "surface", severity: "primary" },
-    { variant: "surface", severity: "primary-container" },
-    { variant: "surface", severity: "error" },
-    { variant: "surface", severity: "error-container" },
-    { variant: "outlined", severity: "base" },
-    { variant: "outlined", severity: "primary" },
-    { variant: "outlined", severity: "primary-container" },
-    { variant: "outlined", severity: "error" },
-    { variant: "outlined", severity: "error-container" },
-    { variant: "flatted", severity: "base" },
-    { variant: "flatted", severity: "primary" },
-    { variant: "flatted", severity: "primary-container" },
-    { variant: "flatted", severity: "error" },
-    { variant: "flatted", severity: "error-container" },
-    { variant: "surface", severity: "base", elevation: "level-0" },
-    { variant: "surface", severity: "base", elevation: "level-1" },
-    { variant: "surface", severity: "base", elevation: "level-2" },
-    { variant: "surface", severity: "base", elevation: "level-3" },
-    { variant: "surface", severity: "base", elevation: "level-4" },
-  ];
+  }[] = [];
+
+  variants.forEach((variant) => {
+    severities.forEach((severity) => {
+      dataButton.push({ variant, severity });
+      dataStyledBox.push({ variant, severity });
+    });
+  });
 
   const dataHeaderTextStyle: TextVariant[] = [
     "h1",
@@ -71,318 +77,51 @@ export default function TestPage() {
         align="center"
         gap="gap-[20px]"
       >
-        <Row className="gap-4">
-          <Button
-            label="Surface Base"
-            icon={<FaPlusCircle />}
-            onClick={() => {
-              addNotification({
-                title: "Hola mundo",
-                subtitle: "cambiando una notification",
-              });
-            }}
-          ></Button>
-          <Button label="Surface Base" icon={<FaPlusCircle />} loading></Button>
-          <Button
-            label="Surface Base"
-            icon={<FaPlusCircle />}
-            disabled
-          ></Button>
-        </Row>
-        <Row className="gap-4">
-          <Button
-            label="Surface Primary"
-            icon={<FaPlusCircle />}
-            severity="primary"
-          ></Button>
-          <Button
-            label="Surface Primary"
-            icon={<FaPlusCircle />}
-            severity="primary"
-            loading
-          ></Button>
-          <Button
-            label="Surface Primary"
-            icon={<FaPlusCircle />}
-            severity="primary"
-            disabled
-          ></Button>
-        </Row>
-        <Row className="gap-4">
-          <Button
-            label="Surface Primary Container"
-            icon={<FaPlusCircle />}
-            severity="primary-container"
-          ></Button>
-          <Button
-            label="Surface Primary Container"
-            icon={<FaPlusCircle />}
-            severity="primary-container"
-            loading
-          ></Button>
-          <Button
-            label="Surface Primary Container"
-            icon={<FaPlusCircle />}
-            severity="primary-container"
-            disabled
-          ></Button>
-        </Row>
-        <Row className="gap-4">
-          <Button
-            label="Surface Error"
-            icon={<FaPlusCircle />}
-            severity="error"
-          ></Button>
-          <Button
-            label="Surface Error"
-            icon={<FaPlusCircle />}
-            severity="error"
-            loading
-          ></Button>
-          <Button
-            label="Surface Error"
-            icon={<FaPlusCircle />}
-            severity="error"
-            disabled
-          ></Button>
-        </Row>
-        <Row className="gap-4">
-          <Button
-            label="Surface Error Container"
-            icon={<FaPlusCircle />}
-            severity="error-container"
-          ></Button>
-          <Button
-            label="Surface Error Container"
-            icon={<FaPlusCircle />}
-            severity="error-container"
-            loading
-          ></Button>
-          <Button
-            label="Surface Error Container"
-            icon={<FaPlusCircle />}
-            severity="error-container"
-            disabled
-          ></Button>
-        </Row>
+        <Column gap="gap-[20px]" className="w-[90%]">
+          <H>Styled Box</H>
+          <List
+            className="w-[100%] "
+            data={dataButton}
+            gap="gap-[20px]"
+            direction="row"
+            wrap="wrap"
+            align="center"
+          >
+            {(item) => (
+              <>
+                <Button
+                  label={`${item.variant} ${item.severity}`}
+                  icon={<FaPlusCircle />}
+                  onClick={() => {
+                    addNotification({
+                      title: "Para cambiar la info toque en ella",
+                      subtitle:
+                        "cambiando la informacion de la notification para arreglos subsecuentes",
+                      type: "error",
+                    });
+                  }}
+                  variant={item.variant}
+                  severity={item.severity}
+                ></Button>
+                {/* <Button
+                  label={`${item.variant} ${item.severity}`}
+                  icon={<FaPlusCircle />}
+                  loading
+                  variant={item.variant}
+                  severity={item.severity}
+                ></Button>
+                <Button
+                  label={`${item.variant} ${item.severity}`}
+                  icon={<FaPlusCircle />}
+                  disabled
+                  variant={item.variant}
+                  severity={item.severity}
+                ></Button> */}
+              </>
+            )}
+          </List>
+        </Column>
 
-        <Row className="gap-4">
-          <Button
-            label="Outlined Base"
-            icon={<FaPlusCircle />}
-            variant="outlined"
-          ></Button>
-          <Button
-            label="Outlined Base"
-            icon={<FaPlusCircle />}
-            loading
-            variant="outlined"
-          ></Button>
-          <Button
-            label="Outlined Base"
-            icon={<FaPlusCircle />}
-            disabled
-            variant="outlined"
-          ></Button>
-        </Row>
-        <Row className="gap-4">
-          <Button
-            label="Outlined Primary"
-            icon={<FaPlusCircle />}
-            severity="primary"
-            variant="outlined"
-          ></Button>
-          <Button
-            label="Outlined Primary"
-            icon={<FaPlusCircle />}
-            severity="primary"
-            loading
-            variant="outlined"
-          ></Button>
-          <Button
-            label="Outlined Primary"
-            icon={<FaPlusCircle />}
-            severity="primary"
-            disabled
-            variant="outlined"
-          ></Button>
-        </Row>
-        <Row className="gap-4">
-          <Button
-            label="Outlined Primary Container"
-            icon={<FaPlusCircle />}
-            severity="primary-container"
-            variant="outlined"
-          ></Button>
-          <Button
-            label="Outlined Primary Container"
-            icon={<FaPlusCircle />}
-            severity="primary-container"
-            loading
-            variant="outlined"
-          ></Button>
-          <Button
-            label="Outlined Primary Container"
-            icon={<FaPlusCircle />}
-            severity="primary-container"
-            disabled
-            variant="outlined"
-          ></Button>
-        </Row>
-        <Row className="gap-4">
-          <Button
-            label="Outlined Error"
-            icon={<FaPlusCircle />}
-            severity="error"
-            variant="outlined"
-          ></Button>
-          <Button
-            label="Outlined Error"
-            icon={<FaPlusCircle />}
-            severity="error"
-            loading
-            variant="outlined"
-          ></Button>
-          <Button
-            label="Outlined Error"
-            icon={<FaPlusCircle />}
-            severity="error"
-            disabled
-            variant="outlined"
-          ></Button>
-        </Row>
-        <Row className="gap-4">
-          <Button
-            label="Outlined Error Container"
-            icon={<FaPlusCircle />}
-            severity="error-container"
-            variant="outlined"
-          ></Button>
-          <Button
-            label="Outlined Error Container"
-            icon={<FaPlusCircle />}
-            severity="error-container"
-            loading
-            variant="outlined"
-          ></Button>
-          <Button
-            label="Outlined Error Container"
-            icon={<FaPlusCircle />}
-            severity="error-container"
-            disabled
-            variant="outlined"
-          ></Button>
-        </Row>
-        <Row className="gap-4">
-          <Button
-            label="Flatted Base"
-            icon={<FaPlusCircle />}
-            severity="base"
-            variant="flatted"
-          ></Button>
-          <Button
-            label="Flatted Base"
-            icon={<FaPlusCircle />}
-            severity="base"
-            loading
-            variant="flatted"
-          ></Button>
-          <Button
-            label="Flatted Base"
-            icon={<FaPlusCircle />}
-            severity="base"
-            disabled
-            variant="flatted"
-          ></Button>
-        </Row>
-        <Row className="gap-4">
-          <Button
-            label="Flatted Primary"
-            icon={<FaPlusCircle />}
-            severity="primary"
-            variant="flatted"
-          ></Button>
-          <Button
-            label="Flatted Primary"
-            icon={<FaPlusCircle />}
-            severity="primary"
-            loading
-            variant="flatted"
-          ></Button>
-          <Button
-            label="Flatted Primary"
-            icon={<FaPlusCircle />}
-            severity="primary"
-            disabled
-            variant="flatted"
-          ></Button>
-        </Row>
-        <Row className="gap-4">
-          <Button
-            label="Flatted Primary Container"
-            icon={<FaPlusCircle />}
-            severity="primary-container"
-            variant="flatted"
-          ></Button>
-          <Button
-            label="Flatted Primary Container"
-            icon={<FaPlusCircle />}
-            severity="primary-container"
-            loading
-            variant="flatted"
-          ></Button>
-          <Button
-            label="Flatted Primary Container"
-            icon={<FaPlusCircle />}
-            severity="primary-container"
-            disabled
-            variant="flatted"
-          ></Button>
-        </Row>
-        <Row className="gap-4">
-          <Button
-            label="Flatted Error"
-            icon={<FaPlusCircle />}
-            severity="error"
-            variant="flatted"
-          ></Button>
-          <Button
-            label="Flatted Error"
-            icon={<FaPlusCircle />}
-            severity="error"
-            loading
-            variant="flatted"
-          ></Button>
-          <Button
-            label="Flatted Error"
-            icon={<FaPlusCircle />}
-            severity="error"
-            disabled
-            variant="flatted"
-          ></Button>
-        </Row>
-        <Row className="gap-4">
-          <Button
-            label="Flatted Error Container"
-            icon={<FaPlusCircle />}
-            severity="error-container"
-            variant="flatted"
-          ></Button>
-          <Button
-            label="Flatted Error Container"
-            icon={<FaPlusCircle />}
-            severity="error-container"
-            loading
-            variant="flatted"
-          ></Button>
-          <Button
-            label="Flatted Error Container"
-            icon={<FaPlusCircle />}
-            severity="error-container"
-            disabled
-            variant="flatted"
-          ></Button>
-        </Row>
         <Column gap="gap-[20px]" className="w-[90%]">
           <H>Styled Box</H>
           <List

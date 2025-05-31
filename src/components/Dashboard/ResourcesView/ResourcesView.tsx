@@ -16,12 +16,15 @@ import {
 } from "@/lib/utils/formaters";
 import Space from "@/lib/components/layout/space";
 import Button from "@/lib/components/button";
+import { useNotification } from "@/lib/components/notification/use-notification";
 
 export default function ResourcesView({
   resources,
 }: {
   resources: IResource[];
 }) {
+  const { addNotification } = useNotification();
+
   const [resourcesList, setResourcesList] = useState<IResource[]>(resources);
   const [deleteSelectedButton, setDeleteSelectedButton] = useState(-1);
 
@@ -39,7 +42,40 @@ export default function ResourcesView({
               apiUrl="/api/resources/upload"
               onChange={async (files: FileList) => {
                 const result = await createResource(files);
-                setResourcesList(result.data);
+                if (result.status === 403) {
+                  addNotification({
+                    type: "error",
+                    title: "Error en la operacion",
+                    subtitle: result.message,
+                    duration: 5000,
+                  });
+                } else if (result.status === 200) {
+                  if (result.data) {
+                    const createdResources: IResource[] = [];
+                    result.data.forEach((item) => {
+                      if (typeof item === "string") {
+                        addNotification({
+                          type: "warning",
+                          title:
+                            "Tratando de guardar recurso con nombre duplicado",
+                          subtitle: `Un recurso con este nombre ${item} ya existe en el catalogo`,
+                          duration: 5000,
+                        });
+                      } else {
+                        addNotification({
+                          type: "success",
+                          title: "Recurso creado con exito",
+                          subtitle:
+                            "El elemento se guardo ya esta listo para usar",
+                          duration: 5000,
+                        });
+                        createdResources.push(item);
+                      }
+                    });
+
+                    setResourcesList([...resourcesList, ...createdResources]);
+                  }
+                }
               }}
             ></FileInput>
           }
@@ -79,17 +115,41 @@ export default function ResourcesView({
               </Column>
               <Space />
               <Button
-                className="self-start pl-[4px] text-xs"
+                className="self-start text-xs"
                 variant="surface"
                 severity="error-container"
+                rounded="md"
                 dense
                 icon={<FaTrash />}
                 loading={deleteSelectedButton === index}
                 onClick={async () => {
                   setDeleteSelectedButton(index);
                   const result = await deleteResource(item._id);
+
+                  if (result.status === 403) {
+                    addNotification({
+                      type: "error",
+                      title: "Error en la operacion",
+                      subtitle: result.message,
+                      duration: 5000,
+                    });
+                  } else if (result.status === 200) {
+                    if (result.data) {
+                      addNotification({
+                        type: "success",
+                        title: "Recurso Eliminado con exito",
+                        subtitle: "El elemento se elimino correctamente",
+                        duration: 5000,
+                      });
+                      setResourcesList(
+                        resourcesList.filter(
+                          (resource) => resource._id !== result.data?._id
+                        )
+                      );
+                    }
+                  }
+
                   setDeleteSelectedButton(-1);
-                  setResourcesList(result.data);
                 }}
               />
             </Row>

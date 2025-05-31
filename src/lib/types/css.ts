@@ -12,7 +12,7 @@ export type AlignItems = "start" | "center" | "end" | "stretch" | "baseline";
 
 type CSSUnits = "px" | "%" | "vw" | "vh" | "em" | "rem";
 export type TailwindGap = `gap-${number | `[${number}${CSSUnits}]`}`;
-export type TextSize = "small" | "medium" | "high";
+export type TextSize = "sm" | "md" | "lg";
 export type TextVariant =
   | "h1"
   | "h2"
@@ -34,7 +34,18 @@ export type TextVariant =
   | "subtitle2"
   | TextVariantWeb;
 
-export type TextSeverity = StyledBoxSeverity | "on-primary";
+export type TextSeverity =
+  | StyledBoxSeverity
+  | "on-primary"
+  | "on-primary-container"
+  | "on-error"
+  | "on-error-container"
+  | "on-info"
+  | "on-info-container"
+  | "on-warning"
+  | "on-warning-container"
+  | "on-success"
+  | "on-success-container";
 
 export type TextVariantWeb = "hero";
 
@@ -47,7 +58,13 @@ export type StyledBoxSeverity =
   | "primary"
   | "primary-container"
   | "error"
-  | "error-container";
+  | "error-container"
+  | "info"
+  | "info-container"
+  | "warning"
+  | "warning-container"
+  | "success"
+  | "success-container";
 export type StyledBoxElevation =
   | "level-0"
   | "level-1"

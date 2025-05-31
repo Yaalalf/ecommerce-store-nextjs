@@ -1,4 +1,5 @@
 import { auth0 } from "@/auth/auth0";
+import { NotificationProvider } from "@/lib/components/notification/notification-context";
 import { redirect } from "next/navigation";
 
 export default async function DashboardLayout({
@@ -12,5 +13,13 @@ export default async function DashboardLayout({
     await redirect("auth/login?returnTo=/dashboard");
   }
 
-  return <div>{session && children}</div>;
+  return (
+    <div>
+      {session && (
+        <NotificationProvider position="top-right">
+          {children}
+        </NotificationProvider>
+      )}
+    </div>
+  );
 }

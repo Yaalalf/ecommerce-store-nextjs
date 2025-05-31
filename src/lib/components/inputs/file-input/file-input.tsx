@@ -17,19 +17,27 @@ export default function FileInput({
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   async function handleFileChange(event: ChangeEvent<HTMLInputElement>) {
-    setIsLoading(true);
-    if (event.target.files && event.target.files.length > 0) {
-      if (onChange) {
-        await onChange(event.target.files);
+    try {
+      setIsLoading(true);
+      if (event.target.files && event.target.files.length > 0) {
+        if (onChange) {
+          await onChange(event.target.files);
+        } else {
+          await new Promise((resolve, reject) => {
+            handleUpload(event.target.files as FileList, resolve, reject);
+          });
+        }
       } else {
-        await new Promise((resolve, reject) => {
-          handleUpload(event.target.files as FileList, resolve, reject);
-        });
+        console.error("No files selected");
       }
-    } else {
-      console.error("No files selected");
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+      if (fileInputRef.current) {
+        fileInputRef.current.value = "";
+      }
     }
-    setIsLoading(false);
   }
 
   async function handleUpload(
@@ -61,9 +69,6 @@ export default function FileInput({
     });
     req.open("POST", apiUrl);
     req.send(formData);
-    if (fileInputRef.current) {
-      fileInputRef.current.value = "";
-    }
   }
 
   function triggerFilePicker() {
@@ -90,6 +95,7 @@ export default function FileInput({
         onClick={triggerFilePicker}
         severity="primary"
         dense
+        rounded="md"
       >
         {label}
       </Button>

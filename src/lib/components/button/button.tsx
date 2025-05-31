@@ -53,6 +53,8 @@ export default function Button({
       //   component: StyledBox,
       //   props: { variant, severity, bordered, dense: true, elevation },
       // }}
+      align="center"
+      justify="center"
       className={buttonContainer({ className })}
     >
       <Flex

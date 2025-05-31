@@ -11,7 +11,7 @@ export interface INotificationItemProps extends Partial<IChildren> {
   title: string;
   subtitle?: string;
   icon?: ReactNode;
-  notifyType?: string;
+  notifyType?: NotificationType;
   duration?: number | false;
   onClose?: (id: string) => void;
   id: string;
@@ -23,4 +23,9 @@ export type NotificationPosition =
   | "bottom-right"
   | "bottom-left";
 
-export type NotificationType = "success" | "warning" | "error" | "info";
+export type NotificationType =
+  | "success"
+  | "warning"
+  | "error"
+  | "info"
+  | "primary";

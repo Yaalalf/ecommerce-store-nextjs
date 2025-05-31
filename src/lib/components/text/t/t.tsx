@@ -1,12 +1,11 @@
-import { textAlignTailwind } from "@/lib/utils/tailwind_utility";
 import { ITProps } from "./types";
-import { clsx } from "clsx";
+import useStyledText from "../use-styled-text";
 
 export default function T({
   children,
   text,
   type = "p",
-  className = "",
+  className,
   textVariant,
   textAlign,
   size,
@@ -15,17 +14,16 @@ export default function T({
 }: ITProps) {
   const Component = type;
 
-  const tClassName = clsx(
-    "t",
-    className,
-    textVariant && `tv-${textVariant}`,
+  const tStyles = useStyledText()({
+    textVariant: textVariant || type,
     severity,
-    textAlign && textAlignTailwind[textAlign],
-    size
-  );
+    size,
+    textAlign,
+    className: ["h", className],
+  });
 
   return (
-    <Component {...domProps} className={tClassName}>
+    <Component {...domProps} className={tStyles}>
       {children ? children : text}
     </Component>
   );

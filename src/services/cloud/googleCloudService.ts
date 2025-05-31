@@ -45,8 +45,8 @@ export default class GoogleCloudService {
       return { publicUrl, fileName, size: webpImageBuffer.info.size };
     } catch (error) {
       console.error("Error uploading resource:", error);
+      throw error;
     }
-    return { publicUrl: "", fileName: "", size: 0 };
   }
   async deleteResource(filePath: string) {
     try {
@@ -56,6 +56,7 @@ export default class GoogleCloudService {
       return result;
     } catch (error) {
       console.error("Error uploading resource:", error);
+      throw error;
     }
   }
   async existResource(file: File, prefixCut?: boolean) {

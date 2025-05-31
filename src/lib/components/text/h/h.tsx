@@ -1,12 +1,12 @@
-import { textAlignTailwind } from "@/lib/utils/tailwind_utility";
 import { IHProps } from "./types";
+import useStyledText from "../use-styled-text";
 
 export default function H({
   children,
   text,
   type = "h2",
   textVariant,
-  className = "",
+  className,
   textAlign,
   size,
   severity,
@@ -14,13 +14,16 @@ export default function H({
 }: IHProps) {
   const Component = type;
 
+  const hStyles = useStyledText()({
+    textVariant: textVariant || type,
+    severity,
+    size,
+    textAlign,
+    className: ["h", className],
+  });
+
   return (
-    <Component
-      {...domProps}
-      className={`${className} h tv-${textVariant || type} ${severity || ""} ${
-        textAlign ? textAlignTailwind[textAlign] : ""
-      } ${size || ""}`}
-    >
+    <Component {...domProps} className={hStyles}>
       {children ? children : text}
     </Component>
   );

@@ -27,6 +27,40 @@
   --color-white-base-900: oklch(from var(--color-white-base) calc(l + 0.2) c h);
   --color-white-base-950: oklch(from var(--color-white-base) calc(l + 0.3) c h);
 
+  /*******************************OnWhiteSwatch***********************************************/
+  --color-on-white-base: #1a1a1a;
+  --color-on-white-base-50: oklch(
+    from var(--color-on-white-base) calc(l - 0.3) c h
+  );
+  --color-on-white-base-100: oklch(
+    from var(--color-on-white-base) calc(l - 0.2) c h
+  );
+  --color-on-white-base-200: oklch(
+    from var(--color-on-white-base) calc(l - 0.1) c h
+  );
+  --color-on-white-base-300: oklch(
+    from var(--color-on-white-base) calc(l - 0.06) c h
+  );
+  --color-on-white-base-400: oklch(
+    from var(--color-on-white-base) calc(l - 0.03) c h
+  );
+  --color-on-white-base-500: oklch(from var(--color-on-white-base) l c h);
+  --color-on-white-base-600: oklch(
+    from var(--color-on-white-base) calc(l + 0.03) c h
+  );
+  --color-on-white-base-700: oklch(
+    from var(--color-on-white-base) calc(l + 0.06) c h
+  );
+  --color-on-white-base-800: oklch(
+    from var(--color-on-white-base) calc(l + 0.1) c h
+  );
+  --color-on-white-base-900: oklch(
+    from var(--color-on-white-base) calc(l + 0.2) c h
+  );
+  --color-on-white-base-950: oklch(
+    from var(--color-on-white-base) calc(l + 0.3) c h
+  );
+
   /*******************************BlackSwatch***********************************************/
   --color-black-base: #3a3a3a;
   --color-black-base-50: oklch(from var(--color-black-base) calc(l - 0.3) c h);
@@ -49,6 +83,40 @@
   --color-black-base-900: oklch(from var(--color-black-base) calc(l + 0.2) c h);
   --color-black-base-950: oklch(from var(--color-black-base) calc(l + 0.3) c h);
 
+  /*******************************OnBlackSwatch***********************************************/
+  --color-on-black-base: #f5f5f5;
+  --color-on-black-base-50: oklch(
+    from var(--color-on-black-base) calc(l - 0.3) c h
+  );
+  --color-on-black-base-100: oklch(
+    from var(--color-on-black-base) calc(l - 0.2) c h
+  );
+  --color-on-black-base-200: oklch(
+    from var(--color-on-black-base) calc(l - 0.1) c h
+  );
+  --color-on-black-base-300: oklch(
+    from var(--color-on-black-base) calc(l - 0.06) c h
+  );
+  --color-on-black-base-400: oklch(
+    from var(--color-on-black-base) calc(l - 0.03) c h
+  );
+  --color-on-black-base-500: oklch(from var(--color-on-black-base) l c h);
+  --color-on-black-base-600: oklch(
+    from var(--color-on-black-base) calc(l + 0.03) c h
+  );
+  --color-on-black-base-700: oklch(
+    from var(--color-on-black-base) calc(l + 0.06) c h
+  );
+  --color-on-black-base-800: oklch(
+    from var(--color-on-black-base) calc(l + 0.1) c h
+  );
+  --color-on-black-base-900: oklch(
+    from var(--color-on-black-base) calc(l + 0.2) c h
+  );
+  --color-on-black-base-950: oklch(
+    from var(--color-on-black-base) calc(l + 0.3) c h
+  );
+
   /*******************************PrimarySwatch***********************************************/
   --color-primary: #8f5fef;
   --color-primary-50: oklch(from var(--color-primary) calc(l - 0.3) c h);
@@ -63,7 +131,28 @@
   --color-primary-900: oklch(from var(--color-primary) calc(l + 0.2) c h);
   --color-primary-950: oklch(from var(--color-primary) calc(l + 0.3) c h);
 
+  /*******************************OnPrimarySwatch***********************************************/
   --color-on-primary: #f6f1ff;
+  --color-on-primary-50: oklch(from var(--color-on-primary) calc(l - 0.3) c h);
+  --color-on-primary-100: oklch(from var(--color-on-primary) calc(l - 0.2) c h);
+  --color-on-primary-200: oklch(from var(--color-on-primary) calc(l - 0.1) c h);
+  --color-on-primary-300: oklch(
+    from var(--color-on-primary) calc(l - 0.06) c h
+  );
+  --color-on-primary-400: oklch(
+    from var(--color-on-primary) calc(l - 0.03) c h
+  );
+  --color-on-primary-500: oklch(from var(--color-on-primary) l c h);
+  --color-on-primary-600: oklch(
+    from var(--color-on-primary) calc(l + 0.03) c h
+  );
+  --color-on-primary-700: oklch(
+    from var(--color-on-primary) calc(l + 0.06) c h
+  );
+  --color-on-primary-800: oklch(from var(--color-on-primary) calc(l + 0.1) c h);
+  --color-on-primary-900: oklch(from var(--color-on-primary) calc(l + 0.2) c h);
+  --color-on-primary-950: oklch(from var(--color-on-primary) calc(l + 0.3) c h);
+
   /*******************************PrimaryContainerSwatch***********************************************/
   --color-primary-container: #d8ccf0;
   --color-primary-container-50: oklch(
@@ -100,7 +189,42 @@
     from var(--color-primary-container) calc(l + 0.3) c h
   );
 
+  /*******************************OnPrimaryContainerSwatch***********************************************/
   --color-on-primary-container: #46218e;
+  --color-on-primary-container-50: oklch(
+    from var(--color-on-primary-container) calc(l - 0.3) c h
+  );
+  --color-on-primary-container-100: oklch(
+    from var(--color-on-primary-container) calc(l - 0.2) c h
+  );
+  --color-on-primary-container-200: oklch(
+    from var(--color-on-primary-container) calc(l - 0.1) c h
+  );
+  --color-on-primary-container-300: oklch(
+    from var(--color-on-primary-container) calc(l - 0.06) c h
+  );
+  --color-on-primary-container-400: oklch(
+    from var(--color-on-primary-container) calc(l - 0.03) c h
+  );
+  --color-on-primary-container-500: oklch(
+    from var(--color-on-primary-container) l c h
+  );
+  --color-on-primary-container-600: oklch(
+    from var(--color-on-primary-container) calc(l + 0.03) c h
+  );
+  --color-on-primary-container-700: oklch(
+    from var(--color-on-primary-container) calc(l + 0.06) c h
+  );
+  --color-on-primary-container-800: oklch(
+    from var(--color-on-primary-container) calc(l + 0.1) c h
+  );
+  --color-on-primary-container-900: oklch(
+    from var(--color-on-primary-container) calc(l + 0.2) c h
+  );
+  --color-on-primary-container-950: oklch(
+    from var(--color-on-primary-container) calc(l + 0.3) c h
+  );
+
   /*******************************ErrorSwatch***********************************************/
   --color-error: #b03626;
   --color-error-50: oklch(from var(--color-error) calc(l - 0.3) c h);
@@ -115,7 +239,20 @@
   --color-error-900: oklch(from var(--color-error) calc(l + 0.2) c h);
   --color-error-950: oklch(from var(--color-error) calc(l + 0.3) c h);
 
+  /*******************************OnErrorSwatch***********************************************/
   --color-on-error: #fbece9;
+  --color-on-error-50: oklch(from var(--color-on-error) calc(l - 0.3) c h);
+  --color-on-error-100: oklch(from var(--color-on-error) calc(l - 0.2) c h);
+  --color-on-error-200: oklch(from var(--color-on-error) calc(l - 0.1) c h);
+  --color-on-error-300: oklch(from var(--color-on-error) calc(l - 0.06) c h);
+  --color-on-error-400: oklch(from var(--color-on-error) calc(l - 0.03) c h);
+  --color-on-error-500: oklch(from var(--color-on-error) l c h);
+  --color-on-error-600: oklch(from var(--color-on-error) calc(l + 0.03) c h);
+  --color-on-error-700: oklch(from var(--color-on-error) calc(l + 0.06) c h);
+  --color-on-error-800: oklch(from var(--color-on-error) calc(l + 0.1) c h);
+  --color-on-error-900: oklch(from var(--color-on-error) calc(l + 0.2) c h);
+  --color-on-error-950: oklch(from var(--color-on-error) calc(l + 0.3) c h);
+
   /*******************************ErrorContainerSwatch***********************************************/
   --color-error-container: #f0d1cc;
   --color-error-container-50: oklch(
@@ -149,7 +286,42 @@
   --color-error-container-950: oklch(
     from var(--color-error-container) calc(l + 0.3) c h
   );
+
+  /*******************************OnErrorContainerSwatch***********************************************/
   --color-on-error-container: #6d1a0f;
+  --color-on-error-container-50: oklch(
+    from var(--color-on-error-container) calc(l - 0.3) c h
+  );
+  --color-on-error-container-100: oklch(
+    from var(--color-on-error-container) calc(l - 0.2) c h
+  );
+  --color-on-error-container-200: oklch(
+    from var(--color-on-error-container) calc(l - 0.1) c h
+  );
+  --color-on-error-container-300: oklch(
+    from var(--color-on-error-container) calc(l - 0.06) c h
+  );
+  --color-on-error-container-400: oklch(
+    from var(--color-on-error-container) calc(l - 0.03) c h
+  );
+  --color-on-error-container-500: oklch(
+    from var(--color-on-error-container) l c h
+  );
+  --color-on-error-container-600: oklch(
+    from var(--color-on-error-container) calc(l + 0.03) c h
+  );
+  --color-on-error-container-700: oklch(
+    from var(--color-on-error-container) calc(l + 0.06) c h
+  );
+  --color-on-error-container-800: oklch(
+    from var(--color-on-error-container) calc(l + 0.1) c h
+  );
+  --color-on-error-container-900: oklch(
+    from var(--color-on-error-container) calc(l + 0.2) c h
+  );
+  --color-on-error-container-950: oklch(
+    from var(--color-on-error-container) calc(l + 0.3) c h
+  );
 
   /*******************************InfoSwatch***********************************************/
   --color-info: #65a8d1;
@@ -164,7 +336,20 @@
   --color-info-800: oklch(from var(--color-info) calc(l + 0.1) c h);
   --color-info-900: oklch(from var(--color-info) calc(l + 0.2) c h);
   --color-info-950: oklch(from var(--color-info) calc(l + 0.3) c h);
+
+  /*******************************OnInfoSwatch***********************************************/
   --color-on-info: #ecf9fe;
+  --color-on-info-50: oklch(from var(--color-on-info) calc(l - 0.3) c h);
+  --color-on-info-100: oklch(from var(--color-on-info) calc(l - 0.2) c h);
+  --color-on-info-200: oklch(from var(--color-on-info) calc(l - 0.1) c h);
+  --color-on-info-300: oklch(from var(--color-on-info) calc(l - 0.06) c h);
+  --color-on-info-400: oklch(from var(--color-on-info) calc(l - 0.03) c h);
+  --color-on-info-500: oklch(from var(--color-on-info) l c h);
+  --color-on-info-600: oklch(from var(--color-on-info) calc(l + 0.03) c h);
+  --color-on-info-700: oklch(from var(--color-on-info) calc(l + 0.06) c h);
+  --color-on-info-800: oklch(from var(--color-on-info) calc(l + 0.1) c h);
+  --color-on-info-900: oklch(from var(--color-on-info) calc(l + 0.2) c h);
+  --color-on-info-950: oklch(from var(--color-on-info) calc(l + 0.3) c h);
 
   /*******************************InfoContainerSwatch***********************************************/
   --color-info-container: #cce5f3;
@@ -199,7 +384,42 @@
   --color-info-container-950: oklch(
     from var(--color-info-container) calc(l + 0.3) c h
   );
+
+  /*******************************OnInfoContainerSwatch***********************************************/
   --color-on-info-container: #2b5d7f;
+  --color-on-info-container-50: oklch(
+    from var(--color-on-info-container) calc(l - 0.3) c h
+  );
+  --color-on-info-container-100: oklch(
+    from var(--color-on-info-container) calc(l - 0.2) c h
+  );
+  --color-on-info-container-200: oklch(
+    from var(--color-on-info-container) calc(l - 0.1) c h
+  );
+  --color-on-info-container-300: oklch(
+    from var(--color-on-info-container) calc(l - 0.06) c h
+  );
+  --color-on-info-container-400: oklch(
+    from var(--color-on-info-container) calc(l - 0.03) c h
+  );
+  --color-on-info-container-500: oklch(
+    from var(--color-on-info-container) l c h
+  );
+  --color-on-info-container-600: oklch(
+    from var(--color-on-info-container) calc(l + 0.03) c h
+  );
+  --color-on-info-container-700: oklch(
+    from var(--color-on-info-container) calc(l + 0.06) c h
+  );
+  --color-on-info-container-800: oklch(
+    from var(--color-on-info-container) calc(l + 0.1) c h
+  );
+  --color-on-info-container-900: oklch(
+    from var(--color-on-info-container) calc(l + 0.2) c h
+  );
+  --color-on-info-container-950: oklch(
+    from var(--color-on-info-container) calc(l + 0.3) c h
+  );
 
   /*******************************WarningSwatch***********************************************/
   --color-warning: #f5a623;
@@ -214,7 +434,28 @@
   --color-warning-800: oklch(from var(--color-warning) calc(l + 0.1) c h);
   --color-warning-900: oklch(from var(--color-warning) calc(l + 0.2) c h);
   --color-warning-950: oklch(from var(--color-warning) calc(l + 0.3) c h);
+
+  /*******************************OnWarningSwatch***********************************************/
   --color-on-warning: #fff8e1;
+  --color-on-warning-50: oklch(from var(--color-on-warning) calc(l - 0.3) c h);
+  --color-on-warning-100: oklch(from var(--color-on-warning) calc(l - 0.2) c h);
+  --color-on-warning-200: oklch(from var(--color-on-warning) calc(l - 0.1) c h);
+  --color-on-warning-300: oklch(
+    from var(--color-on-warning) calc(l - 0.06) c h
+  );
+  --color-on-warning-400: oklch(
+    from var(--color-on-warning) calc(l - 0.03) c h
+  );
+  --color-on-warning-500: oklch(from var(--color-on-warning) l c h);
+  --color-on-warning-600: oklch(
+    from var(--color-on-warning) calc(l + 0.03) c h
+  );
+  --color-on-warning-700: oklch(
+    from var(--color-on-warning) calc(l + 0.06) c h
+  );
+  --color-on-warning-800: oklch(from var(--color-on-warning) calc(l + 0.1) c h);
+  --color-on-warning-900: oklch(from var(--color-on-warning) calc(l + 0.2) c h);
+  --color-on-warning-950: oklch(from var(--color-on-warning) calc(l + 0.3) c h);
 
   /*******************************WarningContainerSwatch***********************************************/
   --color-warning-container: #fdebc8;
@@ -251,7 +492,42 @@
   --color-warning-container-950: oklch(
     from var(--color-warning-container) calc(l + 0.3) c h
   );
+
+  /*******************************OnWarningContainerSwatch***********************************************/
   --color-on-warning-container: #5e3c0a;
+  --color-on-warning-container-50: oklch(
+    from var(--color-on-warning-container) calc(l - 0.3) c h
+  );
+  --color-on-warning-container-100: oklch(
+    from var(--color-on-warning-container) calc(l - 0.2) c h
+  );
+  --color-on-warning-container-200: oklch(
+    from var(--color-on-warning-container) calc(l - 0.1) c h
+  );
+  --color-on-warning-container-300: oklch(
+    from var(--color-on-warning-container) calc(l - 0.06) c h
+  );
+  --color-on-warning-container-400: oklch(
+    from var(--color-on-warning-container) calc(l - 0.03) c h
+  );
+  --color-on-warning-container-500: oklch(
+    from var(--color-on-warning-container) l c h
+  );
+  --color-on-warning-container-600: oklch(
+    from var(--color-on-warning-container) calc(l + 0.03) c h
+  );
+  --color-on-warning-container-700: oklch(
+    from var(--color-on-warning-container) calc(l + 0.06) c h
+  );
+  --color-on-warning-container-800: oklch(
+    from var(--color-on-warning-container) calc(l + 0.1) c h
+  );
+  --color-on-warning-container-900: oklch(
+    from var(--color-on-warning-container) calc(l + 0.2) c h
+  );
+  --color-on-warning-container-950: oklch(
+    from var(--color-on-warning-container) calc(l + 0.3) c h
+  );
 
   /*******************************SuccessSwatch***********************************************/
   --color-success: #4caf50;
@@ -266,7 +542,28 @@
   --color-success-800: oklch(from var(--color-success) calc(l + 0.1) c h);
   --color-success-900: oklch(from var(--color-success) calc(l + 0.2) c h);
   --color-success-950: oklch(from var(--color-success) calc(l + 0.3) c h);
+
+  /*******************************OnSuccessSwatch***********************************************/
   --color-on-success: #e8f5e9;
+  --color-on-success-50: oklch(from var(--color-on-success) calc(l - 0.3) c h);
+  --color-on-success-100: oklch(from var(--color-on-success) calc(l - 0.2) c h);
+  --color-on-success-200: oklch(from var(--color-on-success) calc(l - 0.1) c h);
+  --color-on-success-300: oklch(
+    from var(--color-on-success) calc(l - 0.06) c h
+  );
+  --color-on-success-400: oklch(
+    from var(--color-on-success) calc(l - 0.03) c h
+  );
+  --color-on-success-500: oklch(from var(--color-on-success) l c h);
+  --color-on-success-600: oklch(
+    from var(--color-on-success) calc(l + 0.03) c h
+  );
+  --color-on-success-700: oklch(
+    from var(--color-on-success) calc(l + 0.06) c h
+  );
+  --color-on-success-800: oklch(from var(--color-on-success) calc(l + 0.1) c h);
+  --color-on-success-900: oklch(from var(--color-on-success) calc(l + 0.2) c h);
+  --color-on-success-950: oklch(from var(--color-on-success) calc(l + 0.3) c h);
 
   /*******************************SuccessContainerSwatch***********************************************/
   --color-success-container: #c8e6c9;
@@ -303,5 +600,40 @@
   --color-success-container-950: oklch(
     from var(--color-success-container) calc(l + 0.3) c h
   );
+
+  /*******************************OnSuccessContainerSwatch***********************************************/
   --color-on-success-container: #2e7d32;
+  --color-on-success-container-50: oklch(
+    from var(--color-on-success-container) calc(l - 0.3) c h
+  );
+  --color-on-success-container-100: oklch(
+    from var(--color-on-success-container) calc(l - 0.2) c h
+  );
+  --color-on-success-container-200: oklch(
+    from var(--color-on-success-container) calc(l - 0.1) c h
+  );
+  --color-on-success-container-300: oklch(
+    from var(--color-on-success-container) calc(l - 0.06) c h
+  );
+  --color-on-success-container-400: oklch(
+    from var(--color-on-success-container) calc(l - 0.03) c h
+  );
+  --color-on-success-container-500: oklch(
+    from var(--color-on-success-container) l c h
+  );
+  --color-on-success-container-600: oklch(
+    from var(--color-on-success-container) calc(l + 0.03) c h
+  );
+  --color-on-success-container-700: oklch(
+    from var(--color-on-success-container) calc(l + 0.06) c h
+  );
+  --color-on-success-container-800: oklch(
+    from var(--color-on-success-container) calc(l + 0.1) c h
+  );
+  --color-on-success-container-900: oklch(
+    from var(--color-on-success-container) calc(l + 0.2) c h
+  );
+  --color-on-success-container-950: oklch(
+    from var(--color-on-success-container) calc(l + 0.3) c h
+  );
 }

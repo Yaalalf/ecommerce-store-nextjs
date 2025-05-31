@@ -14,6 +14,7 @@ export default function useStyledNotifications() {
             "bottom-left": ["bottom-[20px]", "left-[20px]", "items-start"],
           },
         },
+
         defaultVariants: {
           position: "bottom-right",
         },

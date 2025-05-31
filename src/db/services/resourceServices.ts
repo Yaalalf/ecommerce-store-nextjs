@@ -23,15 +23,18 @@ export default class ResourceServices {
       console.error(`Error en la operacion de obtener los recursos: ${error}`);
     }
   }
-  async addResource(resource: Omit<IResource, "_id">) {
+  async addResource(
+    resource: Omit<IResource, "_id">
+  ): Promise<IResource | undefined> {
     try {
       const resourceDocument = new ResourceModel(resource);
       const resultDocument = await resourceDocument.save({
         validateBeforeSave: true,
       });
-      return resultDocument._id;
+      return resultDocument;
     } catch (error) {
       console.error(`Error en la operacion de guardar el recurso: ${error}`);
+      throw error;
     }
   }
   async updateResourceById(
@@ -50,7 +53,8 @@ export default class ResourceServices {
       const result = await ResourceModel.findByIdAndDelete(id);
       return result;
     } catch (error) {
-      console.error(`Error en la operacion de guardar el recurso: ${error}`);
+      console.error(`Error en la operacion de eliminar el recurso: ${error}`);
+      throw error;
     }
   }
 }
