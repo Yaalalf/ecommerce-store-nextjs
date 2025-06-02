@@ -6,7 +6,7 @@ export function assignKey<T>({
   propKey?: keyof T;
   item: T;
   index: number;
-}): string {
+}): string | T {
   if (typeof item === "object" && item !== null) {
     if (propKey) {
       return item[propKey] as string;
@@ -14,6 +14,6 @@ export function assignKey<T>({
       return index.toString();
     }
   } else {
-    return index.toString();
+    return item;
   }
 }

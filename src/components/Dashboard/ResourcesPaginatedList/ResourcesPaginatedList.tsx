@@ -17,17 +17,18 @@ export default function ResourcesPaginatedList({
 }) {
   const pageSize = 9;
   const paginationLength = Math.ceil(resources.length / pageSize);
-  const [currentPageIndex, setCurrentPageIndex] = useState(0);
 
-  const paginatedList = clsx("paginated-list", "px-4 gap-2", className);
+  const [currentPageIndex, setCurrentPageIndex] = useState(1);
+
+  const paginatedList = clsx("paginated-list", "px-4 gap-2 w-full", className);
 
   const paginatedResources = resources.slice(
-    currentPageIndex * pageSize,
-    currentPageIndex * pageSize + pageSize
+    (currentPageIndex - 1) * pageSize,
+    (currentPageIndex - 1) * pageSize + pageSize
   );
 
   return (
-    <Column className="gap-4">
+    <Column className="gap-4 items-center">
       <List
         className={paginatedList}
         data={paginatedResources}
@@ -36,8 +37,10 @@ export default function ResourcesPaginatedList({
         {children}
       </List>
       <Pagination
-        length={paginationLength}
-        onChange={setCurrentPageIndex}
+        pagesLength={paginationLength}
+        onChange={(index) => {
+          setCurrentPageIndex(index);
+        }}
       ></Pagination>
     </Column>
   );
