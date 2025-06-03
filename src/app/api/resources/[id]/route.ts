@@ -2,11 +2,12 @@ import connectDB from "@/db/connection";
 import ResourceServices from "@/db/services/resourceServices";
 import { GoogleCloudService } from "@/services/cloud";
 import { resourcesSchemaZod } from "@/utils/validations/resources";
+import { ObjectId } from "mongoose";
 import { NextResponse, type NextRequest } from "next/server";
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: Promise<{ id: ObjectId }> }
 ) {
   await connectDB();
   const resourceServices = new ResourceServices();
@@ -20,7 +21,7 @@ export async function GET(
 
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: Promise<{ id: ObjectId }> }
 ) {
   await connectDB();
   const { updateResourceById, getResourceById } = new ResourceServices();
@@ -55,7 +56,7 @@ export async function PATCH(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: Promise<{ id: ObjectId }> }
 ) {
   await connectDB();
   const gcService = new GoogleCloudService();

@@ -1,5 +1,5 @@
 "use client";
-import { useRef } from "react";
+import { useImperativeHandle, useRef } from "react";
 import { Center, Flex } from "../layout";
 import { T } from "../text";
 import { IButtonProps } from "./types";
@@ -23,6 +23,7 @@ export default function Button({
   rounded,
   className,
   onClick,
+  ref,
 }: IButtonProps) {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const {
@@ -46,6 +47,13 @@ export default function Button({
     options: { className: buttonRipple() },
   });
 
+  useImperativeHandle(
+    ref,
+    () => {
+      return buttonRef.current as HTMLButtonElement;
+    },
+    []
+  );
   return (
     <Flex
       tag="div"

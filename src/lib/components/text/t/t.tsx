@@ -15,7 +15,7 @@ export default function T({
   const Component = type;
 
   const tStyles = useStyledText()({
-    textVariant: textVariant || type,
+    textVariant: textVariant,
     severity,
     size,
     textAlign,

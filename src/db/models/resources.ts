@@ -1,8 +1,8 @@
-import type { Model } from "mongoose";
+import type { Model, ObjectId } from "mongoose";
 import { model, Schema } from "mongoose";
 
 export interface IResource {
-  _id: string;
+  _id: ObjectId;
   name: string;
   url: string;
   size: number;

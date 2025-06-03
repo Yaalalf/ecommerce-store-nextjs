@@ -8,6 +8,7 @@ import ResourceServices from "@/db/services/resourceServices";
 import { GoogleCloudService } from "@/services/cloud";
 import { sanitatedClientData } from "@/utils/util";
 import { formDataSchema } from "@/utils/validations/form-data-images";
+import { ObjectId } from "mongoose";
 
 export async function getAllResources() {
   const { getAllResources } = new ResourceServices();
@@ -100,7 +101,7 @@ export async function createResource(files: FileList): Promise<{
   }
 }
 
-export async function deleteResource(id: string): Promise<{
+export async function deleteResource(id: ObjectId): Promise<{
   status: number;
   data: IResource | null;
   message: string;

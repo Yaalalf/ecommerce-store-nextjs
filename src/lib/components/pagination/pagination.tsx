@@ -29,6 +29,10 @@ export default function Pagination({
   onChange,
 }: IPaginationProps) {
   const [selectedPage, setSelectedPage] = useState(initialPage);
+
+  let currentBoundaries = boundaries;
+  let currentSiblings = siblings;
+
   /**
    * Validando que los boundaries y siblings esten en el rango de los length
    * */
@@ -36,7 +40,10 @@ export default function Pagination({
     boundaries * 2 + siblings * 2 + PAGINATION_MIDDLE_QTY_PAGES >
     pagesLength
   ) {
-    throw new Error(
+    currentBoundaries = 0;
+    currentSiblings = 0;
+
+    console.warn(
       "the pagination boundaries and siblings together exceed the length"
     );
   }
@@ -54,10 +61,10 @@ export default function Pagination({
   const isFirstIndex = selectedPage === PAGINATION_INITIAL_PAGE;
   const isLastIndex = selectedPage === pagesLength;
 
-  const boundariesInitIndex = 0 + boundaries;
-  const boundariesEndIndex = pagesLength - boundaries;
+  const boundariesInitIndex = 0 + currentBoundaries;
+  const boundariesEndIndex = pagesLength - currentBoundaries;
 
-  const selectedPageIndex = selectedPage - boundaries;
+  const selectedPageIndex = selectedPage - currentBoundaries;
   const paginationDataSizeLength = boundariesEndIndex - boundariesInitIndex;
 
   /**
@@ -69,7 +76,7 @@ export default function Pagination({
   const isPagesVisibleMinIndex =
     selectedPage >
     boundariesInitIndex +
-      siblings +
+      currentSiblings +
       PAGINATION_MIDDLE_QTY_PAGES +
       PAGINATION_DOT_PAGES;
 
@@ -82,33 +89,38 @@ export default function Pagination({
   const isPagesVisibleMaxIndex =
     selectedPage <=
     boundariesEndIndex -
-      siblings -
+      currentSiblings -
       PAGINATION_MIDDLE_QTY_PAGES -
       PAGINATION_DOT_PAGES;
 
   const pagesVisibleInitIndex = isPagesVisibleMinIndex
     ? isPagesVisibleMaxIndex
-      ? selectedPageIndex - (siblings + PAGINATION_DOT_PAGES)
+      ? selectedPageIndex - (currentSiblings + PAGINATION_DOT_PAGES)
       : paginationDataSizeLength -
-        (siblings * 2 + PAGINATION_MIDDLE_QTY_PAGES + PAGINATION_DOT_PAGES)
+        (currentSiblings * 2 +
+          PAGINATION_MIDDLE_QTY_PAGES +
+          PAGINATION_DOT_PAGES)
     : 0;
   const pagesVisibleEndIndex = isPagesVisibleMinIndex
     ? isPagesVisibleMaxIndex
-      ? selectedPageIndex + siblings
+      ? selectedPageIndex + currentSiblings
       : pagesLength
-    : siblings * 2 + PAGINATION_MIDDLE_QTY_PAGES + PAGINATION_DOT_PAGES;
+    : currentSiblings * 2 + PAGINATION_MIDDLE_QTY_PAGES + PAGINATION_DOT_PAGES;
   /**
    * La cantidad de las pages que seran para los boundaries inicial y final.
    */
-  const paginationDataInitBoundaries = paginationDataItems.slice(0, boundaries);
+  const paginationDataInitBoundaries = paginationDataItems.slice(
+    0,
+    currentBoundaries
+  );
   const paginationDataEndBoundaries = paginationDataItems.slice(
-    pagesLength - boundaries
+    pagesLength - currentBoundaries
   );
   /**
    * Las pages que se veran entre los boundaries
    */
   const paginationDataSizeVisible = paginationDataItems
-    .slice(boundaries, pagesLength - boundaries)
+    .slice(currentBoundaries, pagesLength - currentBoundaries)
     .slice(pagesVisibleInitIndex, pagesVisibleEndIndex);
 
   function handlePaginationIndex(page: number, isBoundary: boolean) {

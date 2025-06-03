@@ -1,6 +1,7 @@
-import type { Model, Types } from "mongoose";
+import type { Model } from "mongoose";
 import { model, Schema } from "mongoose";
 import { IResource } from "./resources";
+import { ObjectId } from "mongoose";
 
 export enum EProductStatus {
   ACTIVE = 1,
@@ -10,8 +11,8 @@ export interface IProduct {
   title: string;
   description: string;
   price: number;
-  status: EProductStatus;
-  medias: Types.ObjectId[];
+  status?: EProductStatus;
+  medias: ObjectId[] | IResource[];
 }
 
 export interface IProductPopulated extends Omit<IProduct, "medias"> {

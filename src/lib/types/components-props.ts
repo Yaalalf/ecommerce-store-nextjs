@@ -39,7 +39,13 @@ export interface IListTag {
   tag: ListTag;
 }
 export type Tag = ElementTag | ListTag | TextTag;
-export type ElementTag = "div" | "article" | "section" | "main" | "button";
+export type ElementTag =
+  | "div"
+  | "article"
+  | "section"
+  | "main"
+  | "button"
+  | "label";
 export type ListTag = "ul" | "ol";
 export type TextTag = "p" | "span" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 

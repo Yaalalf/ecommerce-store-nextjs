@@ -21,7 +21,7 @@ export interface ITextPTProps
     Partial<ITextSizeProp>,
     IPTNode {}
 
-export type TType = "p" | "span";
+export type TType = "p" | "span" | "label";
 
 export enum ETType {
   p = "p",

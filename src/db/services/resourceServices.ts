@@ -1,4 +1,4 @@
-import { Model } from "mongoose";
+import { Model, ObjectId } from "mongoose";
 import ResourceModel, { IResource } from "../models/resources";
 
 export default class ResourceServices {
@@ -14,7 +14,7 @@ export default class ResourceServices {
       console.error(`Error en la operacion de obtener los recursos: ${error}`);
     }
   }
-  async getResourceById({ id }: { id: string }) {
+  async getResourceById({ id }: { id: ObjectId }) {
     try {
       const resource = await ResourceModel.findById(id);
 
@@ -38,7 +38,7 @@ export default class ResourceServices {
     }
   }
   async updateResourceById(
-    filter: { _id: string },
+    filter: { _id: ObjectId },
     update: Partial<Omit<IResource, "url">>
   ) {
     try {
@@ -48,7 +48,7 @@ export default class ResourceServices {
       console.error(`Error en la operacion de editar el recurso: ${error}`);
     }
   }
-  async deleteResourceById({ id }: { id: string }) {
+  async deleteResourceById({ id }: { id: ObjectId }) {
     try {
       const result = await ResourceModel.findByIdAndDelete(id);
       return result;

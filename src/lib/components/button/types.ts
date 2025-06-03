@@ -1,5 +1,5 @@
 import { IChildren, IClassName } from "@/lib/types/components-props";
-import { MouseEvent, ReactNode } from "react";
+import { MouseEvent, ReactNode, RefObject } from "react";
 import { IStyledBoxStyleProps } from "../structure/styled-box/types";
 
 export interface IButtonProps
@@ -11,6 +11,7 @@ export interface IButtonProps
   loading?: boolean;
   disabled?: boolean;
   rightIcon?: ReactNode;
+  ref?: RefObject<HTMLButtonElement | null>;
 
   onClick?: (evt: MouseEvent) => void;
 }

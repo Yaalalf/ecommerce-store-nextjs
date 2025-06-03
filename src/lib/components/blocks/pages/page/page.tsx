@@ -1,6 +1,7 @@
 import { clsx } from "clsx";
 import { Column, Row } from "../../../layout";
 import { IPageProps } from "./types";
+import { twMerge } from "tailwind-merge";
 
 export default function Page({
   slotHeader,
@@ -8,9 +9,8 @@ export default function Page({
   slotFooter,
   className,
   pt,
-  ...domProps
 }: IPageProps) {
-  const rootClassName = clsx(
+  const rootClassName = twMerge(
     "page",
     className,
     pt?.root?.className,
@@ -22,7 +22,7 @@ export default function Page({
   const footerClassName = clsx("page-footer", pt?.footer?.className);
 
   return (
-    <Column {...domProps} className={rootClassName}>
+    <Column {...pt?.root} className={rootClassName}>
       {slotHeader && (
         <Row {...pt?.header} className={headerClassName}>
           {slotHeader}

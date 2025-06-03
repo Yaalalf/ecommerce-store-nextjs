@@ -1,8 +1,8 @@
-import { IPTNode, IPTProp } from "@/lib/types/components-props";
+import { IClassName, IPTNode, IPTProp } from "@/lib/types/components-props";
 import { ReactNode } from "react";
 
 export interface IPageProps
-  extends Omit<IPTNode, "children">,
+  extends Partial<IClassName>,
     IPageSlots,
     Partial<IPTProp<IPagePT>> {}
 
