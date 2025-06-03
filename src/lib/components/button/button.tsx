@@ -74,6 +74,7 @@ export default function Button({
         align="center"
         justify="center"
         onClick={(e) => {
+          e.stopPropagation();
           if (onClick) {
             onClick(e);
           }

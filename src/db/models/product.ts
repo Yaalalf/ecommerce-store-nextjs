@@ -8,6 +8,7 @@ export enum EProductStatus {
   INACTIVE = 0,
 }
 export interface IProduct {
+  _id: ObjectId;
   title: string;
   description: string;
   price: number;
@@ -16,7 +17,7 @@ export interface IProduct {
 }
 
 export interface IProductPopulated extends Omit<IProduct, "medias"> {
-  _id: string;
+  _id: ObjectId;
   medias: IResource[];
 }
 

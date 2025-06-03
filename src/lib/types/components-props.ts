@@ -17,6 +17,9 @@ export interface IChildren {
 export interface IClassName {
   className: string;
 }
+export interface IRef<T> {
+  ref: RefObject<T>;
+}
 
 export interface ITagNode<T extends IPTNode> {
   tag:
@@ -45,7 +48,8 @@ export type ElementTag =
   | "section"
   | "main"
   | "button"
-  | "label";
+  | "label"
+  | "header";
 export type ListTag = "ul" | "ol";
 export type TextTag = "p" | "span" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 

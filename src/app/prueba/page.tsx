@@ -2,6 +2,7 @@
 import { Card, Column, H, List, StyledBox } from "@/lib/components";
 import HSub from "@/lib/components/blocks/headings/h-sub/h-sub";
 import Button from "@/lib/components/button";
+import Drawer from "@/lib/components/drawer";
 import { useNotification } from "@/lib/components/notification/use-notification";
 
 import {
@@ -10,10 +11,13 @@ import {
   StyledBoxVariant,
   TextVariant,
 } from "@/lib/types/css";
+import { useState } from "react";
 import { FaPlusCircle } from "react-icons/fa";
 
 export default function TestPage() {
-  const { addNotification } = useNotification();
+  const {
+    /*addNotification*/
+  } = useNotification();
 
   const variants: StyledBoxVariant[] = ["surface", "outlined", "flatted"];
   const severities: StyledBoxSeverity[] = [
@@ -70,6 +74,8 @@ export default function TestPage() {
     "hero",
   ];
 
+  const [isDialog, setIsDialog] = useState(false);
+
   return (
     <div className="w-full h-full bg-[#eaeaea] py-40">
       <Column
@@ -93,12 +99,14 @@ export default function TestPage() {
                   label={`${item.variant} ${item.severity}`}
                   icon={<FaPlusCircle />}
                   onClick={() => {
-                    addNotification({
-                      title: "Para cambiar la info toque en ella",
-                      subtitle:
-                        "cambiando la informacion de la notification para arreglos subsecuentes",
-                      type: "error",
-                    });
+                    setIsDialog(!isDialog);
+
+                    // addNotification({
+                    //   title: "Para cambiar la info toque en ella",
+                    //   subtitle:
+                    //     "cambiando la informacion de la notification para arreglos subsecuentes",
+                    //   type: "error",
+                    // });
                   }}
                   variant={item.variant}
                   severity={item.severity}
@@ -121,7 +129,15 @@ export default function TestPage() {
             )}
           </List>
         </Column>
-
+        <Drawer
+          open={isDialog}
+          position="right"
+          onClose={() => {
+            setIsDialog(false);
+          }}
+        >
+          Hola mundo
+        </Drawer>
         <Column gap="gap-[20px]" className="w-[90%]">
           <H>Styled Box</H>
           <List

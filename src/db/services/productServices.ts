@@ -1,4 +1,4 @@
-import { Model } from "mongoose";
+import { Model, ObjectId } from "mongoose";
 import ProductModel, { IProduct, IProductPopulated } from "../models/product";
 import ResourceServices from "./resourceServices";
 
@@ -21,7 +21,7 @@ export default class ProductServices {
   async getProductById({
     id,
   }: {
-    id: string;
+    id: ObjectId;
   }): Promise<IProductPopulated | undefined> {
     try {
       new ResourceServices();
@@ -32,7 +32,7 @@ export default class ProductServices {
       console.error(`Error en la operacion de obtener el producto: ${error}`);
     }
   }
-  async addProduct(product: IProduct) {
+  async addProduct(product: Omit<IProduct, "_id">) {
     try {
       const productDocument = new ProductModel(product);
       const resultDocument = await productDocument.save({
@@ -43,7 +43,10 @@ export default class ProductServices {
       console.error(`Error en la operacion de guardar el producto: ${error}`);
     }
   }
-  async updateProductById(filter: { _id: string }, update: Partial<IProduct>) {
+  async updateProductById(
+    filter: { _id: ObjectId },
+    update: Partial<IProduct>
+  ) {
     try {
       const result = await ProductModel.findOneAndUpdate(filter, update);
       return result;
@@ -51,7 +54,7 @@ export default class ProductServices {
       console.error(`Error en la operacion de editar el producto: ${error}`);
     }
   }
-  async deleteProductById({ id }: { id: string }) {
+  async deleteProductById({ id }: { id: ObjectId }) {
     try {
       const result = await ProductModel.findByIdAndDelete(id);
       return result;

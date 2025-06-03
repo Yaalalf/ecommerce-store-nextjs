@@ -63,6 +63,8 @@ export default function useStyledButton({
             "rounded-lg",
           ],
           buttonAction: [
+            "w-full",
+            "h-full",
             "hover:cursor-pointer",
             "gap-1",
             "relative",

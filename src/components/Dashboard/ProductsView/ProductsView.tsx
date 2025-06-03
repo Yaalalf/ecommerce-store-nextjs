@@ -14,16 +14,15 @@ import PaginatedList from "@/components/PaginatedList";
 import { AiFillProduct } from "react-icons/ai";
 import { useRouter } from "next/navigation";
 import { IResource } from "@/db/models/resources";
+import { deleteProduct } from "@/actions/products-actions";
 
 export default function ProductsView({ products }: { products: IProduct[] }) {
   const router = useRouter();
 
-  const {
-    /*addNotification*/
-  } = useNotification();
+  const { addNotification } = useNotification();
 
-  const [productsList /*, setProductList*/] = useState(products);
-  const [deleteSelectedButton /*, setDeleteSelectedButton*/] = useState(-1);
+  const [productsList, setProductList] = useState(products);
+  const [deleteSelectedButton, setDeleteSelectedButton] = useState(-1);
 
   return (
     <Page
@@ -71,9 +70,9 @@ export default function ProductsView({ products }: { products: IProduct[] }) {
                   <Chip className="border-1 text-xs" variant="outlined">
                     {item.price} CUP
                   </Chip>
-                  <Chip className="border-1 text-xs" variant="outlined">
+                  {/* <Chip className="border-1 text-xs" variant="outlined">
                     {}
-                  </Chip>
+                  </Chip> */}
                   {/*<Chip className="border-1 text-xs" variant="outlined">
                     {getFileNameAndExtension(item.name).extension}
                   </Chip>*/}
@@ -88,6 +87,35 @@ export default function ProductsView({ products }: { products: IProduct[] }) {
                 dense
                 icon={<FaTrash />}
                 loading={deleteSelectedButton === index}
+                onClick={async () => {
+                  setDeleteSelectedButton(index);
+                  const result = await deleteProduct(item._id);
+
+                  if (result.status === 403) {
+                    addNotification({
+                      type: "error",
+                      title: "Error en la operacion",
+                      subtitle: result.message,
+                      duration: 5000,
+                    });
+                  } else if (result.status === 200) {
+                    if (result.data) {
+                      addNotification({
+                        type: "success",
+                        title: "Recurso Eliminado con exito",
+                        subtitle: "El elemento se elimino correctamente",
+                        duration: 5000,
+                      });
+                      setProductList(
+                        productsList.filter(
+                          (product) => product._id !== result.data?._id
+                        )
+                      );
+                    }
+                  }
+
+                  setDeleteSelectedButton(-1);
+                }}
               />
             </Row>
           )}
