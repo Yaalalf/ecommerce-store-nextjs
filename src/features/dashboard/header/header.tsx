@@ -1,9 +1,11 @@
 "use client";
 
-import { Column, H, List, Row } from "@/lib/components";
+import { Column, H, List, Row, StyledBox } from "@/lib/components";
+import Heading from "@/lib/components/blocks/headings/heading";
 import Button from "@/lib/components/button";
 import Drawer from "@/lib/components/drawer";
 import Space from "@/lib/components/layout/space";
+import ImageLoader from "@/lib/components/misc/next-component/image-loader";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -18,10 +20,34 @@ export default function Header() {
   const [isDrawer, setIsDrawer] = useState(false);
   return (
     <Row
-      className="bg-primary-400 text-on-primary h-[60px] items-center justify-between px-8"
+      className="bg-primary-400 text-on-primary h-[60px] gap-2 items-center justify-between px-8"
       tag="header"
     >
-      <H>Jirehlog</H>
+      <Heading
+        className="gap-1 items-end"
+        pt={{
+          headingContainer: {
+            className: "gap-0",
+          },
+        }}
+        slotBefore={
+          <StyledBox dense>
+            <ImageLoader
+              className="w-[28px] h-[28px]"
+              src="/logo.webp"
+              alt="logo"
+              width={40}
+              height={40}
+            ></ImageLoader>
+          </StyledBox>
+        }
+        slotHeading={<H className="leading-[20px]">Jirehlix</H>}
+        slotSubHeading={
+          <H type="h3" className="text-xs font-bold">
+            Catalog Builder
+          </H>
+        }
+      />
       <Space />
       <Button
         className="w-[40px] h-[40px] text-lg"

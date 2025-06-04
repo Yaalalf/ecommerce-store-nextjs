@@ -7,7 +7,7 @@ export interface IHeadingProps
   extends Partial<IHeadingSlots>,
     Partial<IPTProp<IHeadingPT>>,
     Partial<IClassName> {
-  heading: string;
+  heading?: string;
   subheading?: string;
 }
 
