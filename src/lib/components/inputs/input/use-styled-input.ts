@@ -600,7 +600,16 @@ export default function useStyledInput({
           rounded: "xl",
         },
       }),
-    []
+    [
+      styledBox.variants.elevation,
+      styledBox.variants.rounded.full,
+      styledBox.variants.rounded.lg,
+      styledBox.variants.rounded.md,
+      styledBox.variants.rounded.none,
+      styledBox.variants.rounded.sm,
+      styledBox.variants.rounded.xl,
+      styledBox.variants.variant.flatted,
+    ]
   );
 
   return styledInput({ variant, severity, dense, elevation, rounded });

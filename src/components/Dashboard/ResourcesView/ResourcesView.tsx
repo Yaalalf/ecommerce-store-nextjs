@@ -16,7 +16,7 @@ import {
 } from "@/lib/utils/formaters";
 import Space from "@/lib/components/layout/space";
 import Button from "@/lib/components/button";
-import { useNotification } from "@/lib/components/notification/use-notification";
+import { useNotification } from "@/lib/components/popups/components/notification/use-notification";
 
 export default function ResourcesView({
   resources,

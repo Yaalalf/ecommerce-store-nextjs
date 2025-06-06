@@ -11,7 +11,7 @@ import { IoIosArrowRoundBack } from "react-icons/io";
 import ResourcesSelectDialog from "../ResourcesSelectDialog/ResourcesSelectDialog";
 import { IResource } from "@/db/models/resources";
 import { createProduct } from "@/actions/products-actions";
-import { useNotification } from "@/lib/components/notification/use-notification";
+import { useNotification } from "@/lib/components/popups/components/notification/use-notification";
 
 export default function AddProductView({
   resources,

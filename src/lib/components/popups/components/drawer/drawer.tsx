@@ -1,5 +1,5 @@
 import Dialog from "../dialog";
-import { StyledBox } from "../structure";
+import { StyledBox } from "../../../structure";
 import { IDrawerProps } from "./types";
 import { tv } from "tailwind-variants";
 
@@ -8,7 +8,7 @@ export default function Drawer({
   children,
   className,
   position = "left",
-  triggerParent = false,
+  canTriggerParent = false,
   onClose,
 }: IDrawerProps) {
   const cl_drawer = tv({
@@ -23,7 +23,7 @@ export default function Drawer({
       open={open}
       onClose={onClose}
       position={position}
-      triggerParent={triggerParent}
+      canTriggerParent={canTriggerParent}
     >
       <StyledBox dense className={cl_drawer}>
         {children}

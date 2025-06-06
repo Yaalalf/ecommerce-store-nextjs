@@ -8,11 +8,9 @@ export interface IDialogProps
     Partial<IPTProp<IPTDialog>>,
     Partial<IDialogEvents> {
   open?: boolean;
-  triggerParent?: boolean;
-  parentElement?: RefObject<HTMLElement | { ref: HTMLElement } | null>;
+  canTriggerParent?: boolean;
+  triggerElement?: RefObject<HTMLElement | { ref: HTMLElement } | null>;
   onChange?: (value: boolean) => void;
-  value?: boolean;
-  setValue?: (value: boolean) => void;
 }
 
 export interface IDialogEvents {

@@ -3,7 +3,7 @@
 import { Column, H, List, Row, StyledBox } from "@/lib/components";
 import Heading from "@/lib/components/blocks/headings/heading";
 import Button from "@/lib/components/button";
-import Drawer from "@/lib/components/drawer";
+import Drawer from "@/lib/components/popups/components/drawer";
 import Space from "@/lib/components/layout/space";
 import ImageLoader from "@/lib/components/misc/next-component/image-loader";
 import Link from "next/link";
@@ -67,7 +67,7 @@ export default function Header() {
           <Column className="w-[200px] p-4 gap-5">
             <Row className="justify-between items-center">
               <H severity="primary" type="h3">
-                JirehLog
+                Jirehlix
               </H>
 
               <Button
@@ -77,6 +77,7 @@ export default function Header() {
                 severity="primary"
                 icon={<GrClose className="text-md" />}
                 onClick={() => {
+                  console.log("Cerrar", isDrawer);
                   setIsDrawer(false);
                 }}
               />

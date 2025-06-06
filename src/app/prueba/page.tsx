@@ -2,8 +2,8 @@
 import { Card, Column, H, List, StyledBox } from "@/lib/components";
 import HSub from "@/lib/components/blocks/headings/h-sub/h-sub";
 import Button from "@/lib/components/button";
-import Drawer from "@/lib/components/drawer";
-import { useNotification } from "@/lib/components/notification/use-notification";
+import { useNotification } from "@/lib/components/popups/components/notification/use-notification";
+import Popover from "@/lib/components/popups/components/popover";
 
 import {
   StyledBoxElevation,
@@ -11,7 +11,7 @@ import {
   StyledBoxVariant,
   TextVariant,
 } from "@/lib/types/css";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { FaPlusCircle } from "react-icons/fa";
 
 export default function TestPage() {
@@ -75,7 +75,7 @@ export default function TestPage() {
   ];
 
   const [isDialog, setIsDialog] = useState(false);
-
+  const ref = useRef(null);
   return (
     <div className="w-full h-full bg-[#eaeaea] py-40">
       <Column
@@ -83,6 +83,39 @@ export default function TestPage() {
         align="center"
         gap="gap-[20px]"
       >
+        <Button
+          ref={ref}
+          icon={<FaPlusCircle />}
+          onClick={() => {
+            // setIsDialog(!isDialog);
+            // addNotification({
+            //   title: "Para cambiar la info toque en ella",
+            //   subtitle:
+            //     "cambiando la informacion de la notification para arreglos subsecuentes",
+            //   type: "error",
+            // });
+          }}
+          variant={"surface"}
+          severity={"primary"}
+        >
+          Popover
+          <Popover
+            canTriggerParent
+            open={isDialog}
+            onClose={() => {
+              setIsDialog(false);
+            }}
+            anchor="bottom"
+            pivot="top"
+            strategy="absolute"
+          >
+            <StyledBox elevation="level-4"></StyledBox>
+          </Popover>
+          {/* <Dialog canTriggerParent>
+            <StyledBox>Hola Mundo</StyledBox>
+          </Dialog> */}
+        </Button>
+
         <Column gap="gap-[20px]" className="w-[90%]">
           <H>Styled Box</H>
           <List
@@ -99,8 +132,7 @@ export default function TestPage() {
                   label={`${item.variant} ${item.severity}`}
                   icon={<FaPlusCircle />}
                   onClick={() => {
-                    setIsDialog(!isDialog);
-
+                    // setIsDialog(!isDialog);
                     // addNotification({
                     //   title: "Para cambiar la info toque en ella",
                     //   subtitle:
@@ -129,15 +161,7 @@ export default function TestPage() {
             )}
           </List>
         </Column>
-        <Drawer
-          open={isDialog}
-          position="right"
-          onClose={() => {
-            setIsDialog(false);
-          }}
-        >
-          Hola mundo
-        </Drawer>
+
         <Column gap="gap-[20px]" className="w-[90%]">
           <H>Styled Box</H>
           <List

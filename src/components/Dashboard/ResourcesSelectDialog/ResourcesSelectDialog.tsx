@@ -4,7 +4,7 @@ import PaginatedList from "@/components/PaginatedList";
 import { IResource } from "@/db/models/resources";
 import { Center, Column, List, Row, StyledBox, T } from "@/lib/components";
 import Button from "@/lib/components/button";
-import Dialog from "@/lib/components/dialog";
+import Dialog from "@/lib/components/popups/components/dialog";
 import Input from "@/lib/components/inputs/input";
 import useStyledInput from "@/lib/components/inputs/input/use-styled-input";
 import ImageLoader from "@/lib/components/misc/next-component/image-loader";

@@ -1,15 +1,14 @@
 "use client";
-import "./base.css";
 import { useEffect, useState } from "react";
 
 import { INotificationItemProps, INotificationProps } from "./types";
 import useStyledNotifications from "./use-styled-notifications";
-import { Card, List, StyledBox } from "../structure";
-import Heading from "../blocks/headings/heading";
-import Button from "../button";
+import { Card, List, StyledBox } from "../../../structure";
+import Heading from "../../../blocks/headings/heading";
+import Button from "../../../button";
 import { IoMdInformationCircleOutline } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
-import { Center } from "../layout";
+import { Center } from "../../../layout";
 import useStyledNotificationsItem from "./use-styled-notifications-item";
 
 export default function Notifications({

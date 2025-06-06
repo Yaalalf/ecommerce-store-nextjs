@@ -7,7 +7,7 @@ export interface IDrawerProps
     Partial<IDialogEvents>,
     Partial<IStylesDrawer> {
   open?: boolean;
-  triggerParent?: boolean;
+  canTriggerParent?: boolean;
 }
 
 export interface IStylesDrawer {

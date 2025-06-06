@@ -1,7 +1,7 @@
 import { auth0 } from "@/auth/auth0";
 import Header from "@/features/dashboard/header";
 import Dashboard from "@/lib/components/layout/dashboard";
-import { NotificationProvider } from "@/lib/components/notification/notification-context";
+import { NotificationProvider } from "@/lib/components/popups/components/notification/notification-context";
 import { redirect } from "next/navigation";
 
 export default async function DashboardLayout({

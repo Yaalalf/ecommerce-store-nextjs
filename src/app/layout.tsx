@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import connectDB from "@/db/connection";
-import { NotificationProvider } from "@/lib/components/notification/notification-context";
+import { NotificationProvider } from "@/lib/components/popups/components/notification/notification-context";
 
 //Initialize MongoDB Connection
 await connectDB();

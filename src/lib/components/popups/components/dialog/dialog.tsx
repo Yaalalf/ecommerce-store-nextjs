@@ -1,20 +1,22 @@
 "use client";
 
-import { useEffect, useImperativeHandle, useRef, useState } from "react";
+import { useEffect, useImperativeHandle, useRef } from "react";
 import { createPortal } from "react-dom";
 import { IDialogProps } from "./types";
 import useStyledDialog from "./use-styled-dialog";
 import { twMerge } from "tailwind-merge";
+import useParentTrigger from "../../hooks/useParentTrigger";
+import useOpen from "../../hooks/useOpen";
 
 export default function Dialog({
   children,
   ref,
-  parentElement,
+  triggerElement,
 
   open = false,
 
   position = "center",
-  triggerParent = false,
+  canTriggerParent = false,
   pt,
 
   onClose,
@@ -27,11 +29,9 @@ export default function Dialog({
     cl_content,
   } = useStyledDialog({ position });
 
-  const [isOpen, setIsOpen] = useState(open);
+  const [isOpen, setIsOpen] = useOpen({ open });
 
   const dialog_empty_action_ref = useRef<HTMLDivElement | null>(null);
-
-  let parentElementRef: HTMLElement;
 
   /**
    * Hack para desactivar el scroll del body en caso de haber un dialog
@@ -44,39 +44,21 @@ export default function Dialog({
   }, []);
 
   /**
-   * Cambiar el estado del componente si open es cambiado
-   * desde afuera
-   */
-  useEffect(() => {
-    setIsOpen(open);
-  }, [open]);
-  /**
    * Hack para asignar al elemento padre un evento onCLick
    * para triguerear el modal sin tener que asignar un state
    * a open por defecto
    */
-  useEffect(() => {
-    if (triggerParent) {
-      if (parentElement) {
-        if (parentElement.current) {
-          if (parentElement.current instanceof HTMLElement) {
-            parentElementRef = parentElement.current;
-          } else {
-            parentElementRef = parentElement.current.ref;
-          }
-          parentElementRef.addEventListener("click", onClickDialog);
-        }
-      } else {
-        if (dialog_empty_action_ref.current) {
-          if (dialog_empty_action_ref.current.parentElement) {
-            parentElementRef = dialog_empty_action_ref.current.parentElement;
-
-            parentElementRef.addEventListener("click", onClickDialog);
-          }
-        }
-      }
-    }
-  }, [parentElement, dialog_empty_action_ref, triggerParent]);
+  useParentTrigger({
+    canTriggerParent,
+    triggerElement: triggerElement
+      ? triggerElement
+      : () => {
+          return dialog_empty_action_ref.current
+            ? dialog_empty_action_ref.current.parentElement
+            : null;
+        },
+    handler: onClickDialog,
+  });
 
   useImperativeHandle(
     ref,
@@ -94,6 +76,9 @@ export default function Dialog({
     <div
       ref={dialog_empty_action_ref}
       className={cl_dialog_empty_action({ className: "dialog-empty-action" })}
+      onClick={(e) => {
+        e.stopPropagation();
+      }}
     >
       {isOpen &&
         createPortal(
