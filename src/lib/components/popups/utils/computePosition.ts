@@ -1,3 +1,4 @@
+import { IAnchorMiddleware } from "../hooks/useAnchor";
 import {
   EPivotPosition,
   EStrategy,
@@ -24,12 +25,14 @@ export interface IComputePositionOptionsArg {
   pivot: PivotPosition;
 
   strategy: Strategy;
+  middleware: IAnchorMiddleware[];
 }
 
 export const CP_INIT_CONFIG: IComputePositionOptionsArg = {
   anchor: EPivotPosition.TOP_LEFT,
   pivot: EPivotPosition.TOP_LEFT,
   strategy: EStrategy.FIXED,
+  middleware: [],
 };
 
 /**
@@ -49,6 +52,7 @@ export function computePosition({
   options.anchor = options.anchor || CP_INIT_CONFIG.anchor;
   options.pivot = options.pivot || CP_INIT_CONFIG.pivot;
   options.strategy = options.strategy || CP_INIT_CONFIG.strategy;
+  options.middleware = options.middleware || CP_INIT_CONFIG.middleware;
 
   const {
     x: targetElementX,
@@ -87,6 +91,17 @@ export function computePosition({
   if (options.strategy === EStrategy.ABSOLUTE) {
     finalPosition.x += window.scrollX;
     finalPosition.y += window.scrollY;
+  }
+
+  if (options.middleware.length > 0) {
+    options.middleware.forEach((middleware) => {
+      const { x, y } = middleware.exec({
+        previousPoint: finalPosition,
+        rect: middleware.props.rect,
+      });
+      finalPosition.x = x;
+      finalPosition.y = y;
+    });
   }
 
   return finalPosition;

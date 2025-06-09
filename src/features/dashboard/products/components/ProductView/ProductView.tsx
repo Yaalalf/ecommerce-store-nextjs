@@ -1,35 +1,48 @@
 "use client";
+import ResourcesSelectDialog from "@/components/Dashboard/ResourcesSelectDialog/ResourcesSelectDialog";
+import { ICollectionPopulated } from "@/db/models/collections";
+import { IProductPopulated } from "@/db/models/product";
+import { IResource } from "@/db/models/resources";
 import { Column, T } from "@/lib/components";
 import Heading from "@/lib/components/blocks/headings/heading";
 import { Page } from "@/lib/components/blocks/pages";
 import Button from "@/lib/components/button";
+import Autocomplete from "@/lib/components/inputs/autocomplete/autocomplete";
 import Input from "@/lib/components/inputs/input";
 import Textarea from "@/lib/components/inputs/textarea";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
-import { IoIosArrowRoundBack } from "react-icons/io";
-import ResourcesSelectDialog from "../ResourcesSelectDialog/ResourcesSelectDialog";
-import { IResource } from "@/db/models/resources";
-import { createProduct } from "@/actions/products-actions";
 import { useNotification } from "@/lib/components/popups/components/notification/use-notification";
-import { ICollectionPopulated } from "@/db/models/collections";
-import Autocomplete from "@/lib/components/inputs/autocomplete/autocomplete";
+import { useRouter } from "next/navigation";
+import { useMemo, useState } from "react";
+import { IoIosArrowRoundBack } from "react-icons/io";
+import { editProduct } from "../../actions/actions";
 
-export default function AddProductView({
+export default function ProductView({
+  product,
   resources,
   collections,
 }: {
-  collections: ICollectionPopulated[];
   resources: IResource[];
+  product: IProductPopulated;
+  collections: ICollectionPopulated[];
 }) {
+  const lastCollection = useMemo(
+    () =>
+      collections.find((collection) =>
+        collection.products.find((p) => p._id === product._id)
+      ),
+    [collections, product._id]
+  );
+
   const router = useRouter();
   const { addNotification } = useNotification();
 
-  const [title, setTitle] = useState("");
-  const [price, setPrice] = useState<number>(0);
-  const [collection, setCollection] = useState<string>("");
-  const [description, setDescription] = useState("");
-  const [medias, setMedias] = useState<IResource[]>([]);
+  const [title, setTitle] = useState(product.title);
+  const [price, setPrice] = useState<number>(product.price);
+  const [collection, setCollection] = useState<string>(
+    lastCollection?.title || ""
+  );
+  const [description, setDescription] = useState(product.description);
+  const [medias, setMedias] = useState<IResource[]>(product.medias);
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -39,7 +52,7 @@ export default function AddProductView({
       slotHeader={
         <Heading
           className="px-4 gap-2 text-primary"
-          heading="Add Product"
+          heading="Edit Product"
           slotBefore={
             <Button
               className="text-2xl"
@@ -105,7 +118,6 @@ export default function AddProductView({
               onChange={setDescription}
             />
           </Column>
-
           <Column>
             <T type="label" textVariant="label">
               Media
@@ -115,6 +127,7 @@ export default function AddProductView({
                 setMedias(resources);
               }}
               resources={resources}
+              initResources={medias}
             ></ResourcesSelectDialog>
           </Column>
           <Button
@@ -127,13 +140,14 @@ export default function AddProductView({
               const currentCollection = collections.find(
                 (c) => c.title === collection
               );
-
-              const result = await createProduct({
+              const result = await editProduct({
+                _id: product._id,
                 title,
                 description,
                 medias: medias.map((media) => media._id),
                 price,
                 collection: currentCollection ? currentCollection._id : null,
+                lastCollection: lastCollection ? lastCollection._id : null,
               });
               if (result.status === 403) {
                 addNotification({
@@ -143,11 +157,11 @@ export default function AddProductView({
                   duration: 5000,
                 });
               } else if (result.status === 200) {
-                router.push("/dashboard/products");
+                // router.push("/dashboard/products");
                 addNotification({
                   type: "success",
-                  title: "Producto creado con exito",
-                  subtitle: "El Producto se guardo ya esta listo para usar",
+                  title: "Producto Editado con exito",
+                  subtitle: "El Producto se edito correctamente",
                   duration: 5000,
                 });
               }

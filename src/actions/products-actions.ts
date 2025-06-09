@@ -4,11 +4,16 @@
 import { auth0 } from "@/auth/auth0";
 import connectDB from "@/db/connection";
 import { IProduct } from "@/db/models/product";
+import CollectionServices from "@/db/services/collectionsServices";
 import ProductServices from "@/db/services/productServices";
 import { sanitatedClientData } from "@/utils/util";
 import { ObjectId } from "mongoose";
 
-export async function createProduct(product: Omit<IProduct, "_id">): Promise<{
+export async function createProduct(
+  product: Omit<IProduct, "_id"> & {
+    collection: ObjectId | null;
+  }
+): Promise<{
   status: number;
   data: (string | IProduct)[] | null;
   message: string;
@@ -36,6 +41,7 @@ export async function createProduct(product: Omit<IProduct, "_id">): Promise<{
   }
 
   const { addProduct } = new ProductServices();
+  const { updateCollectionById } = new CollectionServices();
 
   try {
     const result = await addProduct({
@@ -44,6 +50,16 @@ export async function createProduct(product: Omit<IProduct, "_id">): Promise<{
       price: product.price,
       title: product.title,
     });
+
+    if (product.collection != null && result) {
+      await updateCollectionById(
+        {
+          _id: product.collection,
+        },
+        { $push: { products: result } }
+      );
+    }
+
     return {
       status: 200,
       data: sanitatedClientData(result),

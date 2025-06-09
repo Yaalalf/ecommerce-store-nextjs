@@ -1,18 +1,19 @@
-import type { Model, Types } from "mongoose";
+import type { Model, ObjectId } from "mongoose";
 import { model, Schema } from "mongoose";
 import { IResource } from "./resources";
 import { IProductPopulated } from "./product";
 
 export interface ICollection {
+  _id: ObjectId;
   title: string;
   description: string;
 
-  media: Types.ObjectId;
-  products: Types.ObjectId[] | [];
+  media: ObjectId;
+  products: ObjectId[] | [];
 }
 
 export interface ICollectionPopulated {
-  _id: string;
+  _id: ObjectId;
   title: string;
   description: string;
 

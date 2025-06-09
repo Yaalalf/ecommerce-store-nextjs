@@ -14,9 +14,11 @@ import { MdOutlinePermMedia } from "react-icons/md";
 import { twMerge } from "tailwind-merge";
 
 export default function ResourcesSelectDialog({
+  initResources = [],
   resources,
   onSelectedResources,
 }: {
+  initResources?: IResource[];
   resources: IResource[];
   onSelectedResources?: (selected: IResource[]) => void;
 }) {
@@ -27,7 +29,8 @@ export default function ResourcesSelectDialog({
 
   const [search, setSearch] = useState("");
 
-  const [selectedResources, setSelectedResources] = useState<IResource[]>([]);
+  const [selectedResources, setSelectedResources] =
+    useState<IResource[]>(initResources);
   const [isDialog, setIsDialog] = useState(false);
   const filteredResources = resources.filter((resource) => {
     return resource.name.toLowerCase().match(search.toLowerCase());
@@ -47,13 +50,22 @@ export default function ResourcesSelectDialog({
         >
           {(selected, index) => (
             <>
-              <ImageLoader
-                className="w-[100%] h-[100%] rounded-2xl"
-                src={selected.url}
-                alt={selected.name}
-                width={80}
-                height={80}
-              ></ImageLoader>
+              <div className="relative">
+                <ImageLoader
+                  className="w-[100%] h-[100%] rounded-2xl"
+                  src={selected.url}
+                  alt={selected.name}
+                  width={80}
+                  height={80}
+                ></ImageLoader>
+                <StyledBox
+                  className="absolute bottom-0 bg-primary-container/80"
+                  variant="surface"
+                  severity="primary-container"
+                >
+                  <T className="text-[length:10px]">{selected.name}</T>
+                </StyledBox>
+              </div>
 
               {selectedResources.length === index + 1 && (
                 <Button
@@ -100,7 +112,7 @@ export default function ResourcesSelectDialog({
                 variant="outlined"
                 severity="primary"
                 value={search}
-                onValueChange={setSearch}
+                onChange={setSearch}
                 slotPrepend={<IoSearchSharp className="text-lg" />}
               ></Input>
             </Center>

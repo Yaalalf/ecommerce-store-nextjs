@@ -7,7 +7,7 @@ export default function Input({
   className,
 
   value,
-  onValueChange,
+  onChange,
   type = "text",
   variant,
   severity = "primary",
@@ -20,6 +20,7 @@ export default function Input({
   slotBefore,
   slotAppend,
   slotPrepend,
+  ref,
   ...domProps
 }: IInputProps) {
   const { inputContainer, inputNative } = useStyledInput({
@@ -33,7 +34,8 @@ export default function Input({
 
   return (
     <Beside
-      className="gap-1 w-full"
+      ref={ref}
+      className="gap-1 "
       tag="label"
       slotAfter={slotAfter}
       slotBefore={slotBefore}
@@ -48,7 +50,7 @@ export default function Input({
           className={inputNative()}
           value={value}
           onChange={(e) => {
-            onValueChange(e.target.value);
+            onChange(e.target.value);
           }}
           type={type}
         />

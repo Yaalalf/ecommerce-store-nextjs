@@ -18,7 +18,7 @@ export interface IClassName {
   className: string;
 }
 export interface IRef<T> {
-  ref: RefObject<T>;
+  ref: RefObject<T | null>;
 }
 
 export interface ITagNode<T extends IPTNode> {

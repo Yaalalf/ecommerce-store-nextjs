@@ -6,7 +6,7 @@ export default function Textarea({
   className,
 
   value,
-  onValueChange,
+  onChange,
 
   variant,
   severity = "primary",
@@ -38,7 +38,7 @@ export default function Textarea({
       })}
       value={value}
       onChange={(e) => {
-        onValueChange(e.target.value);
+        onChange(e.target.value);
       }}
     ></textarea>
   );

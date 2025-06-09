@@ -2,8 +2,8 @@ import { HTMLAttributes } from "react";
 import { IStyledBoxStyleProps } from "../../structure/styled-box/types";
 
 export interface ITextareaProps
-  extends HTMLAttributes<HTMLTextAreaElement>,
+  extends Omit<HTMLAttributes<HTMLTextAreaElement>, "onChange">,
     Partial<IStyledBoxStyleProps> {
   value: string;
-  onValueChange: (value: string) => void;
+  onChange: (value: string) => void;
 }

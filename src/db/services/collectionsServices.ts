@@ -3,7 +3,7 @@ import CollectionModel, {
   ICollection,
   ICollectionPopulated,
 } from "../models/collections";
-import { Model } from "mongoose";
+import { Model, ObjectId, UpdateQuery } from "mongoose";
 import ProductServices from "./productServices";
 
 export default class CollectionServices {
@@ -28,7 +28,7 @@ export default class CollectionServices {
   async getCollectionById({
     id,
   }: {
-    id: string;
+    id: ObjectId;
   }): Promise<ICollectionPopulated | undefined> {
     try {
       new ResourceServices();
@@ -53,8 +53,8 @@ export default class CollectionServices {
     }
   }
   async updateCollectionById(
-    filter: { _id: string },
-    update: Partial<ICollection>
+    filter: { _id: ObjectId },
+    update: UpdateQuery<Partial<ICollection>>
   ) {
     try {
       const result = await CollectionModel.updateOne(filter, update);
@@ -63,7 +63,7 @@ export default class CollectionServices {
       console.error(`Error en la operacion de editar la coleccion: ${error}`);
     }
   }
-  async deleteCollectionById({ id }: { id: string }) {
+  async deleteCollectionById({ id }: { id: ObjectId }) {
     try {
       const result = await CollectionModel.findByIdAndDelete(id);
       return result;

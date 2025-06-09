@@ -4,7 +4,6 @@ import { Page } from "@/lib/components/blocks/pages";
 import { FaPlusCircle, FaTrash } from "react-icons/fa";
 import { useState } from "react";
 import { Chip, Column, Row, T } from "@/lib/components";
-import ImageLoader from "@/lib/components/misc/next-component/image-loader";
 
 import Space from "@/lib/components/layout/space";
 import Button from "@/lib/components/button";
@@ -13,8 +12,9 @@ import { IProduct } from "@/db/models/product";
 import PaginatedList from "@/components/PaginatedList";
 import { AiFillProduct } from "react-icons/ai";
 import { useRouter } from "next/navigation";
-import { IResource } from "@/db/models/resources";
 import { deleteProduct } from "@/actions/products-actions";
+import ImageLoader from "@/lib/components/misc/next-component/image-loader";
+import { IResource } from "@/db/models/resources";
 
 export default function ProductsView({ products }: { products: IProduct[] }) {
   const router = useRouter();
@@ -51,7 +51,13 @@ export default function ProductsView({ products }: { products: IProduct[] }) {
       slotBody={
         <PaginatedList className="mt-4" data={productsList} pageSize={9}>
           {(item, index) => (
-            <Row className="w-[100%] gap-3" key={item.title}>
+            <Row
+              className="w-[100%] gap-3"
+              key={item.title}
+              onClick={() => {
+                router.push(`/dashboard/products/${item._id}`);
+              }}
+            >
               {/* <div className="w-[60px] h-[60px] bg-primary"></div> */}
               <ImageLoader
                 className="w-[60px] h-[60px] rounded-2xl"
@@ -87,7 +93,8 @@ export default function ProductsView({ products }: { products: IProduct[] }) {
                 dense
                 icon={<FaTrash />}
                 loading={deleteSelectedButton === index}
-                onClick={async () => {
+                onClick={async (e) => {
+                  e.stopPropagation();
                   setDeleteSelectedButton(index);
                   const result = await deleteProduct(item._id);
 

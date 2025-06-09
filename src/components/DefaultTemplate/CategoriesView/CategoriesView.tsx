@@ -27,7 +27,10 @@ export default function CategoriesView({
       >
         {(collection) => (
           <Link className="ProductLink" href={`/categories/${collection._id}`}>
-            <CategoryCard collection={collection} key={collection._id} />
+            <CategoryCard
+              collection={collection}
+              key={String(collection._id)}
+            />
           </Link>
         )}
       </NColumn>
