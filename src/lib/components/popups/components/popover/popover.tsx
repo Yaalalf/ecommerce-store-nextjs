@@ -73,13 +73,6 @@ const Popover = memo(function Popover({
         requestAnimationFrame(() => {
           filler();
           anchorUpdater();
-          // TODO: Optimizar el comportamiento del popover
-          // para que se muestre bien
-          // requestAnimationFrame(() => {
-          //   if (anchorRef.current) {
-          //     anchorRef.current.style.opacity = "1";
-          //   }
-          // });
         });
       }
     },
@@ -233,7 +226,7 @@ IPopoverWrapperProps) {
     <motion.div
       // {...domProps}
       ref={ref}
-      key={"box"}
+      key={"popover"}
       className={className}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}

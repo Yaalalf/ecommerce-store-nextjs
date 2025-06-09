@@ -2,11 +2,13 @@
 
 import { useEffect, useImperativeHandle, useRef } from "react";
 import { createPortal } from "react-dom";
-import { IDialogProps } from "./types";
+import { IDialog, IDialogProps } from "./types";
 import useStyledDialog from "./use-styled-dialog";
 import { twMerge } from "tailwind-merge";
 import useParentTrigger from "../../hooks/useParentTrigger";
 import useOpen from "../../hooks/useOpen";
+import useIsMounted from "../../hooks/useMounted";
+import { AnimatePresence, motion } from "motion/react";
 
 export default function Dialog({
   children,
@@ -30,7 +32,7 @@ export default function Dialog({
   } = useStyledDialog({ position });
 
   const [isOpen, setIsOpen] = useOpen({ open });
-
+  const isMounted = useIsMounted();
   const dialog_empty_action_ref = useRef<HTMLDivElement | null>(null);
 
   /**
@@ -62,7 +64,7 @@ export default function Dialog({
 
   useImperativeHandle(
     ref,
-    () => {
+    (): IDialog => {
       return {
         close() {
           setIsOpen(false);
@@ -80,41 +82,59 @@ export default function Dialog({
         e.stopPropagation();
       }}
     >
-      {isOpen &&
+      {isMounted &&
         createPortal(
-          <div
-            {...pt?.container}
-            className={cl_container({
-              className: twMerge("dialog-container", pt?.container?.className),
-            })}
-            key={"dialog"}
-          >
-            <div
-              {...pt?.overlay}
-              className={cl_overlay({
-                className: twMerge("dialog-overlay", pt?.overlay?.className),
-              })}
-            >
-              <div
-                {...pt?.close_area}
-                className={cl_close_area({
+          <AnimatePresence>
+            {isOpen && (
+              <motion.div
+                key={"dialog"}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                className={cl_container({
                   className: twMerge(
-                    "dialog-close-area",
-                    pt?.close_area?.className
+                    "dialog-container",
+                    pt?.container?.className
                   ),
                 })}
-                onClick={pt?.close_area?.onClick || ((e) => onCloseDialog(e))}
-              ></div>
-              <div
-                {...pt?.content}
-                className={cl_content({
-                  className: twMerge("dialog-content", pt?.content?.className),
-                })}
               >
-                {children}
-              </div>
-            </div>
-          </div>,
+                <div
+                  {...pt?.overlay}
+                  className={cl_overlay({
+                    className: twMerge(
+                      "dialog-overlay",
+                      pt?.overlay?.className
+                    ),
+                  })}
+                >
+                  <div
+                    {...pt?.close_area}
+                    className={cl_close_area({
+                      className: twMerge(
+                        "dialog-close-area",
+                        pt?.close_area?.className
+                      ),
+                    })}
+                    onClick={
+                      pt?.close_area?.onClick || ((e) => onCloseDialog(e))
+                    }
+                  ></div>
+                  <div
+                    {...pt?.content}
+                    className={cl_content({
+                      className: twMerge(
+                        "dialog-content",
+                        pt?.content?.className
+                      ),
+                    })}
+                  >
+                    {children}
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>,
           document.body
         )}
     </div>

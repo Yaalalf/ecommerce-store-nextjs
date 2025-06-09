@@ -38,3 +38,7 @@ export type DialogPosition =
   | "bottom-right"
   | "left"
   | "center";
+
+export interface IDialog {
+  close(): void;
+}

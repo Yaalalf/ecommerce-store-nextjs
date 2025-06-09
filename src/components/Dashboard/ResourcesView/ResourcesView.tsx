@@ -6,7 +6,7 @@ import FileInput from "@/lib/components/inputs/file-input/file-input";
 import { FaFileImage, FaPlusCircle, FaTrash } from "react-icons/fa";
 import ResourcesPaginatedList from "../ResourcesPaginatedList/ResourcesPaginatedList";
 import { IResource } from "@/db/models/resources";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { Chip, Column, Row, T } from "@/lib/components";
 import ImageLoader from "@/lib/components/misc/next-component/image-loader";
 import {
@@ -17,6 +17,7 @@ import {
 import Space from "@/lib/components/layout/space";
 import Button from "@/lib/components/button";
 import { useNotification } from "@/lib/components/popups/components/notification/use-notification";
+import DeleteDialog from "@/features/dashboard/dialogs/components/delete-dialog/DeleteDialog";
 
 export default function ResourcesView({
   resources,
@@ -26,7 +27,36 @@ export default function ResourcesView({
   const { addNotification } = useNotification();
 
   const [resourcesList, setResourcesList] = useState<IResource[]>(resources);
-  const [deleteSelectedButton, setDeleteSelectedButton] = useState(-1);
+
+  const onDeleteResource = useCallback(
+    async (item: IResource) => {
+      const result = await deleteResource(item._id);
+
+      if (result.status === 403) {
+        addNotification({
+          type: "error",
+          title: "Error en la operacion",
+          subtitle: result.message,
+          duration: 5000,
+        });
+      } else if (result.status === 200) {
+        if (result.data) {
+          addNotification({
+            type: "success",
+            title: "Recurso Eliminado con exito",
+            subtitle: "El elemento se elimino correctamente",
+            duration: 5000,
+          });
+          setResourcesList(
+            resourcesList.filter(
+              (resource) => resource._id !== result.data?._id
+            )
+          );
+        }
+      }
+    },
+    [addNotification, resourcesList]
+  );
 
   return (
     <Page
@@ -84,7 +114,7 @@ export default function ResourcesView({
       }
       slotBody={
         <ResourcesPaginatedList className="mt-4" resources={resourcesList}>
-          {(item, index) => (
+          {(item) => (
             <Row className="w-[100%] gap-3" key={item.name}>
               {/* <div className="w-[60px] h-[60px] bg-primary"></div> */}
               <ImageLoader
@@ -121,37 +151,18 @@ export default function ResourcesView({
                 rounded="md"
                 dense
                 icon={<FaTrash />}
-                loading={deleteSelectedButton === index}
-                onClick={async () => {
-                  setDeleteSelectedButton(index);
-                  const result = await deleteResource(item._id);
-
-                  if (result.status === 403) {
-                    addNotification({
-                      type: "error",
-                      title: "Error en la operacion",
-                      subtitle: result.message,
-                      duration: 5000,
-                    });
-                  } else if (result.status === 200) {
-                    if (result.data) {
-                      addNotification({
-                        type: "success",
-                        title: "Recurso Eliminado con exito",
-                        subtitle: "El elemento se elimino correctamente",
-                        duration: 5000,
-                      });
-                      setResourcesList(
-                        resourcesList.filter(
-                          (resource) => resource._id !== result.data?._id
-                        )
-                      );
-                    }
-                  }
-
-                  setDeleteSelectedButton(-1);
+                onClick={(e) => {
+                  e.stopPropagation();
                 }}
-              />
+              >
+                <DeleteDialog
+                  heading="Eliminar el recurso"
+                  subheading="Estas seguro esta accion no se puede echar atras?"
+                  onDelete={async () => {
+                    await onDeleteResource(item);
+                  }}
+                />
+              </Button>
             </Row>
           )}
         </ResourcesPaginatedList>
