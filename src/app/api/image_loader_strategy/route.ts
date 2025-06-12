@@ -12,22 +12,28 @@ export async function GET(request: Request) {
   }
 
   try {
-    const response = await fetch(imageUrl);
+    const imageResponse = await fetch(imageUrl);
 
-    if (!response.ok) {
-      throw new Error(`Failed to fetch image: ${response.statusText}`);
+    if (!imageResponse.ok) {
+      throw new Error(`Failed to fetch image: ${imageResponse.statusText}`);
     }
 
-    const contentType = response.headers.get("content-type");
-    const arrayBuffer = await response.arrayBuffer();
+    const contentType = imageResponse.headers.get("content-type");
+    const arrayBuffer = await imageResponse.arrayBuffer();
 
-    return new Response(arrayBuffer, {
+    const response = new Response(arrayBuffer, {
       headers: {
         "Content-Type": contentType || "application/octet-stream",
         "Cache-Control": "public, max-age=2592000, immutable",
+        Vary: "Accept-Encoding",
       },
       status: 200,
     });
+
+    response.headers.delete("pragma"); // Elimina el header Pragma
+    response.headers.delete("expires"); // Elimina el header Expires
+
+    return response;
   } catch (error) {
     console.error("Error al proxy la imagen:", error);
     return NextResponse.json(
