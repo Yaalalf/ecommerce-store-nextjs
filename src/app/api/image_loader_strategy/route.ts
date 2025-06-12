@@ -1,7 +1,5 @@
 import { NextResponse } from "next/server";
 
-// export const runtime = "nodejs";
-export const dynamic = "force-static";
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const imageUrl = searchParams.get("imageUrl");
@@ -14,7 +12,7 @@ export async function GET(request: Request) {
   }
 
   try {
-    const imageResponse = await fetch(imageUrl, { cache: "force-cache" });
+    const imageResponse = await fetch(imageUrl);
 
     if (!imageResponse.ok) {
       throw new Error(`Failed to fetch image: ${imageResponse.statusText}`);
