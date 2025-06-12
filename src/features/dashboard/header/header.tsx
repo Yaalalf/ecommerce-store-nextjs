@@ -13,6 +13,7 @@ import { AiFillProduct } from "react-icons/ai";
 import { FaFileImage } from "react-icons/fa";
 import { GrClose } from "react-icons/gr";
 import { IoMenu } from "react-icons/io5";
+import { MdCollectionsBookmark } from "react-icons/md";
 
 export default function Header() {
   const pathname = usePathname();
@@ -90,6 +91,11 @@ export default function Header() {
                   label: "products",
                   to: "/dashboard/products",
                   icon: <AiFillProduct />,
+                },
+                {
+                  label: "collections",
+                  to: "/dashboard/collections",
+                  icon: <MdCollectionsBookmark />,
                 },
                 {
                   label: "resources",

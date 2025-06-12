@@ -1,11 +1,9 @@
-import { IChildren, IClassName } from "@/lib/types/components-props";
-import { MouseEvent, ReactNode, RefObject } from "react";
+import { ButtonHTMLAttributes, MouseEvent, ReactNode, RefObject } from "react";
 import { IStyledBoxStyleProps } from "../structure/styled-box/types";
 
 export interface IButtonProps
-  extends Partial<IChildren>,
-    Partial<IClassName>,
-    Partial<IStyledButtonProps> {
+  extends Partial<IStyledButtonProps>,
+    ButtonHTMLAttributes<HTMLButtonElement> {
   label?: string;
   icon?: ReactNode;
   loading?: boolean;

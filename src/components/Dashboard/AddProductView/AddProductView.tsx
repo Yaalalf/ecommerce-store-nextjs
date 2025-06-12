@@ -27,7 +27,7 @@ export default function AddProductView({
 
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState<number>(0);
-  const [collection, setCollection] = useState<string>("");
+  const [collection, setCollections] = useState<ICollectionPopulated[]>([]);
   const [description, setDescription] = useState("");
   const [medias, setMedias] = useState<IResource[]>([]);
 
@@ -89,9 +89,14 @@ export default function AddProductView({
               value={collection}
               suggestions={collections}
               field="title"
-              onChange={(value) => setCollection(value)}
+              multiple
               suggestedItemsSlots={(c) => c.title}
-              onSuggest={(c) => c.title.match(collection) != null}
+              onSuggest={(c) => {
+                setCollections([...collection, c]);
+              }}
+              onDeleteSuggest={(c) => {
+                setCollections(collection.filter((col) => col._id !== c._id));
+              }}
             />
           </Column>
           <Column>
@@ -124,16 +129,12 @@ export default function AddProductView({
             onClick={async () => {
               setIsLoading(true);
 
-              const currentCollection = collections.find(
-                (c) => c.title === collection
-              );
-
               const result = await createProduct({
                 title,
                 description,
                 medias: medias.map((media) => media._id),
                 price,
-                collection: currentCollection ? currentCollection._id : null,
+                collections: collection.map((c) => c._id),
               });
               if (result.status === 403) {
                 addNotification({

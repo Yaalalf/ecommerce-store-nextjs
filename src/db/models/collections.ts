@@ -25,7 +25,10 @@ const collectionSchema = new Schema<ICollection>({
   title: { type: String, required: true },
   description: { type: String },
   media: { type: Schema.Types.ObjectId, ref: "resources" },
-  products: [{ type: Schema.Types.ObjectId, ref: "products" }],
+  products: {
+    type: [{ type: Schema.Types.ObjectId, ref: "products" }],
+    default: [],
+  },
 });
 
 let CollectionModel: Model<ICollection>;

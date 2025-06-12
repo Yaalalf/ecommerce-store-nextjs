@@ -1,6 +1,6 @@
 "use client";
 import { useImperativeHandle, useRef } from "react";
-import { Center, Flex } from "../layout";
+import { Center } from "../layout";
 import { T } from "../text";
 import { IButtonProps } from "./types";
 import useRipple from "../hooks/use-ripple";
@@ -22,17 +22,11 @@ export default function Button({
   elevation,
   rounded,
   className,
-  onClick,
   ref,
+  ...domProps
 }: IButtonProps) {
   const buttonRef = useRef<HTMLButtonElement>(null);
-  const {
-    buttonContainer,
-    buttonAction,
-    buttonRipple,
-    buttonDisabled,
-    buttonLoading,
-  } = useStyledButton({
+  const { buttonContainer, buttonRipple, buttonLoading } = useStyledButton({
     dense,
     variant,
     severity,
@@ -55,43 +49,22 @@ export default function Button({
     []
   );
   return (
-    <Flex
-      tag="div"
-      // tag={{
-      //   component: StyledBox,
-      //   props: { variant, severity, bordered, dense: true, elevation },
-      // }}
-      align="center"
-      justify="center"
-      className={buttonContainer({ className })}
+    <button
+      {...domProps}
+      ref={buttonRef}
+      className={buttonContainer({ className: className })}
+      data-loading={loading}
+      data-disabled={disabled}
+      disabled={disabled || loading}
     >
-      <Flex
-        tag="button"
-        ref={buttonRef}
-        className={buttonAction()}
-        data-loading={loading}
-        data-disabled={disabled}
-        align="center"
-        justify="center"
-        onClick={(e) => {
-          if (onClick) {
-            onClick(e);
-          }
-        }}
-      >
-        <>
-          {icon}
-          {children || (label && <T type="span">{label}</T>)}
-          {rightIcon}
-        </>
-      </Flex>
-
+      {icon}
+      {children || (label && <T type="span">{label}</T>)}
+      {rightIcon}
       {loading && (
         <Center className={buttonLoading()}>
           <MltShdSpin />
         </Center>
       )}
-      {disabled && <div className={buttonDisabled()}></div>}
-    </Flex>
+    </button>
   );
 }

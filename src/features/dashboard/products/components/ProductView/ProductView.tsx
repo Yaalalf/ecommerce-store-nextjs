@@ -27,7 +27,7 @@ export default function ProductView({
 }) {
   const lastCollection = useMemo(
     () =>
-      collections.find((collection) =>
+      collections.filter((collection) =>
         collection.products.find((p) => p._id === product._id)
       ),
     [collections, product._id]
@@ -38,9 +38,8 @@ export default function ProductView({
 
   const [title, setTitle] = useState(product.title);
   const [price, setPrice] = useState<number>(product.price);
-  const [collection, setCollection] = useState<string>(
-    lastCollection?.title || ""
-  );
+  const [collection, setCollections] =
+    useState<ICollectionPopulated[]>(lastCollection);
   const [description, setDescription] = useState(product.description);
   const [medias, setMedias] = useState<IResource[]>(product.medias);
 
@@ -102,9 +101,14 @@ export default function ProductView({
               value={collection}
               suggestions={collections}
               field="title"
-              onChange={(value) => setCollection(value)}
+              multiple
               suggestedItemsSlots={(c) => c.title}
-              onSuggest={(c) => c.title.match(collection) != null}
+              onSuggest={(c) => {
+                setCollections([...collection, c]);
+              }}
+              onDeleteSuggest={(c) => {
+                setCollections(collection.filter((col) => col._id !== c._id));
+              }}
             />
           </Column>
           <Column>
@@ -137,17 +141,14 @@ export default function ProductView({
             onClick={async () => {
               setIsLoading(true);
 
-              const currentCollection = collections.find(
-                (c) => c.title === collection
-              );
               const result = await editProduct({
                 _id: product._id,
                 title,
                 description,
                 medias: medias.map((media) => media._id),
                 price,
-                collection: currentCollection ? currentCollection._id : null,
-                lastCollection: lastCollection ? lastCollection._id : null,
+                collections: collection.map((c) => c._id),
+                lastCollections: lastCollection.map((c) => c._id),
               });
               if (result.status === 403) {
                 addNotification({

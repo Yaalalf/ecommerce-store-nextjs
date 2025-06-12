@@ -41,7 +41,7 @@ export default class CollectionServices {
       console.error(`Error en la operacion de obtener la coleccion: ${error}`);
     }
   }
-  async addCollection(collection: ICollection) {
+  async addCollection(collection: Omit<ICollection, "_id" | "products">) {
     try {
       const collectionDocument = new CollectionModel(collection);
       const resultDocument = await collectionDocument.save({

@@ -10,12 +10,12 @@ import { ObjectId } from "mongoose";
 
 export async function editProduct(
   product: IProduct & {
-    collection: ObjectId | null;
-    lastCollection: ObjectId | null;
+    collections: ObjectId[];
+    lastCollections: ObjectId[];
   }
 ): Promise<{
   status: number;
-  data: (string | IProduct)[] | null;
+  data: IProduct | null;
   message: string;
 }> {
   const session = await auth0.getSession();
@@ -52,28 +52,34 @@ export async function editProduct(
         title: product.title,
       }
     );
-    if (product.collection !== product.lastCollection) {
-      if (product.collection != null) {
-        await updateCollectionById(
-          {
-            _id: product.collection,
-          },
-          { $push: { products: product._id } }
-        );
-      }
-      if (product.lastCollection != null) {
-        await updateCollectionById(
-          {
-            _id: product.lastCollection,
-          },
-          { $pull: { products: product._id } }
-        );
-      }
+
+    const collectionsToAdd = product.collections.filter(
+      (c) => !product.lastCollections.includes(c)
+    );
+    const collectionsToDelete = product.lastCollections.filter(
+      (c) => !product.collections.includes(c)
+    );
+
+    for (const c of collectionsToAdd) {
+      await updateCollectionById(
+        {
+          _id: c,
+        },
+        { $push: { products: product._id } }
+      );
+    }
+    for (const c of collectionsToDelete) {
+      await updateCollectionById(
+        {
+          _id: c,
+        },
+        { $pull: { products: product._id } }
+      );
     }
 
     return {
       status: 200,
-      data: sanitatedClientData(productResult),
+      data: sanitatedClientData(productResult) as IProduct,
       message: "All Images Saves",
     };
   } catch (error) {

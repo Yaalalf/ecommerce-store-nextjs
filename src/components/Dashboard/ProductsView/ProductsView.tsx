@@ -88,14 +88,17 @@ export default function ProductsView({ products }: { products: IProduct[] }) {
                   router.push(`/dashboard/products/${item._id}`);
                 }}
               >
-                {/* <div className="w-[60px] h-[60px] bg-primary"></div> */}
-                <ImageLoader
-                  className="w-[60px] h-[60px] rounded-2xl"
-                  src={(item.medias[0] as IResource).url}
-                  alt={(item.medias[0] as IResource).name}
-                  width={80}
-                  height={80}
-                ></ImageLoader>
+                {!(item.medias.length > 0) ? (
+                  <div className="w-[60px] h-[60px] bg-primary rounded-2xl"></div>
+                ) : (
+                  <ImageLoader
+                    className="w-[60px] h-[60px] rounded-2xl"
+                    src={(item.medias[0] as IResource).url}
+                    alt={(item.medias[0] as IResource).name}
+                    width={80}
+                    height={80}
+                  ></ImageLoader>
+                )}
                 <Column className="gap-1">
                   <T type="span" className="text-primary-100 font-[500]">
                     {item.title.length > 20

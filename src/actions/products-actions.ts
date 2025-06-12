@@ -11,11 +11,11 @@ import { ObjectId } from "mongoose";
 
 export async function createProduct(
   product: Omit<IProduct, "_id"> & {
-    collection: ObjectId | null;
+    collections: ObjectId[];
   }
 ): Promise<{
   status: number;
-  data: (string | IProduct)[] | null;
+  data: string | null;
   message: string;
 }> {
   const session = await auth0.getSession();
@@ -51,18 +51,19 @@ export async function createProduct(
       title: product.title,
     });
 
-    if (product.collection != null && result) {
-      await updateCollectionById(
-        {
-          _id: product.collection,
-        },
-        { $push: { products: result } }
-      );
+    if (product.collections.length > 0 && result) {
+      for (const collection of product.collections)
+        await updateCollectionById(
+          {
+            _id: collection,
+          },
+          { $push: { products: result } }
+        );
     }
 
     return {
       status: 200,
-      data: sanitatedClientData(result),
+      data: String(sanitatedClientData(result)),
       message: "All Images Saves",
     };
   } catch (error) {
@@ -116,11 +117,11 @@ export async function deleteProduct(id: ObjectId): Promise<{
     try {
       const result = await deleteProductById({ id });
 
-      return sanitatedClientData({
+      return {
         status: 200,
-        data: sanitatedClientData(result),
+        data: sanitatedClientData(result) as IProduct,
         message: "Producto eliminado correctamente",
-      });
+      };
     } catch (error) {
       console.error("Error eliminando el producto: " + error);
       return {

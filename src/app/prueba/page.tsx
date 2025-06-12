@@ -2,7 +2,6 @@
 import { Card, Column, H, List, StyledBox } from "@/lib/components";
 import HSub from "@/lib/components/blocks/headings/h-sub/h-sub";
 import Button from "@/lib/components/button";
-import Autocomplete from "@/lib/components/inputs/autocomplete/autocomplete";
 import { useNotification } from "@/lib/components/popups/components/notification/use-notification";
 
 import {
@@ -11,7 +10,7 @@ import {
   StyledBoxVariant,
   TextVariant,
 } from "@/lib/types/css";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { FaPlusCircle } from "react-icons/fa";
 
 export default function TestPage() {
@@ -76,7 +75,6 @@ export default function TestPage() {
 
   // const [isDialog, setIsDialog] = useState(false);
   const ref = useRef(null);
-  const [name, setName] = useState("");
   return (
     <div className="w-full h-full bg-[#eaeaea] py-40">
       <Column
@@ -84,11 +82,6 @@ export default function TestPage() {
         align="center"
         gap="gap-[20px]"
       >
-        <Autocomplete
-          value={name}
-          suggestions={[1, 2, 3, 4, 5]}
-          onChange={(e) => setName(e)}
-        />
         <Button
           ref={ref}
           icon={<FaPlusCircle />}
