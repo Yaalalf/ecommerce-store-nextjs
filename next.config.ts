@@ -12,7 +12,6 @@ const nextConfig: NextConfig = {
         search: "",
       },
     ],
-    loader: "custom",
   },
   experimental: {
     serverActions: {

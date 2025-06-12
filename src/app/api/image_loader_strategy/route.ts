@@ -4,7 +4,6 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const imageUrl = searchParams.get("imageUrl");
 
-  console.log("ImageURL: ", imageUrl);
   if (!imageUrl) {
     return NextResponse.json(
       { error: "URL de imagen no proporcionada" },

@@ -7,7 +7,11 @@ import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import customImageLoader from "@/image_loader_strategy/image_loader_strategy";
 
-export default function ImageLoader({ style, ...imageProps }: ImageProps) {
+export default function ImageLoader({
+  isCustomLoader = true,
+  style,
+  ...imageProps
+}: ImageProps & { isCustomLoader?: boolean }) {
   const [loading, setLoading] = useState(true);
 
   const imageLoaderClassName = clsx(
@@ -34,9 +38,10 @@ export default function ImageLoader({ style, ...imageProps }: ImageProps) {
         width={imageProps.width}
         height={imageProps.height}
         className={imageLoaderItem}
-        loader={customImageLoader}
-        onLoad={(e) => {
-          console.log(e);
+        loader={
+          isCustomLoader ? imageProps.loader || customImageLoader : undefined
+        }
+        onLoad={() => {
           setLoading(false);
         }}
       ></Image>

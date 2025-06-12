@@ -20,7 +20,6 @@ export default function AllProductsView({
   isMobile?: boolean;
 }) {
   const allCollections: ICollectionPopulated[] = collections;
-  console.log(products);
   return (
     <Column className="AllProducts w-full h-full" gap="gap-[8px]">
       <Carrousel

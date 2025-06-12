@@ -12,7 +12,7 @@ export default async function DashboardLayout({
   const session = await auth0.getSession();
 
   if (!session) {
-    await redirect("auth/login?returnTo=/dashboard");
+    await redirect("auth/login");
   }
 
   return (

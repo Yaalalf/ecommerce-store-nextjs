@@ -34,6 +34,7 @@ export default function Header() {
         slotBefore={
           <StyledBox dense>
             <ImageLoader
+              isCustomLoader={false}
               className="w-[28px] h-[28px]"
               src="/logo.webp"
               alt="logo"
@@ -61,7 +62,6 @@ export default function Header() {
         <Drawer
           open={isDrawer}
           onClose={() => {
-            console.log("hice close");
             setIsDrawer(false);
           }}
         >
@@ -78,7 +78,6 @@ export default function Header() {
                 severity="primary"
                 icon={<GrClose className="text-md" />}
                 onClick={() => {
-                  console.log("Cerrar", isDrawer);
                   setIsDrawer(false);
                 }}
               />
@@ -108,7 +107,6 @@ export default function Header() {
                 <Link
                   className="w-full h-full"
                   onNavigate={() => {
-                    console.log("hice click");
                     setIsDrawer(false);
                   }}
                   href={item.to}
