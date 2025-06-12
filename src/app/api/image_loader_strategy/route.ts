@@ -26,6 +26,7 @@ export async function GET(request: Request) {
         "Content-Type": contentType || "application/octet-stream",
         "Cache-Control": "public, max-age=2592000, immutable",
         Vary: "Accept-Encoding",
+        "X-MY-HEADER": "hola",
       },
       status: 200,
     });
