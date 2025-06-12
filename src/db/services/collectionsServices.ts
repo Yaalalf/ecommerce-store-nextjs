@@ -17,7 +17,7 @@ export default class CollectionServices {
       new ResourceServices();
       new ProductServices();
       const collections = await CollectionModel.find({})
-        .populate("products")
+        .populate({ path: "products", populate: { path: "medias" } })
         .populate("media");
       return collections as unknown as ICollectionPopulated[];
     } catch (error) {
