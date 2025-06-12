@@ -24,7 +24,7 @@ export async function GET(request: Request) {
     return new Response(arrayBuffer, {
       headers: {
         "Content-Type": contentType || "application/octet-stream",
-        "Cache-Control": "private, max-age=2592000",
+        "Cache-Control": "private, max-age=2592000, immutable",
       },
       status: 200,
     });
