@@ -18,21 +18,20 @@ export async function GET(request: Request) {
       throw new Error(`Failed to fetch image: ${imageResponse.statusText}`);
     }
 
+    console.log(imageResponse.headers);
+
     const contentType = imageResponse.headers.get("content-type");
     const arrayBuffer = await imageResponse.arrayBuffer();
 
     const response = new Response(arrayBuffer, {
-      headers: {
+      headers: imageResponse.headers || {
         "Content-Type": contentType || "application/octet-stream",
-        "Cache-Control": "public, max-age=2592000, immutable",
+        "Cache-Control":
+          "public, max-age=2592000, s-maxage=2592000, stale-while-revalidate=3600, immutable",
         Vary: "Accept-Encoding",
-        "X-MY-HEADER": "hola",
       },
       status: 200,
     });
-
-    response.headers.delete("pragma"); // Elimina el header Pragma
-    response.headers.delete("expires"); // Elimina el header Expires
 
     return response;
   } catch (error) {
