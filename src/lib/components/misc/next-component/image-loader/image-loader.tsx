@@ -5,6 +5,7 @@ import { useState } from "react";
 import { StyledBox } from "@/lib/components/structure";
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+import customImageLoader from "@/image_loader_strategy/image_loader_strategy";
 
 export default function ImageLoader({ style, ...imageProps }: ImageProps) {
   const [loading, setLoading] = useState(true);
@@ -33,7 +34,9 @@ export default function ImageLoader({ style, ...imageProps }: ImageProps) {
         width={imageProps.width}
         height={imageProps.height}
         className={imageLoaderItem}
-        onLoad={() => {
+        loader={customImageLoader}
+        onLoad={(e) => {
+          console.log(e);
           setLoading(false);
         }}
       ></Image>

@@ -1,10 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import connectDB from "@/db/connection";
+// import connectDB from "@/db/connection";
 import { NotificationProvider } from "@/lib/components/popups/components/notification/notification-context";
 
 //Initialize MongoDB Connection
-await connectDB();
+// await connectDB();
 
 export const metadata: Metadata = {
   title: "Create Next App",
