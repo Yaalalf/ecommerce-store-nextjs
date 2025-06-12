@@ -19,8 +19,6 @@ export async function GET(request: Request) {
       throw new Error(`Failed to fetch image: ${response.statusText}`);
     }
 
-    console.log(response);
-
     const contentType = response.headers.get("content-type");
     const arrayBuffer = await response.arrayBuffer();
 
