@@ -1,4 +1,5 @@
 .HeaderIntersector {
+  display: none;
   block-size: 144px;
   inline-size: 100%;
   position: absolute;

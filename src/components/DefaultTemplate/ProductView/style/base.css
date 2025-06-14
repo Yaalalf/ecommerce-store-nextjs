@@ -1,6 +1,7 @@
 .ProductView {
   inline-size: 100%;
   position: relative;
+  padding: 0px;
 }
 .ProductViewHeaderContainer {
   position: relative;
@@ -39,6 +40,7 @@
   position: relative !important;
 
   object-fit: cover;
+  border-radius: 20px;
 }
 
 .ProductInfoContainer {
@@ -49,8 +51,13 @@
 .ProductView .ProductInfo {
   inline-size: 100%;
   block-size: 100%;
-  padding-inline: 20px;
   padding-block-start: 20px;
+}
+
+.ProductView .ProductInfoContainer .ProductInfo .ImageList {
+  padding-inline: 20px;
+  padding-block-end: 8px;
+  overflow: auto;
 }
 
 .ProductView .ProductInfoContainer .ProductInfo .ImagesTabsItem {
@@ -76,25 +83,34 @@
   block-size: 100%;
 
   object-fit: cover;
+  border-radius: 8px;
 }
 
 .ProductView .ProductInfo .HeaderInfo {
+  padding-inline: 20px;
   padding-block-start: 12px;
 }
 
 .ProductView .ProductInfo .HeaderInfo .TagName {
+  inline-size: 60%;
   color: #6b637b;
-  font-size: 30px;
+  font-size: 24px;
+  line-height: 30px;
 }
 .ProductView .ProductInfo .HeaderInfo .PriceTag {
-  block-size: min-content;
-  font-size: 18px;
+  inline-size: fit-content;
+  block-size: fit-content;
+  font-size: 14px;
+  line-height: 20px;
   background-color: #7a4ad9;
   color: #e8e5ef;
-  padding-inline: 20px;
+  padding-inline: 12px;
+  padding-block: 8px;
   border-radius: 20px;
 }
 .ProductView .ProductInfo .ProductDescription {
+  padding-inline: 20px;
+
   inline-size: 100%;
 }
 .ProductView .ProductInfo .ProductDescription p {
@@ -150,7 +166,7 @@
   font-weight: 500;
 
   color: #3e3b41;
-  box-shadow: 0px 3px 6px #114f296a;
+  box-shadow: 0px 3px 6px #114f2937;
 }
 .ProductView .ProductInfo .WhatsappAnchor .Icon {
   font-size: 32px;

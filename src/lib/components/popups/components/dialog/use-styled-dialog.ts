@@ -11,7 +11,7 @@ export default function useStyledDialog({ position }: IStylesDialog) {
         "fixed",
         "top-0",
         "left-0",
-        "z-10000",
+        "z-1000000",
       ],
       cl_overlay: ["w-full", "h-full", "flex", "relative", "bg-black/20"],
       cl_close_area: ["w-full h-full absolute top-0 left-0 z-0"],

@@ -19,7 +19,7 @@ export default function ProductCard({ product }: IProductCardProps) {
         />
         <Column className="ProductInfo" gap="gap-[4px]">
           <Chip tag={H} variant="ghost" className="ProductPrice">
-            ${price}
+            {price} CUP
           </Chip>
           <H className="ProductTitle" type="h3">
             {title}

@@ -1,6 +1,7 @@
 .CategoryView {
   inline-size: 100%;
-  padding-block: 40px;
+  padding-block-start: 40px;
+  padding-block-end: 120px;
 }
 .CategoryHeader {
   inline-size: 100%;
@@ -12,6 +13,7 @@
 .CategoryHeader .Subtitle {
   font-size: 14px;
   line-height: 20px;
+  text-align: center;
 }
 
 .CategoryView .ProductList {

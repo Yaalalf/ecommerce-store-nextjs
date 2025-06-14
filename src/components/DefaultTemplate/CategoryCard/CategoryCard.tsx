@@ -13,13 +13,14 @@ export default function CategoryCard({
     <Card
       className="CategoryCard"
       bordered
+      dense
       slotHeader={
         <ImageLoader
           className="ProductImage"
           src={collection.media.url}
           alt={collection.media.name}
-          width={1080}
-          height={1080}
+          width={100}
+          height={100}
           priority
         />
       }

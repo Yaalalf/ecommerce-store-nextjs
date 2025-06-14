@@ -3,6 +3,7 @@ import MainFooter from "@/components/DefaultTemplate/MainFooter/MainFooter";
 import MainHeader from "@/components/DefaultTemplate/MainHeader/MainHeader";
 import CollectionServices from "@/db/services/collectionsServices";
 import PromotionalServices from "@/db/services/promotionalsServices";
+import { filterDataByFieldWithValue } from "@/utils/filter";
 import { sanitatedClientData } from "@/utils/util";
 import { headers } from "next/headers";
 
@@ -27,9 +28,11 @@ export default async function HomePage() {
               (collection) => collection.title === "HOME_COLLECTION"
             )?.products || []
           }
-          collections={collections.filter(
-            (collection) => collection.title !== "HOME_COLLECTION"
-          )}
+          collections={filterDataByFieldWithValue(collections, {
+            field: "title",
+            value: "HOME_COLLECTION",
+            distinct: true,
+          })}
           promotionals={promotionals}
           isMobile={Boolean(isMobile)}
         />

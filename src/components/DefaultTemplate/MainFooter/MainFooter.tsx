@@ -7,6 +7,7 @@ import { MdStore } from "react-icons/md";
 import { TbCategory } from "react-icons/tb";
 import { usePathname } from "next/navigation";
 import FloatingWhatsappButton from "../FloatingWhatsappButton/FloatingWhatsappButton";
+import FloatingDeliveryButton from "../FloatingDeliveryButton/FloatingDeliveryButton";
 
 export default function MainFooter() {
   const pathName = usePathname();
@@ -35,6 +36,7 @@ export default function MainFooter() {
         )}
       </List>
       <FloatingWhatsappButton />
+      <FloatingDeliveryButton />
     </footer>
   );
 }

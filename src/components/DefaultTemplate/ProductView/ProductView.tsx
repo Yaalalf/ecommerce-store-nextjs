@@ -2,10 +2,10 @@
 import "./style/base.css";
 import { IProductPopulated } from "@/db/models/product";
 import { StyledBox, Card, Column, List, Row } from "@/lib/components";
+import Button from "@/lib/components/button";
 import ImageLoader from "@/lib/components/misc/next-component/image-loader";
 import { H } from "@/lib/components/text";
-import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";
 import { IoChevronBack } from "react-icons/io5";
@@ -15,7 +15,7 @@ export default function ProductView({
   product: IProductPopulated;
 }) {
   const [fullUrl, setFullUrl] = useState("");
-  const searchParams = useSearchParams();
+  const router = useRouter();
   const { medias, title, price, description } = product;
   const [selectedMediaIndex, setSelectedMediaIndex] = useState(0);
 
@@ -39,12 +39,14 @@ export default function ProductView({
       }}
       slotHeader={
         <Column className="ProductViewHeader">
-          <Link
+          <Button
             className="BackIconLink"
-            href={`/?categoryIndex=${searchParams.get("categoryIndex")}`}
+            onClick={() => {
+              router.back();
+            }}
           >
             <IoChevronBack className="BackIcon" />
-          </Link>
+          </Button>
           <ImageLoader
             className="ProductImage"
             src={medias[selectedMediaIndex].url}
@@ -58,7 +60,7 @@ export default function ProductView({
     >
       <Column className="ProductInfo" gap="gap-[12px]">
         <Row className="ImagesTabs">
-          <List data={medias} gap="gap-[20px]">
+          <List className="ImageList" data={medias} gap="gap-[20px]">
             {(media, index) => (
               <StyledBox
                 dense
@@ -85,7 +87,7 @@ export default function ProductView({
             {title}
           </H>
           <H className="PriceTag" type="h2">
-            ${price}
+            {price} CUP
           </H>
         </Row>
         <Column

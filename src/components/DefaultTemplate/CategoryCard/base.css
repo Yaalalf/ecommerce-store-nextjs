@@ -1,8 +1,11 @@
 .CategoryCard {
   background-color: #8f5fef;
+  padding: 14px;
+  block-size: 160px;
 }
 .CategoryCard .CategoryName {
-  font-size: 16px;
+  font-size: 14px;
+  line-height: 20px;
   color: #f2eef8;
   text-align: center;
 }

@@ -12,9 +12,9 @@
 }
 
 .ProductCard .ProductPrice {
-  inline-size: min-content;
-  font-size: 20px;
-  line-height: 24px;
+  inline-size: fit-content;
+  font-size: 14px;
+  line-height: 20px;
   font-weight: 600;
 
   border-radius: 8px;

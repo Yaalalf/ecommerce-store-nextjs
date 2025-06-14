@@ -19,8 +19,6 @@ export default function AllProductsView({
   promotionals: IPromotionalPopulated[];
   isMobile?: boolean;
 }) {
-  const allCollections: ICollectionPopulated[] = collections;
-  console.log(products);
   return (
     <Column className="AllProducts w-full h-full" gap="gap-[8px]">
       <Carrousel
@@ -28,7 +26,7 @@ export default function AllProductsView({
         imgUrls={promotionals[0].medias}
         autoplay
       ></Carrousel>
-      <CollectionTabs collections={allCollections}></CollectionTabs>
+      <CollectionTabs collections={collections}></CollectionTabs>
       <Column className="AllProductBody" gap="gap-[20px]">
         <H type="h1" className="AllProductsHeader">
           <span className="SubSpan">

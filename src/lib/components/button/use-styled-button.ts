@@ -641,7 +641,6 @@ export default function useStyledButton({
           variant: "surface",
           severity: "base",
           size: "xs",
-          elevation: "level-0",
           rounded: "xl",
         },
       }),
