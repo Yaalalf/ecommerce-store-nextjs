@@ -1,7 +1,7 @@
 import { FaWhatsapp } from "react-icons/fa";
 import "./base.css";
 export default function FloatingWhatsappButton() {
-  const phoneNumber = "+5353301720";
+  const phoneNumber = "+5350505571";
   const whatsAppMessage = "Buenas me gustaria saber mas sobre sus productos";
 
   return (

@@ -19,7 +19,7 @@ export default function ProductView({
   const { medias, title, price, description } = product;
   const [selectedMediaIndex, setSelectedMediaIndex] = useState(0);
 
-  const phoneNumber = "+5353301720";
+  const phoneNumber = "+5350505571";
   const whatsAppMessage = useMemo(
     () => `Buenas me gustaria este producto ${fullUrl}`,
     [fullUrl]
