@@ -25,7 +25,7 @@ export default function ProductView({
   product: IProductPopulated;
   collections: ICollectionPopulated[];
 }) {
-  const lastCollection = useMemo(
+  const lastCollections = useMemo(
     () =>
       collections.filter((collection) =>
         collection.products.find((p) => p._id === product._id)
@@ -39,7 +39,7 @@ export default function ProductView({
   const [title, setTitle] = useState(product.title);
   const [price, setPrice] = useState<number>(product.price);
   const [collection, setCollections] =
-    useState<ICollectionPopulated[]>(lastCollection);
+    useState<ICollectionPopulated[]>(lastCollections);
   const [description, setDescription] = useState(product.description);
   const [medias, setMedias] = useState<IResource[]>(product.medias);
 
@@ -148,7 +148,7 @@ export default function ProductView({
                 medias: medias.map((media) => media._id),
                 price,
                 collections: collection.map((c) => c._id),
-                lastCollections: lastCollection.map((c) => c._id),
+                lastCollections: lastCollections.map((c) => c._id),
               });
               if (result.status === 403) {
                 addNotification({
